@@ -5,7 +5,7 @@ body {
   background-image: url(./img/algorats.png);
   color: white;
   font-family: 'Courier New', Courier, monospace;
-  cursor: url(./img/cursor.png);
+  cursor: pointer;
   position: relative;
 }
 
