@@ -6,6 +6,7 @@ body {
   color: white;
   font-family: 'Courier New', Courier, monospace;
   cursor: url(./img/cursor.png);
+  position: relative;
 }
 
 #header {
