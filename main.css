@@ -1,0 +1,40 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url(./img/algorats.png);
+  color: white;
+  font-family: 'Courier New', Courier, monospace;
+  cursor: url(./img/cursor.png);
+}
+
+#header {
+  background-color: black;
+  padding-left: 30px;
+  padding-right: 30px;
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+h1 {
+  margin-bottom: 0;
+}
+
+img {
+  width: 700px;
+}
+
+.project {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  background-color: white;
+  color: black;
+}
+
+.project p {
+  margin-top: 0;
+}
