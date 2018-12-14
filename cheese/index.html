@@ -38,12 +38,16 @@
 		<script>
 
 			//document.getElementById( 'newWindow' ).href += window.location.hash;
-
+//document.addEventListener("click", printMousePos);
 			var gui = new dat.GUI();
 			dat.GUI.toggleHide();
 			var scene = new THREE.Scene();
 			var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 50 );
 			camera.position.z = 30;
+    		
+    		rayCaster = new THREE.Raycaster();
+   			 mousePosition = new THREE.Vector2();
+			
 
 			var renderer = new THREE.WebGLRenderer( { antialias: true } );
 			renderer.setPixelRatio( window.devicePixelRatio );
@@ -79,6 +83,19 @@
 			group.add( new THREE.Mesh( geometry, meshMaterial ) );
 
 			var options = chooseFromHash( group );
+scene.background = new THREE.CubeTextureLoader()
+	.setPath( 'cheese_files/' )
+	.load( [
+		'rat.png',
+		'rat.png',
+		'rat.png',
+		'rat.png',
+		'rat.png',
+		'rat.png'
+
+	] );
+	scene.background.warpS = scene.background.warpT = THREE.RepeatWrapping;
+	scene.background.repeat.set(30,30); 
 
 			scene.add( group );
 
@@ -109,6 +126,7 @@
 			}, false );
 
 			render();
+
 
 		</script>
 		<canvas width="936" height="649" style="width: 936px; height: 649px;"></canvas>
