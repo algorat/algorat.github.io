@@ -1,0 +1,24 @@
+<head>
+  <link rel="stylesheet" href="./valentines/valentines.css" />
+  <link
+    href="https://fonts.googleapis.com/css?family=Fjalla+One"
+    rel="stylesheet"
+  />
+  <script>
+      const numRats = 4;
+      const ratIndex = Math.floor(Math.random() * numRats) + 1
+      const ratPath = "./valentines/rats/" + ratIndex + ".png"
+      
+      const messages = ["HI I LOVE YOU UWU", "vaaaaaaaalentines", "xoxoxox love me", "I love my FRIENDS so much", "wow look a random message"]
+      const message = messages[Math.floor(Math.random() * messages.length)]
+      window.onload = () => {
+        console.log("hi")
+        document.getElementById("pic").src = ratPath
+        document.getElementById("text").innerHTML = message
+      }
+  </script>
+</head>
+<body>
+    <img id="pic"></img>
+    <div id="text"></div>
+</body>

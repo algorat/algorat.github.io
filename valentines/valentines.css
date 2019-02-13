@@ -1,0 +1,14 @@
+body {
+  background-color: hotpink;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 60px;
+}
+
+#text {
+  color: white;
+  font-size: 60px;
+  font-family: 'Fjalla One';
+}
