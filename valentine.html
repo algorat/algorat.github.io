@@ -5,6 +5,7 @@
     rel="stylesheet"
   />
   <title>Algotines</title>
+  <link rel="icon" href="./valentines/clickers/3.png" type="image/x-icon"/>
   <script>
       const numRats = 4;
       const ratIndex = Math.floor(Math.random() * numRats) + 1
@@ -23,6 +24,20 @@
         document.body.style.backgroundImage = backgroundPath
       }
 
+      const numHearts = 4;
+      window.addEventListener('click', e => {
+        let heart = document.createElement('img');
+        heart.src = "./valentines/clickers/" + (Math.floor((Math.random() * numHearts)) + 1) + ".png";
+        heart.style.position = 'absolute';
+        heart.style.left = e.pageX - 15;
+        heart.style.top = e.pageY - 15;
+        heart.style.width = '30px';
+        document.body.append(heart);
+    });
+
+      function save() {
+    }
+
   </script>
 </head>
 <body>
@@ -30,4 +45,5 @@
     <img id="pic"></img>
     <div id="text"></div>
 </div>
+    <!-- <div id="save-button" onclick="save()">save</div> -->
 </body>

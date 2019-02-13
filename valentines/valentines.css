@@ -19,3 +19,21 @@ body {
   border: solid 10px hotpink;
   border-radius: 20px;
 }
+
+#save-button {
+  background-color: hotpink;
+  margin-top: 20px;
+  padding: 10px 30px;
+  font-family: 'Fjalla One';
+  font-size: 20px;
+  color: white;
+  border-radius: 20px;
+  border: solid 5px white;
+}
+
+#save-button:hover {
+  background-color: white;
+  color: hotpink;
+  border-color: hotpink;
+  cursor: pointer;
+}
