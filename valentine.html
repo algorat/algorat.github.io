@@ -4,6 +4,7 @@
     href="https://fonts.googleapis.com/css?family=Fjalla+One"
     rel="stylesheet"
   />
+  <title>Algotines</title>
   <script>
       const numRats = 4;
       const ratIndex = Math.floor(Math.random() * numRats) + 1
@@ -11,14 +12,22 @@
       
       const messages = ["HI I LOVE YOU UWU", "vaaaaaaaalentines", "xoxoxox love me", "I love my FRIENDS so much", "wow look a random message"]
       const message = messages[Math.floor(Math.random() * messages.length)]
+
+      const numBackgrounds = 5;
+      const backgroundIndex = Math.floor(Math.random() * numBackgrounds) + 1
+      const backgroundPath = "url(./valentines/backgrounds/" + backgroundIndex + ".png)"
+
       window.onload = () => {
-        console.log("hi")
         document.getElementById("pic").src = ratPath
         document.getElementById("text").innerHTML = message
+        document.body.style.backgroundImage = backgroundPath
       }
+
   </script>
 </head>
 <body>
+    <div id="text-container">
     <img id="pic"></img>
     <div id="text"></div>
+</div>
 </body>

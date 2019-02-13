@@ -1,14 +1,21 @@
 body {
-  background-color: hotpink;
+  background-repeat: repeat;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 60px;
+  margin: 60px;
 }
 
 #text {
-  color: white;
+  color: hotpink;
   font-size: 60px;
   font-family: 'Fjalla One';
+}
+
+#text-container {
+  background-color: white;
+  padding: 50px;
+  border: solid 10px hotpink;
+  border-radius: 20px;
 }
