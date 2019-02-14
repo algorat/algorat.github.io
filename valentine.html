@@ -30,7 +30,7 @@
         // load text into the model
         markov.loadText(data1.join(' '));
         message = markov.generateSentences(1).join(' ');
-        document.getElementById("text").innerHTML = message+ " <br>love, <br>algorat";;
+        document.getElementById("text").innerHTML = message
       }
     // end text gen stuff
 
@@ -64,7 +64,13 @@
     });
       window.addEventListener('keydown', e => {
       if (e.keyCode == 32){
-       message = markov.generateSentences(1).join(' ');
+        regenerate();
+     }
+       
+    });
+
+      function regenerate() {
+        message = markov.generateSentences(1).join(' ');
        document.getElementById("text").innerHTML = message + " <br>love, <br>algorat";
              backgroundIndex = Math.floor(Math.random() * numBackgrounds) + 1
       backgroundPath = "url(./valentines/backgrounds/" + backgroundIndex + ".png)"
@@ -73,10 +79,6 @@
                document.getElementById("pic").src = ratPath
         
         document.body.style.backgroundImage = backgroundPath
-     }
-       
-    });
-      function save() {
     }
 
   </script>
@@ -85,6 +87,7 @@
     <div id="text-container">
     <img id="pic"></img>
     <div id="text"></div>
+    <div id="signature">love, algorat</div>
 </div>
-    <!-- <div id="save-button" onclick="save()">save</div> -->
+    <div id="regen-button" onclick="regenerate()">regenerate</div>
 </body>
