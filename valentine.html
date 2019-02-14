@@ -56,6 +56,7 @@
       window.addEventListener('click', e => {
 
         let heart = document.createElement('img');
+        heart.classList.add("heart")
         heart.src = "./valentines/clickers/" + (Math.floor((Math.random() * numHearts)) + 1) + ".png";
         heart.style.position = 'absolute';
         heart.style.left = e.pageX - 15;
@@ -80,6 +81,11 @@
                document.getElementById("pic").src = ratPath
         
         document.body.style.backgroundImage = backgroundPath
+
+        const hearts = document.getElementsByClassName("heart")
+        for (let i = 0; i < hearts.length; i++) {
+          hearts[i].style.display = "none";
+        }
     }
 
   </script>
