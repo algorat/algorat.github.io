@@ -71,7 +71,7 @@
 
       function regenerate() {
         message = markov.generateSentences(1).join(' ');
-       document.getElementById("text").innerHTML = message + " <br>love, <br>algorat";
+       document.getElementById("text").innerHTML = message;
              backgroundIndex = Math.floor(Math.random() * numBackgrounds) + 1
       backgroundPath = "url(./valentines/backgrounds/" + backgroundIndex + ".png)"
             ratIndex = Math.floor(Math.random() * numRats) + 1
