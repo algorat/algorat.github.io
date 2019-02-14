@@ -45,3 +45,22 @@ body {
   color: pink;
   text-align: right;
 }
+
+@media (max-width: 800px) {
+  #text {
+    font-size: 24px;
+  }
+
+  #signature {
+    font-size: 16px;
+  }
+
+  body {
+    margin: 80px;
+  }
+
+  #regen-button {
+    font-size: 25px;
+    padding: 10px 50px;
+  }
+}
