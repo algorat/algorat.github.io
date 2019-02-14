@@ -30,22 +30,21 @@
         // load text into the model
         markov.loadText(data1.join(' '));
         message = markov.generateSentences(1).join(' ');
-        document.getElementById("text").innerHTML = message;
+        document.getElementById("text").innerHTML = message+ " <br>love, <br>algorat";;
       }
     // end text gen stuff
 
       const numRats = 4;
 
-      
-      const messages = ["HI I LOVE YOU UWU", "vaaaaaaaalentines", "xoxoxox love me", "I love my FRIENDS so much", "wow look a random message"]
       var message = "";
 
       const numBackgrounds = 5;
 
-             backgroundIndex = Math.floor(Math.random() * numBackgrounds) + 1
+      backgroundIndex = Math.floor(Math.random() * numBackgrounds) + 1
       backgroundPath = "url(./valentines/backgrounds/" + backgroundIndex + ".png)"
-            ratIndex = Math.floor(Math.random() * numRats) + 1
-       ratPath = "./valentines/rats/" + ratIndex + ".png"
+      ratIndex = Math.floor(Math.random() * numRats) + 1
+      ratPath = "./valentines/rats/" + ratIndex + ".png"
+
       window.onload = () => {
         document.getElementById("pic").src = ratPath
         
@@ -66,7 +65,7 @@
       window.addEventListener('keydown', e => {
       if (e.keyCode == 32){
        message = markov.generateSentences(1).join(' ');
-       document.getElementById("text").innerHTML = message;
+       document.getElementById("text").innerHTML = message + " <br>love, <br>algorat";
              backgroundIndex = Math.floor(Math.random() * numBackgrounds) + 1
       backgroundPath = "url(./valentines/backgrounds/" + backgroundIndex + ".png)"
             ratIndex = Math.floor(Math.random() * numRats) + 1
