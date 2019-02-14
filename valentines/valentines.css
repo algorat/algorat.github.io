@@ -4,13 +4,13 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin: 60px;
+  margin: 120px;
 }
 
 #text {
   color: hotpink;
-  font-size: 60px;
-  font-family: 'Fjalla One';
+  font-size: 40px;
+  font-family: 'Gochi Hand';
 }
 
 #text-container {
@@ -24,8 +24,8 @@ body {
   background-color: hotpink;
   margin-top: 20px;
   padding: 10px 30px;
-  font-family: 'Fjalla One';
-  font-size: 20px;
+  font-family: 'Gochi Hand';
+  font-size: 10px;
   color: white;
   border-radius: 20px;
   border: solid 5px white;

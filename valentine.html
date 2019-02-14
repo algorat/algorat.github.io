@@ -1,18 +1,45 @@
 <head>
+      <script src="lib/p5.min.js"></script>
+    <script src="lib/p5.dom.min.js"></script>
+    <script src="lib/p5.sound.min.js"></script>
+    <script src="lib/rita-full.min.js"></script>
+    <style>
+@import url('https://fonts.googleapis.com/css?family=Gochi+Hand');
+</style>
   <link rel="stylesheet" href="./valentines/valentines.css" />
-  <link
+<!--   <link
     href="https://fonts.googleapis.com/css?family=Fjalla+One"
     rel="stylesheet"
-  />
+  /> -->
   <title>Algotines</title>
   <link rel="icon" href="./valentines/clickers/3.png" type="image/x-icon"/>
   <script>
+
+    //text generator stuff
+    var lines, markov, data1;
+
+      function preload() {
+
+        data1 = loadStrings('valentines/DATA.TXT');
+      }
+      function setup() { // keep it in setup because data needs to finish loading before we make markov
+
+        // create a markov model w' n=4
+        markov = new RiMarkov(2);
+        lines = ["click to (re)generate!"];
+        // load text into the model
+        markov.loadText(data1.join(' '));
+        message = markov.generateSentences(1).join(' ');
+        document.getElementById("text").innerHTML = message;
+      }
+    // end text gen stuff
+
       const numRats = 4;
       const ratIndex = Math.floor(Math.random() * numRats) + 1
       const ratPath = "./valentines/rats/" + ratIndex + ".png"
       
       const messages = ["HI I LOVE YOU UWU", "vaaaaaaaalentines", "xoxoxox love me", "I love my FRIENDS so much", "wow look a random message"]
-      const message = messages[Math.floor(Math.random() * messages.length)]
+      var message = "";
 
       const numBackgrounds = 5;
       const backgroundIndex = Math.floor(Math.random() * numBackgrounds) + 1
@@ -20,12 +47,13 @@
 
       window.onload = () => {
         document.getElementById("pic").src = ratPath
-        document.getElementById("text").innerHTML = message
+        
         document.body.style.backgroundImage = backgroundPath
       }
 
       const numHearts = 4;
       window.addEventListener('click', e => {
+
         let heart = document.createElement('img');
         heart.src = "./valentines/clickers/" + (Math.floor((Math.random() * numHearts)) + 1) + ".png";
         heart.style.position = 'absolute';
@@ -34,7 +62,13 @@
         heart.style.width = '30px';
         document.body.append(heart);
     });
-
+      window.addEventListener('keydown', e => {
+      if (e.keyCode == 32){
+       message = markov.generateSentences(1).join(' ');
+       document.getElementById("text").innerHTML = message;
+     }
+       
+    });
       function save() {
     }
 
