@@ -18,6 +18,12 @@ body {
   margin-top: 20px;
 }
 
+a{
+  color: gray;
+  text-decoration: none;
+
+}
+
 h1 {
   margin-bottom: 0;
 }
