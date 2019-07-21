@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Custom Rat</title>
+    <link href="https://fonts.googleapis.com/css?family=Aldrich|Chakra+Petch|Frank+Ruhl+Libre|Open+Sans|Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" type="image/ico" href="favicon.ico"/>
+    <style>
+        body, html{
+        margin: 0px;
+        width: 100%;
+        min-height: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        background-image: url("assets/background.jpg");
+        background-size: cover;
+        font-family: 'Aldrich', sans-serif;
+        color: #8d5177;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    h2{
+        font-family: 'Press Start 2P', cursive;
+        color: #ed83b5;
+        font-size: 20px;
+    }
+
+    #container{
+        width: 800px;
+        padding: 32px;
+        background: rgba(255, 240, 240, 0.85);
+        border: 2px solid #FFF;
+        /*box-shadow: 8px 8px 0px #f6b8d5, 16px 16px 0px #ffecc7;*/
+        animation-name: wiggle;
+        animation-duration: 1.5s;
+        animation-iteration-count: infinite;
+        animation-timing-function: ease-in-out;
+    }
+
+    #rat-selection{
+/*        width: 800px;
+        height: 100%;*/
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    @keyframes wiggle{
+        0%{
+            box-shadow: 8px 8px 0px #ffb5d4, 16px 16px 0px #ffd4b4, 24px 24px 0px #fff7dc;
+        }
+        50%{
+            box-shadow: 8px 5px 0px #ffb5d4, 16px 8px 0px #ffd4b4, 24px 14px 0px #fff7dc;
+        }
+        100%{
+            box-shadow: 8px 8px 0px #ffb5d4, 16px 16px 0px #ffd4b4, 24px 24px 0px #fff7dc;
+        }
+    }
+
+    /*smaller/mobile size media query*/
+    @media (max-width: 780px) { 
+
+        #rat-selection{
+            flex-wrap: wrap;
+        }
+
+        #rat-options{
+            width: 100%;
+            margin-top: 24px;
+        }
+
+    }
+
+    .col{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: center;
+    }
+
+    #big-ratitude {
+        width: 300px;
+        height: 400px;
+        overflow: hidden;
+        border-radius: 50%;
+        position: relative;
+        border: 6px solid #efdf93;
+    }
+
+    #big-ratitude img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .big-ratitude-container{
+
+    }
+
+    hr{
+        border-top: 1px solid #ed83b577;
+        margin: 24px 0px;
+    }
+
+    #frame {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        border: 7px solid #ffefb8;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+    }
+
+    .rat-options-container {
+        justify-content: left;
+    }
+
+    .option{
+        padding: 8px;
+        line-height: 32px;
+        position: relative;
+        z-index: 0;
+        cursor: pointer;
+    }
+
+    .option:hover{
+        color: #66ac5a;
+    }
+
+    h1{
+        margin-block-start: 0;
+        font-family: 'Press Start 2P', cursive;
+    }
+
+    .checked{
+        color: #66ac5a;
+        outline-offset: -2px;
+        outline: 2px solid #66ac5a;
+        background: #e5f6e2;
+        box-shadow: 2px 2px 0px #9cee8f;
+    }
+
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <h1>ALGORat Generator</h1>
+    <div id="rat-selection">
+        <div class="col big-ratitude-container">
+            <div id="big-ratitude">
+                <div id="frame"></div>
+                <img src="assets/rat.jpg" alt="rat image" />
+            </div>
+        </div>
+        <div class="col rat-options-container">
+            <div id="rat-options">
+                <h2>💵ratccessories💵</h2>
+                <span class="option" img-url="airpods.png">airpods</span>
+                <span class="option" img-url="rat-hat.png">rat hat</span>
+                <hr>
+                <h2>🐀friends🐀</h2>
+                <span class="option" img-url="smaller-rat.png">smaller rat</span>
+                <span class="option" img-url="frog.png">frog</span>
+                <hr>
+                <h2>🥟yumyums🥟</h2>
+                <span class="option" img-url="cheese.png">cheese</span>
+                <span class="option" img-url="milk.png">milk</span>
+            </div>
+        </div>
+    </div></div>
+    <script>
+        const images = document.getElementById("big-ratitude");
+        function toggleItem(evt){
+            const element = evt.srcElement;
+            element.classList.toggle("checked");
+            const imgUrl = element.getAttribute("img-url");
+
+            if(element.classList.contains("checked")){ 
+                const newImage = document.createElement("IMG");
+                newImage.src= "assets/" + imgUrl;
+                newImage.id = imgUrl;
+                images.appendChild(newImage);
+            } else {
+                document.getElementById(imgUrl).remove();
+            }
+            
+        }
+        document.querySelectorAll(".option").forEach(
+            item => item.addEventListener("click", toggleItem)
+        );
+    </script>
+</body>
+
+</html>
