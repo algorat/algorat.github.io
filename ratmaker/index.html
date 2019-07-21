@@ -145,6 +145,10 @@
             box-shadow: 2px 2px 0px #9cee8f;
         }
 
+        .hidden{
+            opacity: 0;
+        }
+
     </style>
 </head>
 
@@ -183,20 +187,21 @@
             const element = evt.srcElement;
             element.classList.toggle("checked");
             const imgUrl = element.getAttribute("img-url");
-
-            if(element.classList.contains("checked")){ 
-                const newImage = document.createElement("IMG");
-                newImage.src= "assets/" + imgUrl;
-                newImage.id = imgUrl;
-                images.appendChild(newImage);
-            } else {
-                document.getElementById(imgUrl).remove();
-            }
-            
+            document.getElementById(imgUrl).classList.toggle("hidden");
         }
 
         document.querySelectorAll(".option").forEach(
-            item => item.addEventListener("click", toggleItem)
+            item => {
+                item.addEventListener("click", toggleItem);
+                const imgUrl = item.getAttribute("img-url");
+                const newImage = document.createElement("IMG");
+
+                newImage.src= "assets/" + imgUrl;
+                newImage.id = imgUrl;
+                newImage.classList.add("hidden");
+
+                images.appendChild(newImage);
+            }
         );
 
     </script>
