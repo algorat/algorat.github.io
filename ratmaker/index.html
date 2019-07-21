@@ -62,7 +62,7 @@
         }
 
        
-        /*smaller/mobile size media query*/
+        /*smaller size media query*/
         @media (max-width: 780px) { 
 
             #rat-selection{
@@ -75,6 +75,19 @@
             }
 
         }
+
+        /*mobile media query*/
+        @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+            #rat-selection{
+                flex-wrap: wrap;
+            }
+
+            #rat-options{
+                width: 100%;
+                margin-top: 24px;
+            }
+        }
+}
 
         .col{
             display: flex;
@@ -197,7 +210,7 @@
         document.querySelectorAll(".option").forEach(
             item => item.addEventListener("click", toggleItem)
         );
-        
+
     </script>
 </body>
 
