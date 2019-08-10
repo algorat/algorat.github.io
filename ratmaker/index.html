@@ -177,6 +177,9 @@
             <span class="option background" img-url="BACKGROUND_purple.png"
               >purple</span
             >
+            <span class="option background" img-url="BACKGROUND_road.png"
+              >road</span
+            >
             <span class="option background" img-url="BACKGROUND_snow.png"
               >snow</span
             >
@@ -202,17 +205,26 @@
             <span class="option eyes" img-url="EYES_closed.png">closed</span>
             <span class="option eyes" img-url="EYES_cyclops.png">cyclops</span>
             <span class="option eyes" img-url="EYES_dots.png">dots</span>
+            <span class="option eyes" img-url="EYES_heart.png">heart</span>
             <span class="option eyes" img-url="EYES_hmm.png">hmm</span>
             <span class="option eyes" img-url="EYES_red.png">red</span>
             <span class="option eyes" img-url="EYES_wink.png">wink</span>
+            <span class="option eyes" img-url="EYES_money.png">money</span>
+
             <hr />
             <h2>👄mouths👄</h2>
+            <span class="option mouth" img-url="MOUTH_fangs.png">fangs</span>
             <span class="option mouth" img-url="MOUTH_line.png">line</span>
+            <span class="option mouth" img-url="MOUTH_lips.png">lips</span>
             <span class="option mouth" img-url="MOUTH_o.png">o</span>
             <span class="option mouth" img-url="MOUTH_small_frown.png"
               >lil frown</span
             >
             <span class="option mouth" img-url="MOUTH_smile.png">smile</span>
+            <span class="option mouth" img-url="MOUTH_teeth_frown.png"
+              >teeth frown</span
+            >
+
             <hr />
             <h2>👜accessories👜</h2>
             <span class="option" img-url="EXTRA_adverserial.png"
@@ -221,14 +233,21 @@
             <span class="option" img-url="EXTRA_blush.png">blush</span>
             <span class="option" img-url="EXTRA_crown.png">crown</span>
             <span class="option" img-url="EXTRA_tear.png">tear</span>
-            <span class="option" img-url="EXTRA_umm.png">umm</span>
+            <span class="option" img-url="EXTRA_umm.png">grr</span>
             <hr />
             <h2>💵decorations💵</h2>
-            <span class="option" img-url="FOREGROUND_diamonds.png"
+            <span class="option foreground" img-url="FOREGROUND_diamonds.png"
               >diamonds</span
             >
-            <span class="option" img-url="FOREGROUND_money.png">money</span>
-            <span class="option" img-url="FOREGROUND_roses.png">roses</span>
+            <span class="option foreground" img-url="FOREGROUND_money.png"
+              >money</span
+            >
+            <span class="option foreground" img-url="FOREGROUND_roses.png"
+              >roses</span
+            >
+            <span class="option foreground" img-url="FOREGROUND_grass.png"
+              >grass</span
+            >
             <hr />
             <h2>🖼frames🖼</h2>
             <span class="option frame" img-url="FRAME_flora.png">flora</span>
@@ -239,6 +258,16 @@
               >black line</span
             >
             <span class="option frame" img-url="FRAME_tails.png">tails</span>
+            <h2>💛friends💛</h2>
+            <span class="option friend" img-url="FRIEND_alfie.png">alfie</span>
+            <span class="option friend" img-url="FRIEND_Geoff.png">geoff</span>
+            <span class="option friend" img-url="FRIEND_jeffry.png"
+              >jeffry</span
+            >
+            <span class="option friend" img-url="FRIEND_langmore.png"
+              >langmore</span
+            >
+
             <hr />
           </div>
         </div>
@@ -247,7 +276,14 @@
 
     <script>
       const images = document.getElementById('big-ratitude');
-      const soloClasses = ['eyes', 'background', 'body', 'mouth', 'frame'];
+      const soloClasses = [
+        'eyes',
+        'background',
+        'body',
+        'mouth',
+        'frame',
+        'foreground'
+      ];
 
       function toggleItem(evt) {
         const element = evt.srcElement;
