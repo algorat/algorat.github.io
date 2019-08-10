@@ -1,247 +1,253 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <title>Custom Rat</title>
-    <link href="https://fonts.googleapis.com/css?family=Aldrich|Chakra+Petch|Frank+Ruhl+Libre|Open+Sans|Press+Start+2P&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" type="image/ico" href="favicon.ico"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link
+      href="https://fonts.googleapis.com/css?family=Aldrich|Chakra+Petch|Frank+Ruhl+Libre|Open+Sans|Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" type="image/ico" href="favicon.ico" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <style>
-    
-        body, html{
-            margin: 0px;
-            width: 100%;
-            min-height: 100%;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            background-image: url("assets/page_background.png");
-            background-size: cover;
-            font-family: 'Aldrich', sans-serif;
-            color: #8d5177;
+      body,
+      html {
+        margin: 0px;
+        width: 100%;
+        min-height: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        background-image: url('assets/page_background.png');
+        background-size: cover;
+        font-family: 'Aldrich', sans-serif;
+        color: #8d5177;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      h2 {
+        font-family: 'Press Start 2P', cursive;
+        color: #ed83b5;
+        font-size: 20px;
+      }
+
+      @keyframes wiggle {
+        0% {
+          box-shadow: 8px 8px 0px #ffb5d4, 16px 16px 0px #ffd4b4,
+            24px 24px 0px #fff7dc;
+        }
+        50% {
+          box-shadow: 8px 5px 0px #ffb5d4, 16px 8px 0px #ffd4b4,
+            24px 14px 0px #fff7dc;
+        }
+        100% {
+          box-shadow: 8px 8px 0px #ffb5d4, 16px 16px 0px #ffd4b4,
+            24px 24px 0px #fff7dc;
+        }
+      }
+
+      #container {
+        width: 800px;
+        padding: 32px;
+        background: rgba(255, 240, 240, 0.85);
+        border: 2px solid #fff;
+        animation-name: wiggle;
+        animation-duration: 1.5s;
+        animation-iteration-count: infinite;
+        animation-timing-function: ease-in-out;
+      }
+
+      #rat-selection {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+      }
+
+      /*smaller size media query*/
+      @media (max-width: 780px) {
+        #rat-selection {
+          flex-wrap: wrap;
         }
 
-        * {
-            box-sizing: border-box;
+        #rat-options {
+          width: 100%;
+          margin-top: 24px;
         }
+      }
 
-        h2{
-            font-family: 'Press Start 2P', cursive;
-            color: #ed83b5;
-            font-size: 20px;
-        }
+      .col {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: center;
+      }
 
-        @keyframes wiggle{
-            0%{
-                box-shadow: 8px 8px 0px #ffb5d4, 16px 16px 0px #ffd4b4, 24px 24px 0px #fff7dc;
-            }
-            50%{
-                box-shadow: 8px 5px 0px #ffb5d4, 16px 8px 0px #ffd4b4, 24px 14px 0px #fff7dc;
-            }
-            100%{
-                box-shadow: 8px 8px 0px #ffb5d4, 16px 16px 0px #ffd4b4, 24px 24px 0px #fff7dc;
-            }
-        }
+      #big-ratitude {
+        width: 300px;
+        height: 400px;
+        overflow: hidden;
+        border-radius: 50%;
+        position: relative;
+      }
 
-        #container{
-            width: 800px;
-            padding: 32px;
-            background: rgba(255, 240, 240, 0.85);
-            border: 2px solid #FFF;
-            animation-name: wiggle;
-            animation-duration: 1.5s;
-            animation-iteration-count: infinite;
-            animation-timing-function: ease-in-out;
-        }
+      #big-ratitude img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
 
-        #rat-selection{
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-        }
+      hr {
+        border-top: 1px solid #ed83b577;
+        margin: 24px 0px;
+      }
 
-       
-        /*smaller size media query*/
-        @media (max-width: 780px) { 
+      #frame {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
 
-            #rat-selection{
-                flex-wrap: wrap;
-            }
+        position: absolute;
+        top: 0px;
+        left: 0px;
+      }
 
-            #rat-options{
-                width: 100%;
-                margin-top: 24px;
-            }
+      .rat-options-container {
+        justify-content: left;
+      }
 
-        }
+      .option {
+        padding: 8px;
+        line-height: 32px;
+        position: relative;
+        z-index: 0;
+        cursor: pointer;
+      }
 
-        .col{
-            display: flex;
-            flex-direction: row;
-            width: 100%;
-            justify-content: center;
-        }
+      .option:hover {
+        color: #66ac5a;
+      }
 
-        #big-ratitude {
-            width: 300px;
-            height: 400px;
-            overflow: hidden;
-            border-radius: 50%;
-            position: relative;
-        }
+      h1 {
+        margin-block-start: 0;
+        font-family: 'Press Start 2P', cursive;
+      }
 
-        #big-ratitude img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
+      .checked {
+        color: #66ac5a;
+        outline-offset: -2px;
+        outline: 2px solid #66ac5a;
+        background: #e5f6e2;
+        box-shadow: 2px 2px 0px #9cee8f;
+      }
 
-        hr{
-            border-top: 1px solid #ed83b577;
-            margin: 24px 0px;
-        }
-
-        #frame {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-           
-            position: absolute;
-            top: 0px;
-            left: 0px;
-        }
-
-        .rat-options-container {
-            justify-content: left;
-        }
-
-        .option{
-            padding: 8px;
-            line-height: 32px;
-            position: relative;
-            z-index: 0;
-            cursor: pointer;
-        }
-
-        .option:hover{
-            color: #66ac5a;
-        }
-
-        h1{
-            margin-block-start: 0;
-            font-family: 'Press Start 2P', cursive;
-        }
-
-        .checked{
-            color: #66ac5a;
-            outline-offset: -2px;
-            outline: 2px solid #66ac5a;
-            background: #e5f6e2;
-            box-shadow: 2px 2px 0px #9cee8f;
-        }
-
-        .hidden{
-            opacity: 0;
-        }
-
+      .hidden {
+        opacity: 0;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div id="container">
-        <h1>ALGORat Generator</h1>
-        <div id="rat-selection">
-            <div class="col big-ratitude-container">
-                <div id="big-ratitude">
-                    <div id="frame"></div>
-                </div>
-            </div>
-            <div class="col rat-options-container">
-                <div id="rat-options">
-                    <h2>🌲backgrounds🌲</h2>
-                    <span class="option" img-url="BACKGROUND_field.png">field</span>
-                    <span class="option" img-url="BACKGROUND_green.png">green</span>
-                    <span class="option" img-url="BACKGROUND_pink.png">pink</span>
-                    <span class="option" img-url="BACKGROUND_purple.png">purple</span>
-                    <span class="option" img-url="BACKGROUND_snow.png">snow</span>
-                    <span class="option" img-url="BACKGROUND_space.png">space</span>
-                    <span class="option" img-url="BACKGROUND_spooky.png">spooky</span>
-                    <hr>
-                    <h2>🐀bodies🐀</h2>
-                    <span class="option" img-url="BODY_beige.png">beige</span>
-                    <span class="option" img-url="BODY_brown.png">brown</span>
-                    <span class="option" img-url="BODY_green.png">green</span>
-                    <span class="option" img-url="BODY_grey.png">grey</span>
-                    <span class="option" img-url="BODY_yellow.png">yellow</span>
-                    <hr>
-                    <h2>👀eyes👀</h2>
-                    <span class="option" img-url="EYES_big.png">big</span>
-                    <span class="option" img-url="EYES_big_spooky.png">spooky</span>
-                    <span class="option" img-url="EYES_closed.png">closed</span>
-                    <span class="option" img-url="EYES_cyclops.png">cyclops</span>
-                    <span class="option" img-url="EYES_dots.png">dots</span>
-                    <span class="option" img-url="EYES_hmm.png">hmm</span>
-                    <span class="option" img-url="EYES_red.png">red</span>
-                    <span class="option" img-url="EYES_wink.png">wink</span>
-                    <hr>
-                    <h2>👄mouths👄</h2>
-                    <span class="option" img-url="MOUTH_line.png">line</span>
-                    <span class="option" img-url="MOUTH_o.png">o</span>
-                    <span class="option" img-url="MOUTH_small_frown.png">lil frown</span>
-                    <span class="option" img-url="MOUTH_smile.png">smile</span>
-                    <hr>
-                    <h2>👜accessories👜</h2>
-                    <span class="option" img-url="EXTRA_adverserial.png">adverserial</span>
-                    <span class="option" img-url="EXTRA_blush.png">blush</span>
-                    <span class="option" img-url="EXTRA_crown.png">crown</span>
-                    <span class="option" img-url="EXTRA_tear.png">tear</span>
-                    <span class="option" img-url="EXTRA_umm.png">umm</span>
-                    <hr>
-                    <h2>💵decorations💵</h2>
-                    <span class="option" img-url="FOREGROUND_diamonds.png">diamonds</span>
-                    <span class="option" img-url="FOREGROUND_money.png">money</span>
-                    <span class="option" img-url="FOREGROUND_roses.png">roses</span>
-                    <hr>
-                    <h2>🖼frames🖼</h2>
-                    <span class="option" img-url="FRAME_flora.png">flora</span>
-                    <span class="option" img-url="FRAME_simple_gold.png">gold</span>
-                    <span class="option" img-url="FRAME_black_line.png">black line</span>
-                    <span class="option" img-url="FRAME_tails.png">tails</span>
-                    <hr>
-                </div>
-            </div>
+      <h1>ALGORat Generator</h1>
+      <div id="rat-selection">
+        <div class="col big-ratitude-container">
+          <div id="big-ratitude">
+            <img src="assets/BLANK.png" />
+            <div id="frame"></div>
+          </div>
         </div>
+        <div class="col rat-options-container">
+          <div id="rat-options">
+            <h2>🌲backgrounds🌲</h2>
+            <span class="option" img-url="BACKGROUND_field.png">field</span>
+            <span class="option" img-url="BACKGROUND_green.png">green</span>
+            <span class="option" img-url="BACKGROUND_pink.png">pink</span>
+            <span class="option" img-url="BACKGROUND_purple.png">purple</span>
+            <span class="option" img-url="BACKGROUND_snow.png">snow</span>
+            <span class="option" img-url="BACKGROUND_space.png">space</span>
+            <span class="option" img-url="BACKGROUND_spooky.png">spooky</span>
+            <hr />
+            <h2>🐀bodies🐀</h2>
+            <span class="option" img-url="BODY_beige.png">beige</span>
+            <span class="option" img-url="BODY_brown.png">brown</span>
+            <span class="option" img-url="BODY_green.png">green</span>
+            <span class="option" img-url="BODY_grey.png">grey</span>
+            <span class="option" img-url="BODY_yellow.png">yellow</span>
+            <hr />
+            <h2>👀eyes👀</h2>
+            <span class="option" img-url="EYES_big.png">big</span>
+            <span class="option" img-url="EYES_big_spooky.png">spooky</span>
+            <span class="option" img-url="EYES_closed.png">closed</span>
+            <span class="option" img-url="EYES_cyclops.png">cyclops</span>
+            <span class="option" img-url="EYES_dots.png">dots</span>
+            <span class="option" img-url="EYES_hmm.png">hmm</span>
+            <span class="option" img-url="EYES_red.png">red</span>
+            <span class="option" img-url="EYES_wink.png">wink</span>
+            <hr />
+            <h2>👄mouths👄</h2>
+            <span class="option" img-url="MOUTH_line.png">line</span>
+            <span class="option" img-url="MOUTH_o.png">o</span>
+            <span class="option" img-url="MOUTH_small_frown.png"
+              >lil frown</span
+            >
+            <span class="option" img-url="MOUTH_smile.png">smile</span>
+            <hr />
+            <h2>👜accessories👜</h2>
+            <span class="option" img-url="EXTRA_adverserial.png"
+              >adverserial</span
+            >
+            <span class="option" img-url="EXTRA_blush.png">blush</span>
+            <span class="option" img-url="EXTRA_crown.png">crown</span>
+            <span class="option" img-url="EXTRA_tear.png">tear</span>
+            <span class="option" img-url="EXTRA_umm.png">umm</span>
+            <hr />
+            <h2>💵decorations💵</h2>
+            <span class="option" img-url="FOREGROUND_diamonds.png"
+              >diamonds</span
+            >
+            <span class="option" img-url="FOREGROUND_money.png">money</span>
+            <span class="option" img-url="FOREGROUND_roses.png">roses</span>
+            <hr />
+            <h2>🖼frames🖼</h2>
+            <span class="option" img-url="FRAME_flora.png">flora</span>
+            <span class="option" img-url="FRAME_simple_gold.png">gold</span>
+            <span class="option" img-url="FRAME_black_line.png"
+              >black line</span
+            >
+            <span class="option" img-url="FRAME_tails.png">tails</span>
+            <hr />
+          </div>
+        </div>
+      </div>
     </div>
 
     <script>
-        const images = document.getElementById("big-ratitude");
+      const images = document.getElementById('big-ratitude');
 
-        function toggleItem(evt){
-            const element = evt.srcElement;
-            element.classList.toggle("checked");
-            const imgUrl = element.getAttribute("img-url");
-            document.getElementById(imgUrl).classList.toggle("hidden");
-        }
+      function toggleItem(evt) {
+        const element = evt.srcElement;
+        element.classList.toggle('checked');
+        const imgUrl = element.getAttribute('img-url');
+        document.getElementById(imgUrl).classList.toggle('hidden');
+      }
 
-        document.querySelectorAll(".option").forEach(
-            item => {
-                item.addEventListener("click", toggleItem);
-                const imgUrl = item.getAttribute("img-url");
-                const newImage = document.createElement("IMG");
+      document.querySelectorAll('.option').forEach(item => {
+        item.addEventListener('click', toggleItem);
+        const imgUrl = item.getAttribute('img-url');
+        const newImage = document.createElement('IMG');
 
-                newImage.src= "assets/" + imgUrl;
-                newImage.id = imgUrl;
-                newImage.classList.add("hidden");
+        newImage.src = 'assets/' + imgUrl;
+        newImage.id = imgUrl;
+        newImage.classList.add('hidden');
 
-                images.appendChild(newImage);
-            }
-        );
-
+        images.appendChild(newImage);
+      });
     </script>
-</body>
-
+  </body>
 </html>
