@@ -290,11 +290,11 @@
         soloClasses.forEach(soloClassName => {
           if (element.classList.contains(soloClassName)) {
             Array.from(document.getElementsByClassName(soloClassName)).forEach(
-              groupItem => {
-                if (groupItem.classList.contains('checked')) {
-                  groupItem.classList.remove('checked');
+              soloClassItem => {
+                if (soloClassItem.classList.contains('checked')) {
+                  soloClassItem.classList.remove('checked');
                   document
-                    .getElementById(groupItem.getAttribute('img-url'))
+                    .getElementById(soloClassItem.getAttribute('img-url'))
                     .classList.toggle('hidden');
                 }
               }
