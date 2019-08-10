@@ -165,38 +165,54 @@
         <div class="col rat-options-container">
           <div id="rat-options">
             <h2>🌲backgrounds🌲</h2>
-            <span class="option" img-url="BACKGROUND_field.png">field</span>
-            <span class="option" img-url="BACKGROUND_green.png">green</span>
-            <span class="option" img-url="BACKGROUND_pink.png">pink</span>
-            <span class="option" img-url="BACKGROUND_purple.png">purple</span>
-            <span class="option" img-url="BACKGROUND_snow.png">snow</span>
-            <span class="option" img-url="BACKGROUND_space.png">space</span>
-            <span class="option" img-url="BACKGROUND_spooky.png">spooky</span>
+            <span class="option background" img-url="BACKGROUND_field.png"
+              >field</span
+            >
+            <span class="option background" img-url="BACKGROUND_green.png"
+              >green</span
+            >
+            <span class="option background" img-url="BACKGROUND_pink.png"
+              >pink</span
+            >
+            <span class="option background" img-url="BACKGROUND_purple.png"
+              >purple</span
+            >
+            <span class="option background" img-url="BACKGROUND_snow.png"
+              >snow</span
+            >
+            <span class="option background" img-url="BACKGROUND_space.png"
+              >space</span
+            >
+            <span class="option background" img-url="BACKGROUND_spooky.png"
+              >spooky</span
+            >
             <hr />
             <h2>🐀bodies🐀</h2>
-            <span class="option" img-url="BODY_beige.png">beige</span>
-            <span class="option" img-url="BODY_brown.png">brown</span>
-            <span class="option" img-url="BODY_green.png">green</span>
-            <span class="option" img-url="BODY_grey.png">grey</span>
-            <span class="option" img-url="BODY_yellow.png">yellow</span>
+            <span class="option body" img-url="BODY_beige.png">beige</span>
+            <span class="option body" img-url="BODY_brown.png">brown</span>
+            <span class="option body" img-url="BODY_green.png">green</span>
+            <span class="option body" img-url="BODY_grey.png">grey</span>
+            <span class="option body" img-url="BODY_yellow.png">yellow</span>
             <hr />
             <h2>👀eyes👀</h2>
-            <span class="option" img-url="EYES_big.png">big</span>
-            <span class="option" img-url="EYES_big_spooky.png">spooky</span>
-            <span class="option" img-url="EYES_closed.png">closed</span>
-            <span class="option" img-url="EYES_cyclops.png">cyclops</span>
-            <span class="option" img-url="EYES_dots.png">dots</span>
-            <span class="option" img-url="EYES_hmm.png">hmm</span>
-            <span class="option" img-url="EYES_red.png">red</span>
-            <span class="option" img-url="EYES_wink.png">wink</span>
+            <span class="option eyes" img-url="EYES_big.png">big</span>
+            <span class="option eyes" img-url="EYES_big_spooky.png"
+              >spooky</span
+            >
+            <span class="option eyes" img-url="EYES_closed.png">closed</span>
+            <span class="option eyes" img-url="EYES_cyclops.png">cyclops</span>
+            <span class="option eyes" img-url="EYES_dots.png">dots</span>
+            <span class="option eyes" img-url="EYES_hmm.png">hmm</span>
+            <span class="option eyes" img-url="EYES_red.png">red</span>
+            <span class="option eyes" img-url="EYES_wink.png">wink</span>
             <hr />
             <h2>👄mouths👄</h2>
-            <span class="option" img-url="MOUTH_line.png">line</span>
-            <span class="option" img-url="MOUTH_o.png">o</span>
-            <span class="option" img-url="MOUTH_small_frown.png"
+            <span class="option mouth" img-url="MOUTH_line.png">line</span>
+            <span class="option mouth" img-url="MOUTH_o.png">o</span>
+            <span class="option mouth" img-url="MOUTH_small_frown.png"
               >lil frown</span
             >
-            <span class="option" img-url="MOUTH_smile.png">smile</span>
+            <span class="option mouth" img-url="MOUTH_smile.png">smile</span>
             <hr />
             <h2>👜accessories👜</h2>
             <span class="option" img-url="EXTRA_adverserial.png"
@@ -215,12 +231,14 @@
             <span class="option" img-url="FOREGROUND_roses.png">roses</span>
             <hr />
             <h2>🖼frames🖼</h2>
-            <span class="option" img-url="FRAME_flora.png">flora</span>
-            <span class="option" img-url="FRAME_simple_gold.png">gold</span>
-            <span class="option" img-url="FRAME_black_line.png"
+            <span class="option frame" img-url="FRAME_flora.png">flora</span>
+            <span class="option frame" img-url="FRAME_simple_gold.png"
+              >gold</span
+            >
+            <span class="option frame" img-url="FRAME_black_line.png"
               >black line</span
             >
-            <span class="option" img-url="FRAME_tails.png">tails</span>
+            <span class="option frame" img-url="FRAME_tails.png">tails</span>
             <hr />
           </div>
         </div>
@@ -229,9 +247,24 @@
 
     <script>
       const images = document.getElementById('big-ratitude');
+      const soloClasses = ['eyes', 'background', 'body', 'mouth', 'frame'];
 
       function toggleItem(evt) {
         const element = evt.srcElement;
+        soloClasses.forEach(soloClassName => {
+          if (element.classList.contains(soloClassName)) {
+            Array.from(document.getElementsByClassName(soloClassName)).forEach(
+              groupItem => {
+                if (groupItem.classList.contains('checked')) {
+                  groupItem.classList.remove('checked');
+                  document
+                    .getElementById(groupItem.getAttribute('img-url'))
+                    .classList.toggle('hidden');
+                }
+              }
+            );
+          }
+        });
         element.classList.toggle('checked');
         const imgUrl = element.getAttribute('img-url');
         document.getElementById(imgUrl).classList.toggle('hidden');
