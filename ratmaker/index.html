@@ -59,12 +59,34 @@
         animation-duration: 1.5s;
         animation-iteration-count: infinite;
         animation-timing-function: ease-in-out;
+        overflow: hidden;
       }
 
       #rat-selection {
         display: flex;
         flex-direction: row;
         padding-top: 20px;
+      }
+
+      /* custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f5c1cf;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #ed83b5;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #ed83b5;
+      }
+
+      #rat-options {
+        overflow-y: scroll;
+        background-color: #fffafb;
+        padding: 10px;
+        height: 700px;
       }
 
       /*smaller size media query*/
@@ -76,6 +98,11 @@
         #rat-options {
           width: 100%;
           margin-top: 24px;
+          height: auto;
+        }
+
+        #container {
+          overflow: auto;
         }
       }
 
