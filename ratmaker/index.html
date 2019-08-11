@@ -114,7 +114,7 @@
           overflow: auto;
         }
 
-        #download-button {
+        .download-button {
           display: none;
         }
 
@@ -201,7 +201,7 @@
         opacity: 0;
       }
 
-      #download-button {
+      .download-button {
         font-family: 'Press Start 2P', cursive;
         font-size: 12px;
         border: 3px solid #8d5177;
@@ -209,9 +209,10 @@
         height: 36px;
         width: 160px;
         background: #fffafb;
+        margin-bottom: 6px;
       }
 
-      #download-button:hover {
+      .download-button:hover {
         background: #cbf5d6;
         cursor: pointer;
       }
@@ -227,7 +228,13 @@
             <img class="rat-image" src="assets/BLANK.png" />
             <div id="frame"></div>
           </div>
-          <button id="download-button" onclick="saveImage()">download!</button>
+          <button class="download-button" onclick="reset()">reset!</button>
+          <button class="download-button" onclick="randomize()">
+            randomize!
+          </button>
+          <button class="download-button" onclick="saveImage()">
+            download!
+          </button>
         </div>
         <div class="col rat-options-container">
           <div id="rat-options">
@@ -294,13 +301,13 @@
 
             <hr />
             <h2>👜accessories👜</h2>
-            <span class="option" img-url="EXTRA_adverserial.png"
+            <span class="option extra" img-url="EXTRA_adverserial.png"
               >adverserial</span
             >
-            <span class="option" img-url="EXTRA_blush.png">blush</span>
-            <span class="option" img-url="EXTRA_crown.png">crown</span>
-            <span class="option" img-url="EXTRA_tear.png">tear</span>
-            <span class="option" img-url="EXTRA_umm.png">grr</span>
+            <span class="option extra" img-url="EXTRA_blush.png">blush</span>
+            <span class="option extra" img-url="EXTRA_crown.png">crown</span>
+            <span class="option extra" img-url="EXTRA_tear.png">tear</span>
+            <span class="option extra" img-url="EXTRA_umm.png">grr</span>
             <hr />
             <h2>💵decorations💵</h2>
             <span class="option foreground" img-url="FOREGROUND_diamonds.png"
@@ -352,6 +359,54 @@
         'frame',
         'foreground'
       ];
+
+      function randomize() {
+        reset();
+        displayRandomFrom('eyes', 1);
+        displayRandomFrom('background', 1);
+        displayRandomFrom('body', 1);
+        displayRandomFrom('mouth', 1);
+        displayRandomFrom('frame', 1);
+        displayRandomFrom('foreground', 1);
+        displayRandomFrom('friend', 0);
+        displayRandomFrom('extra', 0);
+      }
+
+      function displayRandomFrom(className, numItems) {
+        const items = Array.from(document.getElementsByClassName(className));
+        if (numItems === 0) numItems = Math.floor(Math.random() * items.length);
+        for (let i = 0; i < numItems; i++) {
+          const randomIndex = Math.floor(Math.random() * items.length);
+          showImageElement(items[randomIndex]);
+        }
+      }
+
+      function hideImageElement(element) {
+        if (element.classList.contains('checked')) {
+          element.classList.remove('checked');
+          document
+            .getElementById(element.getAttribute('img-url'))
+            .classList.toggle('hidden');
+        }
+      }
+
+      function showImageElement(element) {
+        if (!element.classList.contains('checked')) {
+          element.classList.add('checked');
+          document
+            .getElementById(element.getAttribute('img-url'))
+            .classList.toggle('hidden');
+        }
+      }
+
+      function reset() {
+        const allImageElements = Array.from(
+          document.getElementsByClassName('option')
+        );
+        allImageElements.forEach(imageElement =>
+          hideImageElement(imageElement)
+        );
+      }
 
       function toggleItem(evt) {
         const element = evt.srcElement;
