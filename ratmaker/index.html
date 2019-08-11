@@ -112,6 +112,10 @@
         #container {
           overflow: auto;
         }
+
+        #download-button {
+          display: none;
+        }
       }
 
       .col {
@@ -201,7 +205,6 @@
         background: #cbf5d6;
         cursor: pointer;
       }
-
     </style>
   </head>
 
@@ -375,32 +378,36 @@
       });
 
       //saves image to local files
-      function saveImage(){
-
+      function saveImage() {
         var canvas = document.createElement('CANVAS');
         var canWid = 300;
         var canHei = 364;
 
         canvas.width = canWid;
         canvas.height = canHei;
-        canvas.style.width = canWid + "px";
-        canvas.style.height = canHei + "px";
+        canvas.style.width = canWid + 'px';
+        canvas.style.height = canHei + 'px';
 
         var ctx = canvas.getContext('2d');
 
-        Array.from(document.getElementsByClassName("rat-image")).forEach((img) => {
-          if(!img.classList.contains("hidden")){
-            ctx.drawImage(img, 0, 0, 300, 364);
+        Array.from(document.getElementsByClassName('rat-image')).forEach(
+          img => {
+            if (!img.classList.contains('hidden')) {
+              ctx.drawImage(img, 0, 0, 300, 364);
+            }
           }
-        });
-        
+        );
+
         var linkToClick = document.createElement('A'); //hacky solution to save file
         linkToClick.setAttribute('download', 'Rat-persona.png');
-        linkToClick.setAttribute('href', 
-          canvas.toDataURL("image/png").replace("image/png", "image/octet-stream"));
+        linkToClick.setAttribute(
+          'href',
+          canvas
+            .toDataURL('image/png')
+            .replace('image/png', 'image/octet-stream')
+        );
         linkToClick.click();
-    }
-
+      }
     </script>
   </body>
 </html>
