@@ -116,9 +116,10 @@
 
       .col {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         width: 100%;
         justify-content: center;
+        align-items: center;
       }
 
       #big-ratitude {
@@ -127,6 +128,8 @@
         overflow: hidden;
         border-radius: 50%;
         position: relative;
+        margin-bottom: 16px;
+        margin-top: -32px;
       }
 
       #big-ratitude img {
@@ -184,6 +187,22 @@
       .hidden {
         opacity: 0;
       }
+
+      #download-button {
+        font-family: 'Press Start 2P', cursive;
+        font-size: 12px;
+        border: 3px solid #8d5177;
+        color: #8d5177;
+        height: 36px;
+        width: 160px;
+        background: #fffafb;
+      }
+
+      #download-button:hover {
+        background: #cbf5d6;
+        cursor: pointer;
+      }
+
     </style>
   </head>
 
@@ -193,9 +212,10 @@
       <div id="rat-selection">
         <div class="col big-ratitude-container">
           <div id="big-ratitude">
-            <img src="assets/BLANK.png" />
+            <img class="rat-image" src="assets/BLANK.png" />
             <div id="frame"></div>
           </div>
+          <button id="download-button" onclick="saveImage()">download!</button>
         </div>
         <div class="col rat-options-container">
           <div id="rat-options">
@@ -350,9 +370,38 @@
         newImage.src = 'assets/' + imgUrl;
         newImage.id = imgUrl;
         newImage.classList.add('hidden');
+        newImage.classList.add('rat-image');
 
         images.appendChild(newImage);
       });
+
+      //saves image to local files
+      function saveImage(){
+
+        var canvas = document.createElement('CANVAS');
+        var canWid = 300;
+        var canHei = 364;
+
+        canvas.width = canWid;
+        canvas.height = canHei;
+        canvas.style.width = canWid + "px";
+        canvas.style.height = canHei + "px";
+
+        var ctx = canvas.getContext('2d');
+
+        Array.from(document.getElementsByClassName("rat-image")).forEach((img) => {
+          if(!img.classList.contains("hidden")){
+            ctx.drawImage(img, 0, 0, 300, 364);
+          }
+        });
+        
+        var linkToClick = document.createElement('A'); //hacky solution to save file
+        linkToClick.setAttribute('download', 'Rat-persona.png');
+        linkToClick.setAttribute('href', 
+          canvas.toDataURL("image/png").replace("image/png", "image/octet-stream"));
+        linkToClick.click();
+    }
+
     </script>
   </body>
 </html>
