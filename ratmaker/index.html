@@ -396,22 +396,61 @@
         }
       }
 
+      function isHidden(element) {
+        return !element.classList.contains('checked')
+        console.log(element.classList.contains('checked'))
+        //return (element.offsetParent === null)
+      }
+
+      function toggleFade(element){
+        
+        if (isHidden(element)){
+         // showImageElement(element)
+            //element.style.transition = '0.8s';
+          //console.log("SHOW");
+          showImageElement(element)
+
+        }
+        else{
+            //element.style.transition = '0.8s';
+         // console.log("SHOW");
+          hideImageElement(element)
+          //hideImageElement(element)
+        }
+
+
+      }
+
       function hideImageElement(element) {
-        if (element.classList.contains('checked')) {
+       // if (element.classList.contains('checked')) {
           element.classList.remove('checked');
           document
             .getElementById(element.getAttribute('img-url'))
-            .classList.toggle('hidden');
-        }
+             .classList.toggle('hidden');
+          //           document
+          //   .getElementById(element.getAttribute('img-url'))
+          //   .style.transition = '0.8s';
+          //if (element)
+          
+          document.getElementById(element.getAttribute('img-url')).style.transition = '0.6s';
+          document.getElementById(element.getAttribute('img-url')).style.opacity = 0;
+                    
+        //}
       }
 
       function showImageElement(element) {
-        if (!element.classList.contains('checked')) {
+        //if (!element.classList.contains('checked')) {
           element.classList.add('checked');
           document
             .getElementById(element.getAttribute('img-url'))
             .classList.toggle('hidden');
-        }
+          // document
+          //   .getElementById(element.getAttribute('img-url'))
+          //   .style.transition = '0.8s';
+          console.log("showing image element");
+          document.getElementById(element.getAttribute('img-url')).style.transition = '0.5s';
+          document.getElementById(element.getAttribute('img-url')).style.opacity = 1;
+       // }
       }
 
       function reset() {
@@ -427,21 +466,36 @@
         const element = evt.srcElement;
         soloClasses.forEach(soloClassName => {
           if (element.classList.contains(soloClassName)) {
+
+            //if (document.getElementsByClassName(soloClassName))
+
             Array.from(document.getElementsByClassName(soloClassName)).forEach(
               soloClassItem => {
                 if (soloClassItem.classList.contains('checked')) {
-                  soloClassItem.classList.remove('checked');
-                  document
-                    .getElementById(soloClassItem.getAttribute('img-url'))
-                    .classList.toggle('hidden');
+                  //soloClassItem.classList.remove('checked');
+                  // document
+                  //   .getElementById(soloClassItem.getAttribute('img-url'))
+                  //   .classList.toggle('hidden');
+                  console.log("calling hide img element")
+                  hideImageElement(soloClassItem)
                 }
               }
             );
           }
         });
-        element.classList.toggle('checked');
         const imgUrl = element.getAttribute('img-url');
-        document.getElementById(imgUrl).classList.toggle('hidden');
+
+  //      if (!element.classList.contains('checked')){
+//                    console.log("checked");
+
+        //  return
+       // }
+        //else{
+        
+        toggleFade(element)
+      //}
+      //element.classList.toggle('checked');
+     // document.getElementById(imgUrl).element.style.opacity = 1;//.classList.toggle('hidden');
       }
 
       document.querySelectorAll('.option').forEach(item => {
@@ -451,6 +505,7 @@
 
         newImage.src = 'assets/' + imgUrl;
         newImage.id = imgUrl;
+        newImage.style.opacity = 0;
         newImage.classList.add('hidden');
         newImage.classList.add('rat-image');
 
