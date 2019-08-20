@@ -200,9 +200,9 @@
       .hidden {
         opacity: 0;
       }
-      .drawMe {
+      .dontDrawMe { 
         
-      }
+      } /* dontDrawMe acts as hidden did before*/ 
       .download-button {
         font-family: 'Press Start 2P', cursive;
         font-size: 12px;
@@ -401,51 +401,41 @@
       function isHidden(element) {
         return !element.classList.contains('checked')
         console.log(element.classList.contains('checked'))
-        //return (element.offsetParent === null)
       }
 
       function toggleFade(element){
         
         if (isHidden(element)){
-         // showImageElement(element)
-            //element.style.transition = '0.8s';
-          //console.log("SHOW");
+
           showImageElement(element)
 
         }
         else{
-            //element.style.transition = '0.8s';
-         // console.log("SHOW");
-          hideImageElement(element)
-          //hideImageElement(element)
-        }
 
+          hideImageElement(element)
+        }
 
       }
 
       function hideImageElement(element) {
-       // if (element.classList.contains('checked')) {
           element.classList.remove('checked');
           document
             .getElementById(element.getAttribute('img-url'))
-             .classList.toggle('hidden');
+             .classList.toggle('hidden'); // not sure if this needs to be here
 
-                    document
+          document
             .getElementById(element.getAttribute('img-url'))
-             .classList.add('drawMe');
-          //           document
-          //   .getElementById(element.getAttribute('img-url'))
-          //   .style.transition = '0.8s';
-          //if (element)
+             .classList.add('dontDrawMe'); 
+             // so that the downloader knows not to draw this element
           
-          document.getElementById(element.getAttribute('img-url')).style.transition = '0.6s';
-          document.getElementById(element.getAttribute('img-url')).style.opacity = 0;
-                    
-        //}
+          document
+            .getElementById(element.getAttribute('img-url')).style.transition = '0.4s';
+          document  
+            .getElementById(element.getAttribute('img-url')).style.opacity = 0;
+
       }
 
       function showImageElement(element) {
-        //if (!element.classList.contains('checked')) {
           element.classList.add('checked');
           document
             .getElementById(element.getAttribute('img-url'))
@@ -454,14 +444,14 @@
 
           document
             .getElementById(element.getAttribute('img-url'))
-             .classList.remove('drawMe');
-          // document
-          //   .getElementById(element.getAttribute('img-url'))
-          //   .style.transition = '0.8s';
-          console.log("showing image element");
-          document.getElementById(element.getAttribute('img-url')).style.transition = '0.5s';
-          document.getElementById(element.getAttribute('img-url')).style.opacity = 1;
-       // }
+             .classList.remove('dontDrawMe'); 
+             // so that the downloader knows to draw this element
+   
+          document.getElementById(
+              element.getAttribute('img-url')).style.transition = '0.4s';
+          document.getElementById(
+              element.getAttribute('img-url')).style.opacity = 1;
+       
       }
 
       function reset() {
@@ -478,35 +468,20 @@
         soloClasses.forEach(soloClassName => {
           if (element.classList.contains(soloClassName)) {
 
-            //if (document.getElementsByClassName(soloClassName))
 
             Array.from(document.getElementsByClassName(soloClassName)).forEach(
               soloClassItem => {
                 if (soloClassItem.classList.contains('checked')) {
-                  //soloClassItem.classList.remove('checked');
-                  // document
-                  //   .getElementById(soloClassItem.getAttribute('img-url'))
-                  //   .classList.toggle('hidden');
-                  console.log("calling hide img element")
-                  hideImageElement(soloClassItem)
+                     hideImageElement(soloClassItem)
                 }
               }
             );
           }
         });
         const imgUrl = element.getAttribute('img-url');
-
-  //      if (!element.classList.contains('checked')){
-//                    console.log("checked");
-
-        //  return
-       // }
-        //else{
         
         toggleFade(element)
-      //}
-      //element.classList.toggle('checked');
-     // document.getElementById(imgUrl).element.style.opacity = 1;//.classList.toggle('hidden');
+
       }
 
       document.querySelectorAll('.option').forEach(item => {
@@ -518,7 +493,7 @@
         newImage.id = imgUrl;
         newImage.style.opacity = 0;
         newImage.classList.add('hidden');
-        newImage.classList.add('drawMe');
+        newImage.classList.add('dontDrawMe');
         newImage.classList.add('rat-image');
 
         images.appendChild(newImage);
@@ -536,12 +511,10 @@
         canvas.style.height = canHei + 'px';
 
         var ctx = canvas.getContext('2d');
-       // ctx.clearRect(0,0, canWid, canHei);
 
         Array.from(document.getElementsByClassName('rat-image')).forEach(
           img => {
-            //debugger;
-            if (!img.classList.contains('drawMe')) {
+            if (!img.classList.contains('dontDrawMe')) { 
               ctx.drawImage(img, 0, 0, 300, 364);
             }
           }
@@ -557,7 +530,6 @@
         );
         var event = new MouseEvent('click');
         linkToClick.dispatchEvent(event);
-        //linkToClick.click();
       }
     </script>
   </body>
