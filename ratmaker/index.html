@@ -200,7 +200,9 @@
       .hidden {
         opacity: 0;
       }
-
+      .drawMe {
+        
+      }
       .download-button {
         font-family: 'Press Start 2P', cursive;
         font-size: 12px;
@@ -427,6 +429,10 @@
           document
             .getElementById(element.getAttribute('img-url'))
              .classList.toggle('hidden');
+
+                    document
+            .getElementById(element.getAttribute('img-url'))
+             .classList.add('drawMe');
           //           document
           //   .getElementById(element.getAttribute('img-url'))
           //   .style.transition = '0.8s';
@@ -444,6 +450,11 @@
           document
             .getElementById(element.getAttribute('img-url'))
             .classList.toggle('hidden');
+
+
+          document
+            .getElementById(element.getAttribute('img-url'))
+             .classList.remove('drawMe');
           // document
           //   .getElementById(element.getAttribute('img-url'))
           //   .style.transition = '0.8s';
@@ -507,6 +518,7 @@
         newImage.id = imgUrl;
         newImage.style.opacity = 0;
         newImage.classList.add('hidden');
+        newImage.classList.add('drawMe');
         newImage.classList.add('rat-image');
 
         images.appendChild(newImage);
@@ -524,10 +536,12 @@
         canvas.style.height = canHei + 'px';
 
         var ctx = canvas.getContext('2d');
+       // ctx.clearRect(0,0, canWid, canHei);
 
         Array.from(document.getElementsByClassName('rat-image')).forEach(
           img => {
-            if (!img.classList.contains('hidden')) {
+            //debugger;
+            if (!img.classList.contains('drawMe')) {
               ctx.drawImage(img, 0, 0, 300, 364);
             }
           }
