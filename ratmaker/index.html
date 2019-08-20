@@ -555,7 +555,9 @@
             .toDataURL('image/png')
             .replace('image/png', 'image/octet-stream')
         );
-        linkToClick.click();
+        var event = new MouseEvent('click');
+        linkToClick.dispatchEvent(event);
+        //linkToClick.click();
       }
     </script>
   </body>
