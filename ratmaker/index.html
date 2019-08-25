@@ -367,6 +367,8 @@
 
             <span class="option friend" img-url="FRIEND_Geoff.png">geoff</span>
             <span class="option friend" img-url="FRIEND_gregoire.png">gregoire</span>
+  
+            <hr />
 
             <h2>💵decorations💵</h2>
             <span class="option foreground" img-url="FOREGROUND_diamonds.png"
@@ -381,8 +383,7 @@
             <span class="option foreground" img-url="FOREGROUND_grass.png"
               >grass</span
             >
-  
-            <hr />
+
 
             <hr />
             <h2>🖼frames🖼</h2>
@@ -433,7 +434,6 @@
 
       function isHidden(element) {
         return !element.classList.contains('checked')
-        console.log(element.classList.contains('checked'))
       }
 
       function toggleFade(element){
@@ -505,13 +505,14 @@
             Array.from(document.getElementsByClassName(soloClassName)).forEach(
               soloClassItem => {
                 if (soloClassItem.classList.contains('checked')) {
+                     if (soloClassItem != element){
                      hideImageElement(soloClassItem)
+                   }
                 }
               }
             );
           }
         });
-        const imgUrl = element.getAttribute('img-url');
         
         toggleFade(element)
 
