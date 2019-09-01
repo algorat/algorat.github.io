@@ -295,6 +295,7 @@
             <span class="option background" img-url="BACKGROUND_bigfoot.png"
               >big foot</span
             >
+            
             <hr />
             <h2>🐀bodies🐀</h2>
             <span class="option body" img-url="BODY_beige.png">beige</span>
@@ -302,6 +303,12 @@
             <span class="option body" img-url="BODY_green.png">green</span>
             <span class="option body" img-url="BODY_grey.png">grey</span>
             <span class="option body" img-url="BODY_yellow.png">yellow</span>
+            <span class="option body" img-url="BODY_cow.png">cow</span>
+            <span class="option body" img-url="BODY_giraffe.png">giraffe</span>
+            <span class="option body" img-url="BODY_parasite.png">parasite</span>
+            <span class="option body" img-url="BODY_stripe.png">stripe</span>
+            <span class="option body" img-url="BODY_zebra.png">zebra</span>
+
             <hr />
             <h2>👀eyes👀</h2>
             <span class="option eyes" img-url="EYES_big.png">big</span>
@@ -350,6 +357,9 @@
             <span class="option extra" img-url="EXTRA_umm.png">grr</span>
             <span class="option extra" img-url="EXTRA_airpods.png">airpods</span>
             <span class="option extra" img-url="EXTRA_fishbowl.png">fishbowl</span>
+            <span class="option extra" img-url="EXTRA_bunnyears.png">bunny ears</span>
+            <span class="option extra" img-url="EXTRA_clown.png">clown</span>
+            <span class="option extra" img-url="EXTRA_hellicopterhat.png">helicopter hat</span>
 
             <hr />
 
@@ -383,7 +393,7 @@
             <span class="option foreground" img-url="FOREGROUND_grass.png"
               >grass</span
             >
-
+            
 
             <hr />
             <h2>🖼frames🖼</h2>
@@ -395,6 +405,15 @@
               >black line</span
             >
             <span class="option frame" img-url="FRAME_tails.png">tails</span>
+            <span class="option frame" img-url="FRAME_LOVE.png">love</span>
+            <span class="option frame" img-url="FRAME_carrots.png">carrots</span>
+            <span class="option frame" img-url="FRAME_dna.png">dna</span>
+            <span class="option frame" img-url="FRAME_stars.png">stars</span>
+            <span class="option frame" img-url="FRAME_snake.png">snake</span>
+            <span class="option frame" img-url="BACKGROUND_stage.png"
+              >stage</span
+            >
+
           </div>
         </div>
       </div>
@@ -419,13 +438,12 @@
         displayRandomFrom('mouth', 1);
         displayRandomFrom('frame', 1);
         displayRandomFrom('foreground', 1);
-        displayRandomFrom('friend', 0);
-        displayRandomFrom('extra', 0);
+        displayRandomFrom('friend', Math.random() > 0.3 ? 0 : 1);
+        displayRandomFrom('extra', Math.floor(Math.random() * 3));
       }
 
       function displayRandomFrom(className, numItems) {
         const items = Array.from(document.getElementsByClassName(className));
-        if (numItems === 0) numItems = Math.floor(Math.random() * items.length);
         for (let i = 0; i < numItems; i++) {
           const randomIndex = Math.floor(Math.random() * items.length);
           showImageElement(items[randomIndex]);
@@ -481,7 +499,7 @@
              // so that the downloader knows to draw this element
    
           document.getElementById(
-              element.getAttribute('img-url')).style.transition = '0.4s';
+              element.getAttribute('img-url')).style.transition = '0.25s';
           document.getElementById(
               element.getAttribute('img-url')).style.opacity = 1;
        
