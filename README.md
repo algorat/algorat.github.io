@@ -7,3 +7,8 @@ Ideas for the future:
 - Rat werewolf game
 - One global rat homepage
 - SparkAR rat face filter
+- bad rattitude
+- rat egg hatch overtime
+- rat lives in trash is home but also trash
+- jodina
+- rat html game for feast exploration
