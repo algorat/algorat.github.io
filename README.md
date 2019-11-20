@@ -12,3 +12,4 @@ Ideas for the future:
 - rat lives in trash is home but also trash
 - jodina
 - rat html game for feast exploration
+- rat that drives around
