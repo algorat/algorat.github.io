@@ -13,3 +13,4 @@ Ideas for the future:
 - jodina
 - rat html game for feast exploration
 - rat that drives around
+- ratGAN
