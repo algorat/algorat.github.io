@@ -14,3 +14,7 @@ Ideas for the future:
 - rat html game for feast exploration
 - rat that drives around
 - ratGAN
+- turkey, all feathers are rats
+- rats disguised as entree
+- rat dinner all rats
+- hand turkey but rats
