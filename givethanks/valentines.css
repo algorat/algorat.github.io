@@ -8,7 +8,7 @@ body {
 }
 
 #text {
-  color: hotpink;
+  color: orange;
   font-size: 40px;
   font-family: 'Gochi Hand';
 }
@@ -16,12 +16,12 @@ body {
 #text-container {
   background-color: white;
   padding: 50px;
-  border: solid 10px hotpink;
+  border: solid 10px brown;
   border-radius: 20px;
 }
 
 #regen-button {
-  background-color: hotpink;
+  background-color: orange;
   margin-top: 20px;
   padding: 10px 30px;
   font-family: 'Gochi Hand';
@@ -33,8 +33,8 @@ body {
 
 #regen-button:hover {
   background-color: white;
-  color: hotpink;
-  border-color: hotpink;
+  color: brickred;
+  border-color: brickred;
   cursor: pointer;
 }
 
