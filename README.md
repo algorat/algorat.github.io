@@ -4,6 +4,8 @@ Ideas for the future:
 - about page?
 - Rat or not minigame
 - Rat lore (one universal rat mother?)
+- rat chrome extension
+- generated rat texts
 - Ratatouille making a feast game
 - Rat werewolf game
 - One global rat homepage
