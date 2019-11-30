@@ -1,0 +1,100 @@
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <script src="lib/p5.min.js"></script>
+    <script src="lib/p5.dom.min.js"></script>
+    <script src="lib/p5.sound.min.js"></script>
+    <script src="lib/rita-full.min.js"></script>
+    <style>
+@import url('https://fonts.googleapis.com/css?family=Gochi+Hand');
+</style>
+  <link rel="stylesheet" href="./givethanks/valentines.css" />
+<!--   <link
+    href="https://fonts.googleapis.com/css?family=Fjalla+One"
+    rel="stylesheet"
+  /> -->
+  <title>Algotines</title>
+  <link rel="icon" href="./givethanks/clickers/3.png" type="image/x-icon"/>
+  <script>
+
+    //text generator stuff
+    var lines, markov, data1;
+
+      function preload() {
+
+        data1 = loadStrings('givethanks/DATA.TXT');
+      }
+      function setup() { // keep it in setup because data needs to finish loading before we make markov
+
+        // create a markov model w' n=4
+        markov = new RiMarkov(2);
+        lines = ["click to (re)generate!"];
+        // load text into the model
+        markov.loadText(data1.join(' '));
+        message = markov.generateSentences(1).join(' ');
+        document.getElementById("text").innerHTML = message
+      }
+    // end text gen stuff
+
+      const numRats = 9;
+
+      var message = "";
+
+      const numBackgrounds = 5;
+
+      backgroundIndex = Math.floor(Math.random() * numBackgrounds) + 1
+      backgroundPath = "url(./givethanks/backgrounds/" + backgroundIndex + ".png)"
+      ratIndex = Math.floor(Math.random() * numRats) + 1
+      ratPath = "./givethanks/rats/" + ratIndex + ".png"
+
+      window.onload = () => {
+        document.getElementById("pic").src = ratPath
+        
+        document.body.style.backgroundImage = backgroundPath
+      }
+
+      const numHearts = 4;
+      window.addEventListener('click', e => {
+
+        let heart = document.createElement('img');
+        heart.classList.add("heart")
+        heart.src = "./givethanks/clickers/" + (Math.floor((Math.random() * numHearts)) + 1) + ".png";
+        heart.style.position = 'absolute';
+        heart.style.left = e.pageX - 15;
+        heart.style.top = e.pageY - 15;
+        heart.style.width = '30px';
+        document.body.append(heart);
+    });
+      window.addEventListener('keydown', e => {
+      if (e.keyCode == 32){
+        regenerate();
+     }
+       
+    });
+
+      function regenerate() {
+        message = markov.generateSentences(1).join(' ');
+       document.getElementById("text").innerHTML = message;
+             backgroundIndex = Math.floor(Math.random() * numBackgrounds) + 1
+      backgroundPath = "url(./givethanks/backgrounds/" + backgroundIndex + ".png)"
+            ratIndex = Math.floor(Math.random() * numRats) + 1
+       ratPath = "./givethanks/rats/" + ratIndex + ".png"
+               document.getElementById("pic").src = ratPath
+        
+        document.body.style.backgroundImage = backgroundPath
+
+        const hearts = document.getElementsByClassName("heart")
+        for (let i = 0; i < hearts.length; i++) {
+          hearts[i].style.display = "none";
+        }
+    }
+
+  </script>
+</head>
+<body>
+    <div id="text-container">
+    <img id="pic"></img>
+    <div id="text"></div>
+    <div id="signature">thanks, algorat</div>
+</div>
+    <div id="regen-button" onclick="regenerate()">regene<b><i>rat</i></b>e</div>
+</body>
