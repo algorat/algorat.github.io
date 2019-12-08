@@ -72,7 +72,7 @@ var prevY = null;
 var backgroundMode = false;
 
 function setup() {
-    let can = createCanvas(500, 500);
+    let can = createCanvas(512, 512);
     can.parent('ratvas-container');
     can.id('ratvas');
     can.mouseReleased(released);
