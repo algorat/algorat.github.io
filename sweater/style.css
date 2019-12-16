@@ -18,7 +18,7 @@
 
 body{
     margin: 0px;
-    width: 100%;
+    min-width: 100%;
     min-height: 100vh;
     background-color: var(--bg);
     display: flex;
@@ -30,12 +30,23 @@ body{
     border: var(--border-weight) solid var(--primary);
     border-radius: var(--border-radius);
     box-shadow: 4px 4px 48px var(--shadow-color);
+    margin-left: 48px;
+}
+
+#gl-canvas{
+    border: var(--border-weight) solid var(--primary);
+    border-radius: var(--border-radius);
+    box-shadow: 4px 4px 48px var(--shadow-color);
+}
+
+#gl-canvas:focus{
+    outline: none;
 }
 
 #options{
     border: var(--border-weight) solid var(--primary);
     display: flex;
-    height: 500px;
+    height: 512px;
     flex-direction: row;
     margin-left: var(--spacing-size);
     border-radius: var(--border-radius);

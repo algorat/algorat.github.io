@@ -75,7 +75,7 @@ function setup() {
     let can = createCanvas(512, 512);
     can.parent('ratvas-container');
     can.id('ratvas');
-    can.mouseReleased(released);
+    document.onmouseup = released;
 
     currentWidth = startingWidth;
     currentColor = color(startingColor);
@@ -122,11 +122,13 @@ function released() {
 }
 
 function undo() {
+    if(strokeHistory.length < 1) return;
     undoneStrokes.unshift(strokeHistory.pop());
     redrawHistory();
 }
 
 function redo() {
+    if(undoneStrokes.length < 1) return;
     strokeHistory.push(undoneStrokes.shift());
     redrawHistory();
 }

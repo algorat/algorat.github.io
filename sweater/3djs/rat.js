@@ -9,11 +9,10 @@ var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 50 );
 camera.position.z = 3;
 camera.position.y = 3;
-var renderer = new THREE.WebGLRenderer( { antialias: true } );
+var renderer = new THREE.WebGLRenderer( { antialias: true, canvas: document.getElementById("gl-canvas") } );
 renderer.setPixelRatio( window.devicePixelRatio );
 renderer.setSize( 512, 512 );
 renderer.setClearColor( 0x000000, 1 );
-document.body.appendChild( renderer.domElement );
 
 var orbit = new OrbitControls( camera, renderer.domElement );
 
@@ -129,7 +128,7 @@ window.addEventListener( 'resize', function () {
 	camera.aspect = window.innerWidth / window.innerHeight;
 	camera.updateProjectionMatrix();
 
-	renderer.setSize( window.innerWidth, window.innerHeight );
+	//renderer.setSize( window.innerWidth, window.innerHeight );
 
 }, false );
 
