@@ -84,23 +84,25 @@ function loadRat(){
 
 }
 //var options = chooseFromHash( group );
-
+var backgrounds = ['winter_landscape.jpg',
+        'snowflakes.jpg',
+        'leaves.jpg',
+        'hearth.jpg']
+var randomNumber = Math.floor(Math.random()*backgrounds.length);
+var backgroundName = backgrounds[randomNumber];
 scene.background = new THREE.CubeTextureLoader()
 	.setPath( 'assets/backgrounds/' )
 	.load( [
-		'winter_landscape.jpg',
-		'winter_landscape.jpg',
-		'winter_landscape.jpg',
-		'winter_landscape.jpg',
-		'winter_landscape.jpg',
-		'winter_landscape.jpg',
+		backgroundName,
+		backgroundName,
+		backgroundName,
+		backgroundName,
+		backgroundName,
+		backgroundName,
 
 	] );
 
-        //     'winter_landscape.jpg',
-        // 'snowflakes.jpg',
-        // 'leaves.jpg',
-        // 'hearth.jpg',
+
         // 'snowflakes.jpg',
         // 'leaves.jpg'
 scene.background.warpS = scene.background.warpT = THREE.RepeatWrapping;
