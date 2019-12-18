@@ -90,24 +90,30 @@ var backgrounds = ['winter_landscape.jpg',
         'hearth.jpg']
 var randomNumber = Math.floor(Math.random()*backgrounds.length);
 var backgroundName = backgrounds[randomNumber];
-scene.background = new THREE.CubeTextureLoader()
-	.setPath( 'assets/backgrounds/' )
-	.load( [
-		backgroundName,
-		backgroundName,
-		backgroundName,
-		backgroundName,
-		backgroundName,
-		backgroundName,
 
-	] );
+// scene.background = new THREE.CubeTextureLoader()
+// 	.setPath( 'assets/backgrounds/' )
+// 	.load( [
+// 		backgroundName,
+// 		backgroundName,
+// 		backgroundName,
+// 		backgroundName,
+// 		backgroundName,
+// 		backgroundName,
+
+// 	] );
+
+ //Load background texture
+const loaderImg = new THREE.TextureLoader();
+loaderImg.load('assets/backgrounds/' + backgroundName , function(bg)
+            {
+             scene.background = bg;  
+            });
 
 
-        // 'snowflakes.jpg',
-        // 'leaves.jpg'
-scene.background.warpS = scene.background.warpT = THREE.RepeatWrapping;
-scene.background.repeat.set(30,30); 
-
+// scene.background.warpS = scene.background.warpT = THREE.RepeatWrapping;
+// scene.background.repeat.set(30,30); 
+group.position.y -= 0.8;
 scene.add( group );
 
 var prevFog = false;
