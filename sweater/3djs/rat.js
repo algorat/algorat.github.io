@@ -53,7 +53,7 @@ function loadRat(){
     texture.needsUpdate = true
     var loader = new FBXLoader();
 
-    loader.load( './3dAssets/sweater.fbx', function ( object ) {
+    loader.load( './3dAssets/sweater2.fbx', function ( object ) {
     // mixer = new THREE.AnimationMixer( object );
     // var action = mixer.clipAction( object.animations[ 0 ] );
     // action.play();
@@ -63,11 +63,12 @@ function loadRat(){
     		child.material = new THREE.MeshBasicMaterial({
     		  map: texture
     		});
+            child.geometry.uvsNeedUpdate = true;
             child.castShadow = true;
             child.receiveShadow = true;
     	}
     	} );
-    	scene.add( object );
+    	group.add( object );
     } );
 
     loader.load( './3dAssets/rat.fbx', function ( object ) {
@@ -78,31 +79,39 @@ function loadRat(){
     		child.receiveShadow = true;
     	}
     	} );
-    	scene.add( object );
+    	group.add( object );
     } );
+
 }
 //var options = chooseFromHash( group );
 
-// scene.background = new THREE.CubeTextureLoader()
-// 	.setPath( './' )
-// 	.load( [
-// 		'rat.png',
-// 		'rat.png',
-// 		'rat.png',
-// 		'rat.png',
-// 		'rat.png',
-// 		'rat.png'
+scene.background = new THREE.CubeTextureLoader()
+	.setPath( 'assets/backgrounds/' )
+	.load( [
+		'winter_landscape.jpg',
+		'winter_landscape.jpg',
+		'winter_landscape.jpg',
+		'winter_landscape.jpg',
+		'winter_landscape.jpg',
+		'winter_landscape.jpg',
 
-// 	] );
-// scene.background.warpS = scene.background.warpT = THREE.RepeatWrapping;
-// scene.background.repeat.set(30,30); 
+	] );
+
+        //     'winter_landscape.jpg',
+        // 'snowflakes.jpg',
+        // 'leaves.jpg',
+        // 'hearth.jpg',
+        // 'snowflakes.jpg',
+        // 'leaves.jpg'
+scene.background.warpS = scene.background.warpT = THREE.RepeatWrapping;
+scene.background.repeat.set(30,30); 
 
 scene.add( group );
 
 var prevFog = false;
 
 var render = function () {
-
+    // we need all the p5 code in canvas.js to run before we can grab the canvas
     if (loadedRat == false && document.getElementById('ratvas') != null){
         loadRat()
         loadedRat = true
@@ -114,8 +123,9 @@ var render = function () {
 
 	//if ( ! options.fixed ) {
 
-		group.rotation.x += 0.05;
-		group.rotation.y += 0.05;
+		group.rotation.x += Math.sin(group.rotation.y* 10)* 0.001;
+        group.position.y += Math.sin(group.rotation.y* 5)* 0.001;
+		group.rotation.y += 0.001;
 
 	//}
 
