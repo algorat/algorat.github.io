@@ -44,8 +44,32 @@ var texture
 function loadRat(){
     let ratvas = document.getElementById('ratvas') // get the canvas and connect to texture 
     let ctx = ratvas.getContext('2d')
-    //ctx.canvas.width = 512;
-    //ctx.canvas.height = 512;
+var backgrounds = ['winter_landscape.jpg',
+        'snowflakes.jpg',
+        'leaves.jpg',
+        'hearth.jpg']
+var randomNumber = Math.floor(Math.random()*backgrounds.length);
+var backgroundName = backgrounds[randomNumber];
+
+// scene.background = new THREE.CubeTextureLoader()
+//  .setPath( 'assets/backgrounds/' )
+//  .load( [
+//      backgroundName,
+//      backgroundName,
+//      backgroundName,
+//      backgroundName,
+//      backgroundName,
+//      backgroundName,
+
+//  ] );
+
+ //Load background texture
+const loaderImg = new THREE.TextureLoader();
+loaderImg.load('assets/backgrounds/' + backgroundName , function(bg)
+            {
+             scene.background = bg;  
+            });
+
     texture = new THREE.CanvasTexture(ctx.canvas);//,THREE.UVMapping,THREE.RepeatWrapping,THREE.RepeatWrapping);
     const material = new THREE.MeshBasicMaterial({
       map: texture,
@@ -61,7 +85,10 @@ function loadRat(){
     	if ( child.isMesh ) {
 
     		child.material = new THREE.MeshBasicMaterial({
-    		  map: texture
+    		  map: texture,
+                reflectivity: 1.0,
+                shininess: 1.0,
+                bumpScale: 1.0
     		});
             child.geometry.uvsNeedUpdate = true;
             child.castShadow = true;
@@ -75,6 +102,14 @@ function loadRat(){
 
     	object.traverse( function ( child ) {
     	if ( child.isMesh ) {
+            var diffuseColor = new THREE.Color().setHSL( Math.random(),0.2,0.2);
+
+            child.material = new THREE.MeshToonMaterial( {
+                                reflectivity: 1.0,
+                                shininess: 1.0,
+                                bumpScale: 1.0,
+                                color: diffuseColor
+                            } );
     		child.castShadow = true;
     		child.receiveShadow = true;
     	}
@@ -84,31 +119,7 @@ function loadRat(){
 
 }
 //var options = chooseFromHash( group );
-var backgrounds = ['winter_landscape.jpg',
-        'snowflakes.jpg',
-        'leaves.jpg',
-        'hearth.jpg']
-var randomNumber = Math.floor(Math.random()*backgrounds.length);
-var backgroundName = backgrounds[randomNumber];
 
-// scene.background = new THREE.CubeTextureLoader()
-// 	.setPath( 'assets/backgrounds/' )
-// 	.load( [
-// 		backgroundName,
-// 		backgroundName,
-// 		backgroundName,
-// 		backgroundName,
-// 		backgroundName,
-// 		backgroundName,
-
-// 	] );
-
- //Load background texture
-const loaderImg = new THREE.TextureLoader();
-loaderImg.load('assets/backgrounds/' + backgroundName , function(bg)
-            {
-             scene.background = bg;  
-            });
 
 
 // scene.background.warpS = scene.background.warpT = THREE.RepeatWrapping;
