@@ -6,7 +6,9 @@ import { OrbitControls } from './three.js-master/examples/jsm/controls/OrbitCont
 import { FBXLoader } from './three.js-master/examples/jsm/loaders/FBXLoader.js';
 
 var scene = new THREE.Scene();
-var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 50 );
+var camera = new THREE.PerspectiveCamera( 75, 1, 0.1, 50 );
+//var camera = new THREE.OrthographicCamera(-300,300,-300,300, 150, 1000);
+//
 camera.position.z = 3;
 camera.position.y = 3;
 var renderer = new THREE.WebGLRenderer( { antialias: true, canvas: document.getElementById("gl-canvas") } );
@@ -86,8 +88,8 @@ loaderImg.load('assets/backgrounds/' + backgroundName , function(bg)
 
     		child.material = new THREE.MeshBasicMaterial({
     		  map: texture,
-                reflectivity: 1.0,
-                shininess: 1.0,
+                reflectivity: 0.0,
+                shininess: 0.0,
                 bumpScale: 1.0
     		});
             child.geometry.uvsNeedUpdate = true;
