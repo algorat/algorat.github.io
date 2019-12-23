@@ -1,46 +1,102 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <title>Sweater Rat</title>
-    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Sunshiney&display=swap"
+      rel="stylesheet"
+    />
+
     <link rel="stylesheet" href="style.css" />
     <script src="js/p5.min.js"></script>
     <script src="js/canvas.js"></script>
     <script type="module" src="./3djs/rat.js"></script>
-</head>
+  </head>
 
-<body>
+  <body>
+    <div id="title">sweateratreator</div>
     <div id="drawing-area">
+      <div id="rat-display-container">
+        <div id="rat-display-text" class="display-text">
+          your beautiful rat :)
+        </div>
         <canvas id="gl-canvas"></canvas>
-        <div id="ratvas-container"></div>
-        <div id="options">
+        <div id="background-preview-container">
+          <img
+            class="background-preview"
+            src="assets/previews/snowflake-preview.png"
+            onclick="changeRatBackground(this);"
+            backgroundName="snowflakes.jpg"
+          />
+          <img
+            class="background-preview"
+            src="assets/previews/hearth-preview.png"
+            onclick="changeRatBackground(this);"
+            backgroundName="hearth.jpg"
+          />
+          <img
+            class="background-preview"
+            src="assets/previews/leaves-preview.png"
+            onclick="changeRatBackground(this);"
+            backgroundName="leaves.jpg"
+          />
+          <img
+            class="background-preview"
+            src="assets/previews/winter-preview.png"
+            onclick="changeRatBackground(this);"
+            backgroundName="winter_landscape.jpg"
+          />
+        </div>
+      </div>
+      <div id="drawing-container">
+        <div id="drawing-display-text" class="display-text">
+          draw your sweater!
+        </div>
+        <div id="drawing-display-controls-container">
+          <div id="ratvas-container"></div>
+          <div id="options">
             <div id="colors">
-                <div id="undoredo">
-                    <img class="btn undoredo" id="undo" src="assets/undo.svg" />
-                    <img class="btn undoredo" id="redo" src="assets/redo.svg" />
+              <div id="undoredo">
+                <img class="btn undoredo" id="undo" src="assets/undo.svg" />
+                <img class="btn undoredo" id="redo" src="assets/redo.svg" />
+              </div>
+              <div class="horz-divider"></div>
+              <div id="colorpalette-container">
+                <div id="brush-selections">
+                  <img
+                    class="brush-selections btn"
+                    id="brush"
+                    src="assets/brush.svg"
+                  />
+                  <img
+                    class="brush-selections btn not-selected"
+                    id="background"
+                    src="assets/background.svg"
+                  />
                 </div>
-                <div class="horz-divider"></div>
-                <div id="colorpalette-container">
-                    <div id="brush-selections">
-                        <img class="brush-selections btn" id="brush" src="assets/brush.svg" />
-                        <img class="brush-selections btn not-selected" id="background" src="assets/background.svg" />
-                    </div>
-                    <div id="colorpalette">
-
-                    </div>
-                </div>
+                <div id="colorpalette"></div>
+              </div>
             </div>
             <div class="vert-divider"></div>
             <div id="width">
-                <div id="top">1px</div>
-                <input type="range" min="1" max="100" value="50" class="slider" id="widthSlider">
-                <div id="bottom">100px</div>
+              <div id="top">1px</div>
+              <input
+                type="range"
+                min="1"
+                max="100"
+                value="50"
+                class="slider"
+                id="widthSlider"
+              />
+              <div id="bottom">100px</div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
-</body>
-
-
-
+  </body>
 </html>
