@@ -91,7 +91,7 @@ function loadRat() {
   texture.needsUpdate = true;
   var loader = new FBXLoader();
 
-  loader.load('./3dAssets/sweater2.fbx', function(object) {
+  loader.load('./3dAssets/sweater3.fbx', function(object) {
     // mixer = new THREE.AnimationMixer( object );
     // var action = mixer.clipAction( object.animations[ 0 ] );
     // action.play();
