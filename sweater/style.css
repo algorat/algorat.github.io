@@ -25,6 +25,8 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-image: url("https://raw.githubusercontent.com/algorat/algorat.github.io/master/sweater/assets/background.png");
+  background-repeat: repeat;
 }
 
 #title {
