@@ -32,7 +32,12 @@ lights[2].position.set(-100, -200, -100);
 scene.add(lights[0]);
 scene.add(lights[1]);
 scene.add(lights[2]);
-
+var backgrounds = [
+  'snowflakes.jpg',
+  'hearth.jpg',
+  'leaves.jpg',
+  'winter_landscape.jpg'
+];
 var group = new THREE.Group();
 
 var geometry = new THREE.BufferGeometry();
@@ -54,17 +59,11 @@ group.add(new THREE.LineSegments(geometry, lineMaterial));
 group.add(new THREE.Mesh(geometry, meshMaterial));
 var loadedRat = false;
 var texture;
-function loadRat() {
-  let ratvas = document.getElementById('ratvas'); // get the canvas and connect to texture
-  let ctx = ratvas.getContext('2d');
-  var backgrounds = [
-    'winter_landscape.jpg',
-    'snowflakes.jpg',
-    'leaves.jpg',
-    'hearth.jpg'
-  ];
-  var randomNumber = Math.floor(Math.random() * backgrounds.length);
-  var backgroundName = backgrounds[randomNumber];
+
+function changeRatBackground(inNum){
+
+  // var randomNumber = Math.floor(Math.random() * backgrounds.length);
+  var backgroundName = backgrounds[inNum];
 
   // scene.background = new THREE.CubeTextureLoader()
   //  .setPath( 'assets/backgrounds/' )
@@ -84,6 +83,14 @@ function loadRat() {
     scene.background = bg;
   });
 
+}
+
+function loadRat() {
+  let ratvas = document.getElementById('ratvas'); // get the canvas and connect to texture
+  let ctx = ratvas.getContext('2d');
+
+
+
   texture = new THREE.CanvasTexture(ctx.canvas); //,THREE.UVMapping,THREE.RepeatWrapping,THREE.RepeatWrapping);
   const material = new THREE.MeshBasicMaterial({
     map: texture
@@ -91,7 +98,7 @@ function loadRat() {
   texture.needsUpdate = true;
   var loader = new FBXLoader();
 
-  loader.load('./3dAssets/sweater3.fbx', function(object) {
+  loader.load('./3dAssets/sweater2.fbx', function(object) {
     // mixer = new THREE.AnimationMixer( object );
     // var action = mixer.clipAction( object.animations[ 0 ] );
     // action.play();
@@ -163,7 +170,7 @@ var render = function() {
 window.addEventListener(
   'resize',
   function() {
-    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.aspect = 1;
     camera.updateProjectionMatrix();
 
     //renderer.setSize( window.innerWidth, window.innerHeight );
