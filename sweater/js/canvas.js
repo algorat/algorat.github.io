@@ -71,7 +71,7 @@ var prevY = null;
 var backgroundMode = false;
 
 function setup() {
-  let can = createCanvas(512, 512);
+  let can = createCanvas(496, 496);
   can.parent('ratvas-container');
   can.id('ratvas');
   document.onmouseup = released;
@@ -142,23 +142,15 @@ function redrawHistory() {
   strokeHistory.forEach(path => path.forEach(ele => ele.draw()));
 }
 
-function unattachColIndicator(ele) {
-  var indicator = ele.querySelector('#col-indicator');
-  indicator.remove();
-  return indicator;
+function unattachIndicator(ele) {
+  ele.classList.remove("selected-color");
 }
 
-function unattachBgIndicator(ele) {
-  var indicator = ele.querySelector('#bg-indicator');
-  indicator.remove();
-  return indicator;
+function attachIndicator(ele) {
+  ele.classList.add("selected-color");
 }
 
-function attachIndicator(ele, indicator) {
-  ele.appendChild(indicator);
-}
-
-function generateColorPalette(colorContainer) {
+function generateColorPalette(colorContainer, bg) {
   let rows = darkColors.length;
 
   let colIndicator = document.createElement('IMG');
@@ -188,18 +180,18 @@ function generateColorPalette(colorContainer) {
     }
 
     darkColorElement.addEventListener('click', function() {
-      setColor(this, darkColor);
+      setColor(this, darkColor, bg);
     });
     lightColorElement.addEventListener('click', function() {
-      setColor(this, lightColor);
+      setColor(this, lightColor, bg);
     });
 
     //need to keep track of currently selected color elements so we can attach the indicator to them
-    if (darkColor === startingColor) {
+    if (!bg && darkColor === startingColor) {
       prevColorElement = darkColorElement;
       attachIndicator(prevColorElement, colIndicator);
     }
-    if (lightColor === startingBg) {
+    if (bg && lightColor === startingBg) {
       prevBgElement = lightColorElement;
       attachIndicator(prevBgElement, bgIndicator);
     }
@@ -212,19 +204,19 @@ function generateColorPalette(colorContainer) {
   }
 }
 
-function setColor(element, col) {
-  if (backgroundMode) {
+function setColor(element, col, bg) {
+  if (bg) {
     currentBackgroundColor = color(col);
     redrawHistory();
 
-    let indicator = unattachBgIndicator(prevBgElement);
-    attachIndicator(element, indicator);
+    unattachIndicator(prevBgElement);
+    attachIndicator(element);
     prevBgElement = element;
   } else {
     currentColor = color(col);
 
-    let indicator = unattachColIndicator(prevColorElement);
-    attachIndicator(element, indicator);
+    unattachIndicator(prevColorElement);
+    attachIndicator(element);
     prevColorElement = element;
   }
 }
@@ -251,8 +243,10 @@ function changeRatBackground(ele) {
 /* set up DOM parts */
 window.onload = function() {
   backgroundPreviews = document.getElementsByClassName('background-preview');
-  var colorContainer = document.getElementById('colorpalette');
-  generateColorPalette(colorContainer);
+  var colorContainerPen = document.getElementById('colorpalette-pen');
+  var colorContainerBg = document.getElementById('colorpalette-bg');
+  generateColorPalette(colorContainerPen, false);
+  generateColorPalette(colorContainerBg, true);
 
   document.getElementById('undo').addEventListener('click', () => undo());
   document.getElementById('redo').addEventListener('click', () => redo());

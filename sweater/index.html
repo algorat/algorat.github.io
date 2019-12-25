@@ -60,13 +60,8 @@
           <div id="ratvas-container"></div>
           <div id="options">
             <div id="colors">
-              <div id="undoredo">
-                <img class="btn undoredo" id="undo" src="assets/undo.svg" />
-                <img class="btn undoredo" id="redo" src="assets/redo.svg" />
-              </div>
-              <div class="horz-divider"></div>
-              <div id="colorpalette-container">
-                <div id="brush-selections">
+              <div class="colorpalette-container">
+                <!-- <div id="brush-selections">
                   <img
                     class="brush-selections btn"
                     id="brush"
@@ -77,11 +72,24 @@
                     id="background"
                     src="assets/background.svg"
                   />
-                </div>
-                <div id="colorpalette"></div>
+                </div> -->
+                <div class="colorpalette-text"><img src="assets/brush.svg"/>pen</div>
+                <div id="colorpalette-pen" class="colorpalette"></div>
               </div>
+              <div class="vert-divider"></div>
+              <div class="colorpalette-container">
+                <div class="colorpalette-text"><img src="assets/background.svg"/>bg</div>
+                <div id="colorpalette-bg" class="colorpalette"></div>
+              </div>
+              
             </div>
             <div class="vert-divider"></div>
+            <div id="other-options">
+            <div id="undoredo">
+              <img class="btn undoredo" id="undo" src="assets/undo.svg" />
+              <img class="btn undoredo" id="redo" src="assets/redo.svg" />
+            </div>
+            <div class="horz-divider"></div>
             <div id="width">
               <div id="top">1px</div>
               <input
@@ -94,6 +102,7 @@
               />
               <div id="bottom">100px</div>
             </div>
+          </div>
           </div>
         </div>
       </div>
