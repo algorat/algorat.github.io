@@ -3,11 +3,11 @@ import Stats from './three.js-master/examples/jsm/libs/stats.module.js';
 import { OrbitControls } from './three.js-master/examples/jsm/controls/OrbitControls.js';
 
 import { FBXLoader } from './three.js-master/examples/jsm/loaders/FBXLoader.js';
+document.addEventListener( 'click', setBackgroundImage, true);
 
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(75, 1, 0.1, 50);
-//var camera = new THREE.OrthographicCamera(-300,300,-300,300, 150, 1000);
-//
+
 camera.position.z = 3;
 camera.position.y = 3;
 var renderer = new THREE.WebGLRenderer({
@@ -38,6 +38,8 @@ var backgrounds = [
   'leaves.jpg',
   'winter_landscape.jpg'
 ];
+var backgroundPreviews = document.getElementsByClassName('background-preview');
+
 var group = new THREE.Group();
 
 var geometry = new THREE.BufferGeometry();
@@ -59,12 +61,24 @@ group.add(new THREE.LineSegments(geometry, lineMaterial));
 group.add(new THREE.Mesh(geometry, meshMaterial));
 var loadedRat = false;
 var texture;
+var curSrc = "";
+function setBackgroundImage (event){
+    var inNum = 0;
+  for (let i = 0; i < backgroundPreviews.length; i++) {
+    let bg = backgroundPreviews[i];
+    var bgn= bg.getAttribute("data-backgroundName")
 
-function changeRatBackground(inNum){
-
-  // var randomNumber = Math.floor(Math.random() * backgrounds.length);
-  var backgroundName = backgrounds[inNum];
-
+    if (bg.classList.contains('background-preview-active')) {
+        if (bgn != curSrc){
+          const loaderImg = new THREE.TextureLoader();
+          loaderImg.load('assets/backgrounds/' + bgn, function(bg) {
+            scene.background = bg;
+            scene.background.needsUpdate = true;
+          });
+          curSrc = bgn;
+        }
+    }
+  }
   // scene.background = new THREE.CubeTextureLoader()
   //  .setPath( 'assets/backgrounds/' )
   //  .load( [
@@ -78,12 +92,11 @@ function changeRatBackground(inNum){
   //  ] );
 
   //Load background texture
-  const loaderImg = new THREE.TextureLoader();
-  loaderImg.load('assets/backgrounds/' + backgroundName, function(bg) {
-    scene.background = bg;
-  });
+
 
 }
+
+
 
 function loadRat() {
   let ratvas = document.getElementById('ratvas'); // get the canvas and connect to texture
@@ -97,8 +110,9 @@ function loadRat() {
   });
   texture.needsUpdate = true;
   var loader = new FBXLoader();
+    console.log("in set load");
 
-  loader.load('./3dAssets/sweater2.fbx', function(object) {
+  loader.load('./3dAssets/sweater3.fbx', function(object) {
     // mixer = new THREE.AnimationMixer( object );
     // var action = mixer.clipAction( object.animations[ 0 ] );
     // action.play();
@@ -179,3 +193,4 @@ window.addEventListener(
 );
 
 render();
+// module.exports = setBackgroundImage;
