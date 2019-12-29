@@ -18,6 +18,7 @@ renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(512, 512);
 renderer.setClearColor(0x000000, 1);
 
+
 var orbit = new OrbitControls(camera, renderer.domElement);
 
 var lights = [];
@@ -62,6 +63,7 @@ group.add(new THREE.Mesh(geometry, meshMaterial));
 var loadedRat = false;
 var texture;
 var curSrc = "";
+
 function setBackgroundImage (event){
     var inNum = 0;
   for (let i = 0; i < backgroundPreviews.length; i++) {
@@ -101,8 +103,6 @@ function setBackgroundImage (event){
 function loadRat() {
   let ratvas = document.getElementById('ratvas'); // get the canvas and connect to texture
   let ctx = ratvas.getContext('2d');
-
-
 
   texture = new THREE.CanvasTexture(ctx.canvas); //,THREE.UVMapping,THREE.RepeatWrapping,THREE.RepeatWrapping);
   const material = new THREE.MeshBasicMaterial({
@@ -170,13 +170,10 @@ var render = function() {
   }
   requestAnimationFrame(render);
 
-  //if ( ! options.fixed ) {
-
+    //floating around
   group.rotation.x += Math.sin(group.rotation.y * 10) * 0.001;
   group.position.y += Math.sin(group.rotation.y * 5) * 0.001;
   group.rotation.y += 0.001;
-
-  //}
 
   renderer.render(scene, camera);
 };
@@ -193,4 +190,3 @@ window.addEventListener(
 );
 
 render();
-// module.exports = setBackgroundImage;

@@ -85,6 +85,10 @@ function setup() {
   strokeWeight(currentWidth);
   fill(currentColor);
   stroke(currentColor);
+
+  document.getElementById("startingBackground").classList.add('background-preview-active');
+document.getElementById("startingBackground").click();
+
 }
 
 function mouseDragged() {
@@ -199,7 +203,7 @@ function generateColorPalette(colorContainer, bg) {
     rowElement.appendChild(darkColorElement);
     rowElement.appendChild(lightColorElement);
 
-    console.log(colorContainer);
+   // console.log(colorContainer);
     colorContainer.appendChild(rowElement);
   }
 }
