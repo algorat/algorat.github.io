@@ -87,7 +87,7 @@ function setup() {
   stroke(currentColor);
 
   document.getElementById("startingBackground").classList.add('background-preview-active');
-document.getElementById("startingBackground").click();
+  document.getElementById("startingBackground").click();
 
 }
 
