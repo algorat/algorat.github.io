@@ -346,8 +346,8 @@ body {
   }
 
   #ratvas {
-    transform: scale(0.504);
-    transform-origin: top left;
+    width: 250px !important;
+    height: 250px !important;
   }
 
   #title {

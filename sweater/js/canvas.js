@@ -71,7 +71,11 @@ var prevY = null;
 var backgroundMode = false;
 
 function setup() {
-  let can = createCanvas(496, 496);
+  let canvas_size = 496;
+  if (window.innerWidth <= 540) {
+    canvas_size = 250;
+  }
+  let can = createCanvas(canvas_size, canvas_size);
   can.parent('ratvas-container');
   can.id('ratvas');
   document.onmouseup = released;
