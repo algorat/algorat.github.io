@@ -67,11 +67,14 @@ var prevBgElement; //must be set onload later
 
 var prevX = null;
 var prevY = null;
-
+let canvas_size
 var backgroundMode = false;
-
+let img;
+function preload() {
+  img = loadImage('assets/sweaterOverlay.png');
+}
 function setup() {
-  let canvas_size = 496;
+  canvas_size = 496;
   if (window.innerWidth <= 540) {
     canvas_size = 250;
   }
@@ -94,6 +97,7 @@ function setup() {
     .getElementById('startingBackground')
     .classList.add('background-preview-active');
   document.getElementById('startingBackground').click();
+
 }
 
 function mouseDragged() {
@@ -122,6 +126,10 @@ function mouseDragged() {
     prevX = mouseX;
     prevY = mouseY;
   }
+}
+function draw(){
+image(img, 0, 0,canvas_size,canvas_size);
+
 }
 
 function released() {
