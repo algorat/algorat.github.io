@@ -165,7 +165,9 @@ function generateColorPalette(colorContainer, bg) {
   let bgIndicator = document.createElement('IMG');
   bgIndicator.id = 'bg-indicator';
   bgIndicator.src = 'assets/background.svg';
-
+  let colElement1 = document.createElement('DIV');
+  let colElement2 = document.createElement('DIV');
+  let colElement3 = document.createElement('DIV');
   for (let i = 0; i < rows; i++) {
     let darkColor = darkColors[i];
     let lightColor = lightColors[i];
@@ -205,8 +207,23 @@ function generateColorPalette(colorContainer, bg) {
     rowElement.appendChild(lightColorElement);
 
     // console.log(colorContainer);
-    colorContainer.appendChild(rowElement);
+    if (i % 3 == 0 && i < rows - 1) {
+      colElement1.appendChild(rowElement);
+    }
+    if (i % 3 == 1) {
+      colElement2.appendChild(rowElement);
+    }
+    if (i % 3 == 2) {
+      colElement3.appendChild(rowElement);
+    }
   }
+  colElement1.classList.add('colorpalette-col');
+  colElement2.classList.add('colorpalette-col');
+  colElement3.classList.add('colorpalette-col');
+
+  colorContainer.appendChild(colElement1);
+  colorContainer.appendChild(colElement2);
+  colorContainer.appendChild(colElement3);
 }
 
 function setColor(element, col, bg) {
