@@ -399,7 +399,7 @@ body {
   }
   #undoredo {
     position: absolute;
-    top: -300px;
+    top: -290px;
     left: 0px;
   }
   #drawing-container {
