@@ -354,6 +354,11 @@ body {
     font-size: 46px;
     margin-top: -5px;
     padding-bottom: 5px;
+    display: none;
+  }
+
+  #rat-display-container {
+    margin-top: 10px;
   }
 
   #rat-display-text {
