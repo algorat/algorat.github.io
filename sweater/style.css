@@ -27,7 +27,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-image: url("https://raw.githubusercontent.com/algorat/algorat.github.io/master/sweater/assets/background.png");
+  background-image: url('https://raw.githubusercontent.com/algorat/algorat.github.io/master/sweater/assets/background.png');
   background-repeat: repeat;
 }
 
@@ -45,13 +45,13 @@ body {
   flex: 1;
 }
 
-#ratvas-container{
+#ratvas-container {
   height: 496px;
 }
 
 #gl-canvas {
   border-radius: var(--border-radius);
-  border:var(--medium-spacing) solid var(--primary);
+  border: var(--medium-spacing) solid var(--primary);
   box-shadow: 4px 4px 48px var(--shadow-color);
   flex: 1;
 }
@@ -82,8 +82,8 @@ body {
   display: flex;
   flex-direction: row;
   background-color: var(--primary);
-  padding:var(--medium-spacing);
-  border-radius:var(--border-radius);
+  padding: var(--medium-spacing);
+  border-radius: var(--border-radius);
 }
 
 #drawing-area {
@@ -150,7 +150,7 @@ body {
 .slider {
   -webkit-appearance: none;
   width: 316px;
-  height:var(--medium-spacing);
+  height: var(--medium-spacing);
   background: var(--primary);
   outline: none;
   opacity: 1;
@@ -197,7 +197,7 @@ body {
 
 #colors {
   width: 196px;
-  margin-right:var(--medium-spacing);
+  margin-right: var(--medium-spacing);
   display: flex;
   justify-content: space-evenly;
 }
@@ -284,15 +284,79 @@ body {
   width: 60px;
 }
 
-.colorpalette-text{
+.colorpalette-text {
   text-align: center;
 }
-.colorpalette-text img{
+.colorpalette-text img {
   height: 16px;
   margin-bottom: -4px;
-  margin-right:var(--medium-spacing);
+  margin-right: var(--medium-spacing);
 }
 
-.selected-color{
-  box-shadow: 0px 0px 0px 3px #4F3939, 0px 4px 4px 4px #D3C9C499;
+.selected-color {
+  box-shadow: 0px 0px 0px 3px #4f3939, 0px 4px 4px 4px #d3c9c499;
+}
+
+@media (max-width: 540px) {
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
+  #drawing-area {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #drawing-container {
+    margin-left: 0;
+  }
+
+  #drawing-display-controls-container {
+    flex-direction: column;
+  }
+
+  #gl-canvas {
+    width: 250px !important;
+    height: 250px !important;
+  }
+
+  .background-preview {
+    width: 50px;
+    height: 50px;
+    margin: 3px;
+    margin-top: -50px;
+    z-index: 1000;
+    border: 2px solid white;
+    border-radius: 40px;
+  }
+
+  .background-preview-active {
+    border: 8px solid var(--primary);
+    border-radius: 40px;
+  }
+
+  #ratvas-container {
+    width: 250px;
+  }
+
+  #ratvas {
+    transform: scale(0.504);
+    transform-origin: top left;
+  }
+
+  #options {
+    width: 200px;
+    display: none;
+  }
+
+  #title {
+    font-size: 46px;
+    margin-top: 20px;
+    padding-bottom: 10px;
+  }
+
+  #rat-display-text {
+    display: none;
+  }
 }

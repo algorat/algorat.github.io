@@ -86,9 +86,10 @@ function setup() {
   fill(currentColor);
   stroke(currentColor);
 
-  document.getElementById("startingBackground").classList.add('background-preview-active');
-  document.getElementById("startingBackground").click();
-
+  document
+    .getElementById('startingBackground')
+    .classList.add('background-preview-active');
+  document.getElementById('startingBackground').click();
 }
 
 function mouseDragged() {
@@ -147,11 +148,11 @@ function redrawHistory() {
 }
 
 function unattachIndicator(ele) {
-  ele.classList.remove("selected-color");
+  ele.classList.remove('selected-color');
 }
 
 function attachIndicator(ele) {
-  ele.classList.add("selected-color");
+  ele.classList.add('selected-color');
 }
 
 function generateColorPalette(colorContainer, bg) {
@@ -203,7 +204,7 @@ function generateColorPalette(colorContainer, bg) {
     rowElement.appendChild(darkColorElement);
     rowElement.appendChild(lightColorElement);
 
-   // console.log(colorContainer);
+    // console.log(colorContainer);
     colorContainer.appendChild(rowElement);
   }
 }
@@ -263,15 +264,24 @@ window.onload = function() {
   let bg = document.getElementById('background');
   let brush = document.getElementById('brush');
 
-  document.getElementById('brush').addEventListener('click', function() {
-    this.classList.remove('not-selected');
-    bg.classList.add('not-selected');
-    setBg(false);
-  });
+  // document.getElementById('brush').addEventListener('click', function() {
+  //   this.classList.remove('not-selected');
+  //   bg.classList.add('not-selected');
+  //   setBg(false);
+  // });
 
-  document.getElementById('background').addEventListener('click', function() {
-    this.classList.remove('not-selected');
-    brush.classList.add('not-selected');
-    setBg(true);
-  });
+  // document.getElementById('background').addEventListener('click', function() {
+  //   this.classList.remove('not-selected');
+  //   brush.classList.add('not-selected');
+  //   setBg(true);
+  // });
+
+  document.getElementById('ratvas-container').addEventListener(
+    'touchmove',
+    function(e) {
+      e.preventDefault();
+      console.log('hi');
+    },
+    false
+  );
 };
