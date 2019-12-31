@@ -30,7 +30,6 @@ var darkColors = [
   '#444EA4',
   '#9F7CA5',
   '#C28D8D',
-  '#818181',
   '#000000'
 ];
 
@@ -43,7 +42,6 @@ var lightColors = [
   '#9FC6FF',
   '#DDC2FF',
   '#FFD3D3',
-  '#DBDBDB',
   '#FFFFFF'
 ];
 
@@ -67,7 +65,7 @@ var prevBgElement; //must be set onload later
 
 var prevX = null;
 var prevY = null;
-let canvas_size
+let canvas_size;
 var backgroundMode = false;
 let img;
 function preload() {
@@ -97,7 +95,6 @@ function setup() {
     .getElementById('startingBackground')
     .classList.add('background-preview-active');
   document.getElementById('startingBackground').click();
-
 }
 
 function mouseDragged() {
@@ -127,9 +124,8 @@ function mouseDragged() {
     prevY = mouseY;
   }
 }
-function draw(){
-image(img, 0, 0,canvas_size,canvas_size);
-
+function draw() {
+  image(img, 0, 0, canvas_size, canvas_size);
 }
 
 function released() {
