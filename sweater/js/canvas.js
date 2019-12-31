@@ -69,7 +69,7 @@ let canvas_size;
 var backgroundMode = false;
 let img;
 function preload() {
-  img = loadImage('assets/sweaterOverlay.png');
+  img = loadImage('assets/filled-overlay.png');
 }
 function setup() {
   canvas_size = 496;
