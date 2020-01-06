@@ -22,13 +22,15 @@ renderer.setClearColor(0x000000, 1);
 var orbit = new OrbitControls(camera, renderer.domElement);
 
 var lights = [];
-lights[0] = new THREE.PointLight(0xffff00, 1, 0);
-lights[1] = new THREE.PointLight(0xff00ff, 1, 0);
-lights[2] = new THREE.PointLight(0x00ffff, 1, 0);
-
+// lights[0] = new THREE.PointLight(0xffff00, 1, 0);
+ //lights[1] = new THREE.PointLight(0xff00ff, 1, 0);
+// lights[2] = new THREE.PointLight(0x00ffff, 1, 0);
+lights[0] = new THREE.PointLight(0xaeecee, 1, 0);
+lights[1] = new THREE.PointLight(0x999999, 1, 0);
+//lights[2] = new THREE.PointLight(0xccffff,1, 0 );
 lights[0].position.set(0, 200, 0);
-lights[1].position.set(100, 200, 100);
-lights[2].position.set(-100, -200, -100);
+//lights[1].position.set(100, 200, 100);
+//lights[2].position.set(-100, -200, -100);
 
 scene.add(lights[0]);
 scene.add(lights[1]);
@@ -109,6 +111,7 @@ function loadRat() {
     map: texture
   });
   texture.needsUpdate = true;
+  var textureRat = new THREE.TextureLoader().load( './3dAssets/ratTex.png' );
   var loader = new FBXLoader();
     console.log("in set load");
 
@@ -118,7 +121,7 @@ function loadRat() {
     // action.play();
     object.traverse(function(child) {
       if (child.isMesh) {
-        child.material = new THREE.MeshBasicMaterial({
+        child.material = new THREE.MeshToonMaterial({
           map: texture,
           reflectivity: 0.0,
           shininess: 0.0,
@@ -132,17 +135,28 @@ function loadRat() {
     group.add(object);
   });
 
-  loader.load('./3dAssets/rat.fbx', function(object) {
+  loader.load('./3dAssets/rat3.fbx', function(object) {
     object.traverse(function(child) {
       if (child.isMesh) {
-        var diffuseColor = new THREE.Color().setHSL(Math.random(), 0.2, 0.2);
-
+        var diffuseColor = new THREE.Color().setHSL(Math.random(), 0.3, 0.8);
         child.material = new THREE.MeshToonMaterial({
-          reflectivity: 1.0,
-          shininess: 1.0,
+          map: textureRat,
+          reflectivity: 0.0,
+          shininess: 0.0,
           bumpScale: 1.0,
           color: diffuseColor
         });
+      //   child.geometry.uvsNeedUpdate = true;
+      //   child.castShadow = true;
+      //   child.receiveShadow = true;
+      // }
+        // child.material = new THREE.MeshToonMaterial({
+        //  // map:textureRat,
+        //   reflectivity: 0.0,
+        //   shininess: 0.0,
+        //   //bumpScale: 1.0,
+        //   color: diffuseColor
+        // });
         child.castShadow = true;
         child.receiveShadow = true;
       }
