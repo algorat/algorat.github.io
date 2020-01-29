@@ -17,7 +17,8 @@ var renderer = new THREE.WebGLRenderer({
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(512, 512);
 renderer.setClearColor(0x000000, 1);
-
+var clock = new THREE.Clock();
+var mixer;
 
 var orbit = new OrbitControls(camera, renderer.domElement);
 
@@ -34,7 +35,7 @@ lights[0].position.set(0, 200, 0);
 
 scene.add(lights[0]);
 scene.add(lights[1]);
-scene.add(lights[2]);
+//scene.add(lights[2]);
 var backgrounds = [
   'snowflakes.jpg',
   'hearth.jpg',
@@ -83,21 +84,6 @@ function setBackgroundImage (event){
         }
     }
   }
-  // scene.background = new THREE.CubeTextureLoader()
-  //  .setPath( 'assets/backgrounds/' )
-  //  .load( [
-  //      backgroundName,
-  //      backgroundName,
-  //      backgroundName,
-  //      backgroundName,
-  //      backgroundName,
-  //      backgroundName,
-
-  //  ] );
-
-  //Load background texture
-
-
 }
 
 
@@ -115,10 +101,8 @@ function loadRat() {
   var loader = new FBXLoader();
     console.log("in set load");
 
-  loader.load('./3dAssets/sweater3.fbx', function(object) {
-    // mixer = new THREE.AnimationMixer( object );
-    // var action = mixer.clipAction( object.animations[ 0 ] );
-    // action.play();
+  loader.load('./3dAssets/sweaterFinal.fbx', function(object) {
+
     object.traverse(function(child) {
       if (child.isMesh) {
         child.material = new THREE.MeshToonMaterial({
@@ -134,8 +118,9 @@ function loadRat() {
     });
     group.add(object);
   });
+let objectTD = new THREE.Object3D();
+  loader.load('./3dAssets/rat_moves.fbx', function(object) {
 
-  loader.load('./3dAssets/rat3.fbx', function(object) {
     object.traverse(function(child) {
       if (child.isMesh) {
         var diffuseColor = new THREE.Color().setHSL(Math.random(), 0.3, 0.8);
@@ -146,21 +131,14 @@ function loadRat() {
           bumpScale: 1.0,
           color: diffuseColor
         });
-      //   child.geometry.uvsNeedUpdate = true;
-      //   child.castShadow = true;
-      //   child.receiveShadow = true;
-      // }
-        // child.material = new THREE.MeshToonMaterial({
-        //  // map:textureRat,
-        //   reflectivity: 0.0,
-        //   shininess: 0.0,
-        //   //bumpScale: 1.0,
-        //   color: diffuseColor
-        // });
         child.castShadow = true;
         child.receiveShadow = true;
       }
     });
+     //objectTD = object;
+     // mixer = new THREE.AnimationMixer( object );
+     // var action = mixer.clipAction( object.animations[ 0 ] );
+     // action.play();
     group.add(object);
   });
 }
@@ -188,9 +166,12 @@ var render = function() {
   group.rotation.x += Math.sin(group.rotation.y * 10) * 0.001;
   group.position.y += Math.sin(group.rotation.y * 5) * 0.001;
   group.rotation.y += 0.001;
-
+  //  var delta = clock.getDelta();
+  // if ( mixer ) mixer.update( delta );
   renderer.render(scene, camera);
+
 };
+
 
 window.addEventListener(
   'resize',
