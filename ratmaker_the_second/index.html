@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RatMaker™️ the Second</title>
+    <script src= "https://code.jquery.com/jquery-1.12.4.min.js"> 
+    </script> 
+    <link
+      href="https://fonts.googleapis.com/css?family=Aldrich|Chakra+Petch|Frank+Ruhl+Libre|Open+Sans|Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+      <link rel="shortcut icon" type="image/ico" href="favicon.ico" />
+      <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+
+
+      <script src= 
+    "https://code.jquery.com/jquery-1.12.4.min.js"></script> 
+      
+
+
+    <style>
+      body,
+      html {
+        margin: 0px;
+        width: 100%;
+        min-height: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        background-image: url('assets/page_background.png');
+        background-size: cover;
+        font-family: 'Aldrich', sans-serif;
+        color: #8d5177;
+      }
+
+      img {
+        image-rendering: pixelated;
+        -webkit-user-drag: none;
+        -khtml-user-drag: none;
+        -moz-user-drag: none;
+        -o-user-drag: none;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      h2 {
+        font-family: 'Press Start 2P', cursive;
+        color: #ed83b5;
+        font-size: 20px;
+      }
+
+      @keyframes wiggle {
+        0% {
+          box-shadow: 8px 8px 0px #ffb5d4, 16px 16px 0px #ffd4b4,
+            24px 24px 0px #fff7dc;
+        }
+        50% {
+          box-shadow: 8px 5px 0px #ffb5d4, 16px 8px 0px #ffd4b4,
+            24px 14px 0px #fff7dc;
+        }
+        100% {
+          box-shadow: 8px 8px 0px #ffb5d4, 16px 16px 0px #ffd4b4,
+            24px 24px 0px #fff7dc;
+        }
+      }
+
+      #container {
+        width: 800px;
+        padding: 32px;
+        background: rgba(255, 240, 240, 0.85);
+        border: 2px solid #fff;
+        animation-name: wiggle;
+        animation-duration: 1.5s;
+        animation-iteration-count: infinite;
+        animation-timing-function: ease-in-out;
+        overflow: hidden;
+      }
+
+      #rat-selection {
+        display: flex;
+        flex-direction: row;
+        padding-top: 20px;
+      }
+
+      /* custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f5c1cf;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #ed83b5;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #ed83b5;
+      }
+
+      #rat-options {
+        overflow-y: scroll;
+        background-color: #fffafb;
+        padding: 10px;
+        height: 600px;
+      }
+
+      /*smaller size media query*/
+      @media (max-width: 780px) {
+        #rat-selection {
+          flex-wrap: wrap;
+          padding-top: 0;
+        }
+
+        #rat-options {
+          width: 100%;
+          margin-top: 0px;
+          height: auto;
+        }
+
+        #container {
+          overflow: auto;
+        }
+
+        .download-button {
+          display: none;
+        }
+
+        h1 {
+          font-size: 20px;
+          margin-bottom: 0;
+        }
+
+        h2 {
+          font-size: 16px;
+        }
+      }
+
+      .col {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        justify-content: flex-start;
+        align-items: center;
+      }
+
+      #big-ratitude {
+        width: 425px;
+        height: 275px;
+        /* overflow: hidden; */
+        border-radius: 50%;
+        position: relative;
+        margin-bottom: 16px;
+      }
+
+      #big-ratitude img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      hr {
+        border-top: 1px solid #ed83b577;
+        margin: 24px 0px;
+      }
+
+      #frame {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+
+        position: absolute;
+        top: 0px;
+        left: 0px;
+      }
+
+      .rat-options-container {
+        justify-content: left;
+      }
+
+      .option {
+        padding: 8px;
+        line-height: 32px;
+        position: relative;
+        z-index: 0;
+        cursor: pointer;
+      }
+
+      .option:hover {
+        color: #66ac5a;
+      }
+
+      h1 {
+        margin-block-start: 0;
+        font-family: 'Press Start 2P', cursive;
+      }
+
+      .checked {
+        color: #66ac5a;
+        outline-offset: -2px;
+        outline: 2px solid #66ac5a;
+        background: #e5f6e2;
+        box-shadow: 2px 2px 0px #9cee8f;
+      }
+
+      .hidden {
+        opacity: 0;
+      }
+      .dontDrawMe { 
+        
+      } /* dontDrawMe acts as hidden did before*/ 
+      .download-button {
+        font-family: 'Press Start 2P', cursive;
+        font-size: 12px;
+        border: 3px solid #8d5177;
+        color: #8d5177;
+        height: 36px;
+        width: 160px;
+        background: #fffafb;
+        margin-bottom: 13px;
+      }
+
+      .download-button:hover {
+        background: #cbf5d6;
+        cursor: pointer;
+      }
+      .other-button {
+        font-family: 'Press Start 2P', cursive;
+        font-size: 12px;
+        border: 3px solid #8d5177;
+        color: #8d5177;
+        height: 36px;
+        width: 160px;
+        background: #fffafb;
+        margin-bottom: 13px;
+      }
+
+      .other-button:hover {
+        background: #cbf5d6;
+        cursor: pointer;
+      }
+
+      .select { 
+        padding-left: 30px; 
+        display: none; 
+        margin-top: 30px; 
+        width: 60%; 
+      } 
+              
+    </style>
+  </head>
+
+  <body>
+    <div id="container">
+      <h1>RATMAKER the SECOND</h1>
+      <h2>ALGORat cReATor</h2>
+      <div id="rat-selection">
+        <div class="col big-ratitude-container">
+          <div id="big-ratitude">
+            <img class="rat-image" src="assets/hidden.png" />
+            <div id="frame"></div>
+          </div>
+          <button class="other-button" onclick="reset()">reset!</button>
+          <button class="other-button" onclick="randomize()">
+            randomize!
+          </button>
+          <button class="download-button" onclick="saveImage()">
+            download!
+          </button>
+        </div>
+        <div class="col rat-options-container">
+          <div id="rat-options">
+            <h2>🌲backgrounds🌲</h2>
+            <span class="option background" img-url="./backgrounds/beach.png">beach</span>
+            <span class="option background" img-url="./backgrounds/cave.png">cave</span>
+            
+                <div> 
+
+                  <hr />
+            <label> 
+              <input type="checkbox" name="colorCheckbox"
+                value="Rat1"> Rat1</label> 
+
+
+            <div class="Rat1 select"> 
+                
+
+
+              <h2>🐀bodies🐀</h2>
+              <span class="option body" img-url="./rat1/body.png">beige</span>
+
+              <hr />
+              <h2>👀eyes👀</h2>
+              <span class="option eyes" img-url="./rat1/eyes/almond.png">almond</span>
+              <span class="option eyes" img-url="./rat1/eyes/angry.png">angry</span>
+              <span class="option eyes" img-url="./rat1/eyes/closed.png">closed</span>
+              <span class="option eyes" img-url="./rat1/eyes/dot.png">dot</span>
+              <span class="option eyes" img-url="./rat1/eyes/eyelash.png">lashes</span>
+              <span class="option eyes" img-url="./rat1/eyes/spiral.png">spiral</span>
+              <span class="option eyes" img-url="./rat1/eyes/wide.png">wide</span>
+              <span class="option eyes" img-url="./rat1/eyes/X.png">x x</span>
+
+
+              <hr />
+              <h2>👄mouths👄</h2>
+              <span class="option mouth" img-url="./rat1/mouth/blah.png">squiggle</span>
+              <span class="option mouth" img-url="./rat1/mouth/drool.png">drool</span>
+              <span class="option mouth" img-url="./rat1/mouth/lips.png">lips</span>
+              <span class="option mouth" img-url="./rat1/mouth/line.png">fangs</span>
+              <span class="option mouth" img-url="./rat1/mouth/smile.png">:)</span>
+              <span class="option mouth" img-url="./rat1/mouth/teeth.png">toothy</span>
+              <span class="option mouth" img-url="./rat1/mouth/tongue.png">:P</span>
+
+            </div> 
+
+              <hr />  
+
+            <label> 
+              <input type="checkbox" name="colorCheckbox"
+                value="Rat2"> Rat2</label> 
+
+
+
+            <div class="Rat2 select"> 
+
+            <h2>🐀bodies🐀</h2>
+            <span class="option body2" img-url="./rat2/body.png">beige</span>
+
+
+            <h2>👀eyes👀</h2>
+            <span class="option eyes2" img-url="./rat2/eyes/anime.png">anime</span>
+            <span class="option eyes2" img-url="./rat2/eyes/close.png">closed</span>
+            <span class="option eyes2" img-url="./rat2/eyes/dots.png"> . .</span>
+            <span class="option eyes2" img-url="./rat2/eyes/disturbed.png"> disturbed</span>
+            <span class="option eyes2" img-url="./rat2/eyes/eyelashes.png">lash</span>
+            <span class="option eyes2" img-url="./rat2/eyes/happy.png">happy</span>
+            <span class="option eyes2" img-url="./rat2/eyes/long.png">long</span>
+            <span class="option eyes2" img-url="./rat2/eyes/mad.png">mad</span>
+            <span class="option eyes2" img-url="./rat2/eyes/sleep.png">sleep</span>
+            <span class="option eyes2" img-url="./rat2/eyes/squiggle.png">~ ~</span>
+            <span class="option eyes2" img-url="./rat2/eyes/squish.png"> > < </span>
+            <span class="option eyes2" img-url="./rat2/eyes/sunglasses.png">B)</span>
+            <span class="option eyes2" img-url="./rat2/eyes/wink.png"> ;) </span>
+            <span class="option eyes2" img-url="./rat2/eyes/x.png">x x </span>
+
+            <h2>mouth</h2>
+
+            <span class="option mouth2" img-url="./rat2/mouth/content.png">content</span>
+            <span class="option mouth2" img-url="./rat2/mouth/frown.png"> :( </span>
+            <span class="option mouth2" img-url="./rat2/mouth/line.png"> :| </span>
+            <span class="option mouth2" img-url="./rat2/mouth/lips.png"> smooch </span>
+            <span class="option mouth2" img-url="./rat2/mouth/open.png"> :O</span>
+            <span class="option mouth2" img-url="./rat2/mouth/slurp.png">slurp </span>
+            <span class="option mouth2" img-url="./rat2/mouth/smile.png"> :) </span>
+            <span class="option mouth2" img-url="./rat2/mouth/squiggle.png"> '~' </span>
+            <span class="option mouth2" img-url="./rat2/mouth/squiggliggle.png"> '~~' </span>
+            <span class="option mouth2" img-url="./rat2/mouth/toothy.png">fang </span>
+
+
+            </div>
+
+
+            <hr />
+
+            <label> 
+              <input type="checkbox" name="colorCheckbox"
+                value="Rat3"> Rat3</label> 
+
+
+
+
+
+    <div class="Rat3 select"> 
+    <strong>Rat3</strong> 
+    is a widely used general-purpose, high level 
+    programming language.</div>
+
+
+<hr />
+
+
+            <label> 
+              <input type="checkbox" name="colorCheckbox"
+                value="Rat4"> Rat4</label> 
+          </div>   
+
+
+
+
+
+    <div class="Rat4 select"> 
+    <strong>Rat4</strong> 
+    is a most popular programming language 
+    for many years.</div> 
+
+
+
+<hr />
+
+
+
+            <h2>💛friends💛</h2>
+
+            <span class="option friend" img-url="FRIEND_raggamuffin_who_loves_you.png">raggamuffin who loves you</span>
+
+            <hr />
+
+            <h2>💵decorations💵</h2>
+            <span class="option foreground" img-url="./foreground/cash.png">cash</span>
+            <span class="option foreground" img-url="./foreground/flames.png">fire</span>
+            <span class="option foreground" img-url="./foreground/smileys.png">smile</span>
+            
+            <hr />
+            <h2>👜accessories👜</h2>
+            <span class="option extra" img-url="EXTRA_adverserial.png"
+              >adverserial</span
+            >
+            <span class="option extra" img-url="EXTRA_blush.png">blush</span>
+
+            <hr />
+
+
+
+
+
+
+
+
+
+            <hr />
+            <h2>🖼frames🖼</h2>
+            <span class="option frame" img-url="./frames/cow.png">cow</span>
+            <span class="option frame" img-url="./frames/eyes.png">eyes</span>
+            <span class="option frame" img-url="./frames/basic.png">basic</span>
+            <span class="option frame" img-url="./frames/gold.png">goLd</span>
+            <span class="option frame" img-url="./frames/leaves.png">leaves</span>
+            <span class="option frame" img-url="./frames/lightbulb.png">light</span>
+            <span class="option frame" img-url="./frames/stars.png">stars</span>
+            <span class="option frame" img-url="./frames/storm.png">storm</span>
+            
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+   <script src="script.js"></script>
+
+
+    <script type="text/javascript"> 
+      $(document).ready(function() { 
+        $('input[type="checkbox"]').click(function() { 
+          var inputValue = $(this).attr("value"); 
+          $("." + inputValue).toggle(); 
+        }); 
+      }); 
+    </script> 
+  </body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html> 
+<html> 
+
+<head> 
+
+  <script src= 
+"https://code.jquery.com/jquery-1.12.4.min.js"></script> 
+  <style type="text/css"> 
+    .select { 
+      color: #fff; 
+      padding: 30px; 
+      display: none; 
+      margin-top: 30px; 
+      width: 60%; 
+      background: green 
+    } 
+    
+
+  </style> 
+</head> 
+
+<body> 
+  <center> 
+    
+    <div> 
+      <label> 
+        <input type="checkbox" name="colorCheckbox"
+          value="Rat1"> Rat1</label> 
+      <label> 
+        <input type="checkbox" name="colorCheckbox"
+          value="Rat2"> Rat2</label> 
+      <label> 
+        <input type="checkbox" name="colorCheckbox"
+          value="Rat3"> Rat3</label> 
+      <label> 
+        <input type="checkbox" name="colorCheckbox"
+          value="Rat4"> Rat4</label> 
+    </div> 
+    <div class="Rat1 select"> 
+    <strong>rat1</strong> 
+    is a procedural programming language</div> 
+    <div class="Rat2 select"> 
+    <strong>rat2</strong> 
+    is a general purpose programming language</div> 
+    <div class="Rat3 select"> 
+    <strong>Rat3</strong> 
+    is a widely used general-purpose, high level 
+    programming language.</div> 
+    <div class="Rat4 select"> 
+    <strong>Rat4</strong> 
+    is a most popular programming language 
+    for many years.</div> 
+    <script type="text/javascript"> 
+      $(document).ready(function() { 
+        $('input[type="checkbox"]').click(function() { 
+          var inputValue = $(this).attr("value"); 
+          $("." + inputValue).toggle(); 
+        }); 
+      }); 
+    </script> 
+  </center> 
+</body> 
+
+</html>        
