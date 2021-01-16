@@ -4,18 +4,26 @@ body {
   align-items: center;
   background-image: url(./img/algorats.png);
   color: white;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'Fraunces', 'Courier New', Courier, monospace;
   cursor: pointer;
   position: relative;
 }
 
 #header {
-  background-color: black;
+  background-color: rgb(219, 132, 116);
   padding-left: 30px;
   padding-right: 30px;
+  padding-bottom: 8px;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
   margin-top: 20px;
+  border-radius: 10px;
+  color: rgb(255, 246, 222);
+}
+
+#subtitle {
+  font-size: 18px;
+  font-style: italic;
 }
 
 a {
@@ -24,11 +32,35 @@ a {
 }
 
 h1 {
-  margin-bottom: 0;
+  margin-bottom: -5px;
+  margin-top: 20px;
+  font-family: 'Bungee';
+  font-weight: normal;
+  font-size: 60px;
+}
+
+.proj-title a {
+  font-family: 'Yusei Magic';
+  color: rgb(191, 127, 42);
+  font-size: 40px;
+}
+
+.proj-title {
+  margin-bottom: 5px;
+}
+
+.project p {
+  font-size: 20px;
+  color: rgb(227, 169, 93);
+  text-align: center;
 }
 
 img {
   width: 700px;
+}
+
+.project img {
+  border-radius: 0px 0px 30px 30px;
 }
 
 .project {
@@ -37,8 +69,9 @@ img {
   align-items: center;
   margin-top: 10px;
   margin-bottom: 30px;
-  background-color: white;
+  background-color: rgb(255, 246, 222);
   color: black;
+  border-radius: 30px;
 }
 
 .project p {
@@ -46,7 +79,8 @@ img {
 }
 
 #bday-card-text {
-  background-color: white;
+  background-color: rgb(255, 246, 222);
+  border-radius: 30px;
   color: black;
   padding: 30;
   margin-top: 30vh;
@@ -56,4 +90,28 @@ img {
 #bday-card-text a {
   text-decoration: underline;
   font-size: 30px;
+  color: rgb(227, 169, 93);
+  text-align: center;
+}
+
+#about {
+  max-width: 600px;
+  background-color: rgb(219, 132, 116);
+  padding-left: 30px;
+  padding-right: 30px;
+  border-radius: 10px;
+  margin-top: 40px;
+  margin-bottom: 100px;
+}
+
+#about a {
+  text-decoration: underline;
+  color: white;
+}
+
+#bday-card-text h1 {
+  font-family: 'Yusei Magic';
+  color: rgb(191, 127, 42);
+  font-size: 40px;
+  margin-top: 5px;
 }
