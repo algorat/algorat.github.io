@@ -72,4 +72,27 @@
         Creative Inquiry</a> in
       Pittsburgh, PA.</p>
   </div>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+      https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-analytics.js"></script>
+
+  <script>
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    var firebaseConfig = {
+      apiKey: "AIzaSyA7Eo6WN7CXU5ft28HwZb9Ku0GNf3VYqVI",
+      authDomain: "ratchelor-analytics.firebaseapp.com",
+      projectId: "ratchelor-analytics",
+      storageBucket: "ratchelor-analytics.appspot.com",
+      messagingSenderId: "10749754195",
+      appId: "1:10749754195:web:bd4c48504709e2eb84bfa6",
+      measurementId: "G-0SNS2N7HEB"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+  </script>
 </body>
