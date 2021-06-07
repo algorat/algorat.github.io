@@ -1,5 +1,5 @@
 [Twitter](https://twitter.com/alg0rat)
-
+[Instagram](https://www.instagram.com/alg0rat/)
 Ideas for the future:
 - about page?
 - Rat or not minigame
