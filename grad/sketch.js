@@ -134,7 +134,7 @@ function mousePressed() {
       }
     }
     if (nameTo1 == "") {
-      nameTo1 = "GRAD";
+      nameTo1 = "";
       nameFrom1 = "YOUR RAT";
     }
 
