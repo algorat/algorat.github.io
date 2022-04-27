@@ -236,6 +236,7 @@ if (loadedRat == false ) {
     if(animationStart){
       uniforms.interp.value += 0.005;
       group.rotation.y += 0.02;
+      group.rotation.z = 0.;
       var x = document.getElementById("title");
       var y = document.getElementById("mar");
       var z = document.getElementById("around");
