@@ -241,7 +241,7 @@ if (loadedRat == false ) {
       var z = document.getElementById("around");
               
       //if (x.innerHTML === "Welcome to GeeksforGeeks") {
-          x.innerHTML = "HAPPY EARLY BIRTHDAY! WE LOVE YOU!";
+          x.innerHTML = "HAPPY EARLY BDAY! LOVE YOU!";
 
           y.innerHTML ="I Hope Your EARLY Birthday Is Filled with Surprises!!!!"
           z.innerHTML ="WHO KNEW THE SPINNING CUBE WAS A RAT ALL ALONG"
