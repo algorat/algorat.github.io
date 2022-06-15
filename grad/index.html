@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>congRATulations</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1,width=device-width"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
+    <!--p5js version 1-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/addons/p5.sound.js"></script>
+    <!-- Using the offical p5.js CDN https://cdnjs.com/libraries/p5.js -->
+
+    <script src="p5.func.min.js"></script>
+    <script src="sketch.js"></script>
+
+    <script type="text/javascript">
+      function changeFormAction(event) {
+        var form = this;
+        form.action = "https://algorat.club/grad/$"; //+ item;
+
+        event.preventDefault();
+
+        var recipient = document.getElementById("toname").value;
+        var sender = document.getElementById("fromname").value;
+        var optmessage = document.getElementById("msg").value;
+
+        var newUrl =
+          "https://algorat.club/grad/#" +
+          recipient +
+          "§" +
+          sender +
+          "§" +
+          optmessage;
+
+        newUrl = newUrl.replaceAll(" ", "%20");
+
+        console.log(newUrl);
+
+        prompt("Copy this URL to send to your friend:", newUrl);
+
+        //alert(testa);
+
+        //window.open(newUrl, "_blank");
+      }
+    </script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap");
+      html,
+      body {
+        margin: 0;
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+        font-family: "Indie Flower", cursive;
+      }
+
+      h1 {
+        font-family: "Indie Flower", cursive;
+        text-align: center;
+        color: rgba(97, 172, 148, 0.8);
+      }
+      details {
+        font: 16px "Comic Sans MS", Calibri, sans-serif;
+        position: absolute;
+        border-radius: 10px;
+        padding: 7px;
+        bottom: 5px;
+        right: 10px;
+        background-color: #ededed;
+        border: 2px solid #cdcdcd;
+      }
+
+      details > summary {
+        cursor: pointer;
+        list-style: none;
+      }
+
+      details > summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .button {
+        transition-duration: 0.4s;
+      }
+
+      .button:hover {
+        background-color: #4CAF50; /* Green */
+        color: white;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <div style="position: absolute; top:15px;width: 100%;">
+      <h1 id="id01"></h1>
+      <h1 id="id02"></h1>
+    </div>
+
+    <div
+      style="position: absolute;         
+                bottom: 14px;width: 100%;
+"
+    >
+      <h1 id="id03"></h1>
+    </div>
+
+    <details>
+      <summary>🔎</summary>
+
+      <div style="text-align:center;">
+        Fill this in to make a new one!
+
+        <br />
+        <br />
+        <label for="toname">To:</label>
+        <input type="text" id="toname" name="toname" />
+
+        <br />
+
+        <label for="fromname">From:</label>
+        <input type="text" id="fromname" name="fromname" />
+
+        <br />
+
+        <label for="msg">Message (optional):</label>
+        <input type="text" id="msg" name="msg" />
+
+        <br />
+        <br />
+
+        <form onsubmit="changeFormAction(event)">
+          <button type="submit" id="submitButton" style="">
+            <div style="font: 16px Comic Sans MS, Calibri, sans-serif;">
+              <b>Generate Message</b>
+            </div>
+          </button>
+        </form>
+
+        <br /><br />
+
+        <font color="hotpink">
+          made by <a href="https://algorat.club" target="_blank">algorat</a> 🐀,
+          <br />
+          congratulations to all this years graduates!
+        </font>
+
+        <br /><br />
+        <font color="royalblue">
+          music from
+          <a href="https://www.youtube.com/watch?v=xUcCkKHgksQ" target="_blank">
+            Klaus Schindler Music</a
+          >
+          🎶
+          <br />
+          used under creative commons license
+        </font>
+      </div>
+    </details>
+  </body>
+</html>
+
+<!--   border: 2px solid #454578;
+  color: black;
+  padding: 4px 6px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  
+  border-radius: 12px; 
+  background-color:#cdcdcd" -->
