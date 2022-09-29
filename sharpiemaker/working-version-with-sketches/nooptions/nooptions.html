@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Custom Rat</title>
+    <style>
+
+    body, html{
+        margin: 0px;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        background-image: url("nooptions-assets/background.jpg");
+        background-size: cover;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    #container{
+        width: 800px;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    @media (max-width: 768px) {
+        #container{
+            flex-wrap: wrap;
+        }
+    }
+
+    .col{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: center;
+    }
+
+    #big-ratitude-container {
+        width: 300px;
+        height: 400px;
+        overflow: hidden;
+        border-radius: 50%;
+        position: relative;
+        box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.3), 
+            0px 0px 2px 2px rgba(0, 0, 0, 0.3), 
+            15px 7px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    #big-ratitude-container img {
+        width: 100%;
+        height: 100%;
+    }
+
+    #frame {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        border: 7px solid #f0d88d;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        box-shadow: inset 0px 0px 15px #000000;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div class="col">
+            <div id="big-ratitude-container">
+                <div id="frame"></div>
+                <img src="nooptions-assets/rat.jpg" alt="rat image" />
+            </div>
+        </div>
+        <div class="col">
+            <div id="rat-options">
+                no options
+            </div>
+        </div>
+    </div>
+    <script>
+    </script>
+</body>
+
+</html>
