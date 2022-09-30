@@ -1,0 +1,226 @@
+
+      body,
+      html {
+        margin: 0px;
+        width: 100%;
+        min-height: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        background-image: url('assets/page_background.png');
+        background-size: cover;
+        font-family: 'Aldrich', sans-serif;
+        color: #81007b;
+      }
+
+      img {
+        image-rendering: pixelated;
+        -webkit-user-drag: none;
+        -khtml-user-drag: none;
+        -moz-user-drag: none;
+        -o-user-drag: none;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      h2 {
+        font-family: 'Press Start 2P', cursive;
+        color: #490043;
+        font-size: 20px;
+      }
+
+      @keyframes wiggle {
+        0% {
+          box-shadow: 8px 8px 0px #eeb5ff, 16px 16px 0px #590c70,
+            24px 24px 0px #330242;
+        }
+        50% {
+          box-shadow: 8px 5px 0px #eeb5ff, 16px 8px 0px #590c70,
+            24px 14px 0px #330242;
+        }
+        100% {
+          box-shadow: 8px 8px 0px #eeb5ff, 16px 16px 0px #590c70,
+            24px 24px 0px #330242;
+        }
+      }
+
+      #container {
+        width: 1200px;
+        padding: 32px;
+        background: rgba(249, 240, 255, 0.85);
+        border: 2px solid #000;
+        animation-name: wiggle;
+        animation-duration: 1.5s;
+        animation-iteration-count: infinite;
+        animation-timing-function: ease-in-out;
+        overflow: hidden;
+      }
+
+      #rat-selection {
+        display: flex;
+        flex-direction: row;
+        padding-top: 20px;
+      }
+
+      /* custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f1c1f5;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #db83ed;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #c383ed;
+      }
+
+      #rat-options {
+        overflow-y: scroll;
+        background-color: #1a1a1a;
+        padding: 10px;
+        height: 100%;
+      }
+
+      /*smaller size media query*/
+      @media (max-width: 780px) {
+        #rat-selection {
+          flex-wrap: wrap;
+          padding-top: 0;
+        }
+
+        #rat-options {
+          width: 100%;
+          margin-top: 0px;
+          height: auto;
+        }
+
+        #container {
+          overflow: auto;
+        }
+
+        .download-button {
+          display: none;
+        }
+
+        h1 {
+          font-size: 20px;
+          margin-bottom: 0;
+        }
+
+        h2 {
+          font-size: 16px;
+        }
+      }
+
+      .col {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        justify-content: flex-start;
+        align-items: center;
+      }
+
+      #big-ratitude {
+        width: 700px;
+        height: 1000px;
+        /* overflow: hidden; */
+        border-radius: 50%;
+        position: relative;
+        margin-bottom: 16px;
+      }
+
+      #big-ratitude img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      hr {
+        border-top: 1px solid #ed83b577;
+        margin: 24px 0px;
+      }
+
+      #frame {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+
+        position: absolute;
+        top: 0px;
+        left: 0px;
+      }
+
+      .rat-options-container {
+        justify-content: left;
+      }
+
+      .option {
+        padding: 8px;
+        line-height: 32px;
+        position: relative;
+        z-index: 0;
+        cursor: pointer;
+      }
+
+      .option:hover {
+        color: #66ac5a;
+      }
+
+      h1 {
+        margin-block-start: 0;
+        font-family: 'Press Start 2P', cursive;
+      }
+
+      .checked {
+        color: #66ac5a;
+        outline-offset: -2px;
+        outline: 2px solid #66ac5a;
+        background: #e5f6e2;
+        box-shadow: 2px 2px 0px #9cee8f;
+      }
+
+      .hidden {
+        opacity: 0;
+      }
+      .dontDrawMe { 
+        
+      } /* dontDrawMe acts as hidden did before*/ 
+      
+      .download-button {
+        font-family: 'Press Start 2P', cursive;
+        font-size: 12px;
+        border: 3px solid #8d5177;
+        color: #8d5177;
+        height: 36px;
+        width: 160px;
+        background: #fffafb;
+        margin-bottom: 13px;
+      }
+
+      .download-button:hover {
+        background: #cbf5d6;
+        cursor: pointer;
+      }
+      .other-button {
+        font-family: 'Press Start 2P', cursive;
+        font-size: 12px;
+        border: 3px solid #8d5177;
+        color: #8d5177;
+        height: 36px;
+        width: 160px;
+        background: #fffafb;
+        margin-bottom: 13px;
+      }
+
+      .other-button:hover {
+        background: #cbf5d6;
+        cursor: pointer;
+      }
