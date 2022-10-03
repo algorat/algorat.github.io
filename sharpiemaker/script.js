@@ -1,178 +1,266 @@
-const images = document.getElementById('big-ratitude');
-const soloClasses = [
-  'shirt',
-  'pants',
-  'socks',
-  'sweater',
-  'sleeves',
-  'makeup',
-  'shoes',
-  'mouth'
+/** TODOS...
+ * 1. Make sure one shoe / mouth is always selected.
+ */
+
+// Global image container to stack images onto.
+const imagesDisplayContainer = document.querySelector(".big-ratitude");
+// TODO
+const tabContainer = document.querySelector(".rat-tab-container");
+
+const allPages = document.querySelectorAll(".page");
+
+/**
+ * All of the clothing types that should NOT stack.
+ * i.e. Sharpie should only be able to wear one shirt at a time.
+ * Attach a stacking order to them.
+ * Higher numbers will draw ABOVE lower numbers.
+ */
+const soloCategoryClasses = {
+  shirt: 2,
+  pants: 1,
+  socks: 0,
+  // sleeves: 0,
+  shoes: 0,
+  mouth: 0,
+};
+
+/**
+ * Clothing types that can stack, like jewelry and makeup.
+ * Also attach a stacking order to these.
+ */
+const multiCategoryClasses = {
+  jewels: 10,
+  makeup: 10,
+};
+
+/** All of the clothing classes, as an array of keys. */
+const allClothingClassesArr = [
+  ...Object.keys(soloCategoryClasses),
+  ...Object.keys(multiCategoryClasses),
 ];
 
+/** All of the clothing classes, as a dict. */
+const allClothingClassesDict = {
+  ...soloCategoryClasses,
+  ...multiCategoryClasses,
+};
+
+/** Randomizes the clothing shown. */
 function randomize() {
-  reset();
-  displayRandomFrom('mouth', 1);
-  displayRandomFrom('shirt', 1);
-  displayRandomFrom('pants', 1);
-  displayRandomFrom('makeup', 1);
-  displayRandomFrom('shoes', 1);
-  displayRandomFrom('jewles', 1);
+  reset(false);
+  // Display one random item from each category type.
+  allClothingClassesArr.forEach((clothingCategory) => {
+    displayRandomItem(clothingCategory);
+  });
 }
 
-function displayRandomFrom(className, numItems) {
-  const items = Array.from(document.getElementsByClassName(className));
+/**
+ * Displays a random item from the clothing category.
+ * @param category Clothing cateogry to show a random item from.
+ * @param numItems Number of random items to show for that category.
+ *                 Defaults to 1. Does not overrule the "solo" effect
+ *                 of some of the classes.
+ */
+function displayRandomItem(category, numItems = 1) {
+  const matches = document.querySelectorAll(
+    `[data-clothing-category*="${category}"]`
+  );
   for (let i = 0; i < numItems; i++) {
-    const randomIndex = Math.floor(Math.random() * items.length);
-    showImageElement(items[randomIndex]);
+    const randomIndex = Math.floor(Math.random() * matches.length);
+    showItemAndRemoveConflicts(matches[randomIndex]);
   }
 }
 
+/** Checks if the element is hidden already. */
 function isHidden(element) {
-  return !element.classList.contains('checked')
+  return !element.classList.contains("checked");
 }
 
-function toggleFade(element){
-  
-  if (isHidden(element)){
-
-    showImageElement(element)
-
+/** Toggles the "shown" status of the element. */
+function toggleFade(element) {
+  if (isHidden(element)) {
+    showClothingItem(element);
+  } else {
+    hideClothingItem(element);
   }
-  else{
-
-    hideImageElement(element)
-  }
-
 }
 
-function hideImageElement(element) {
-    element.classList.remove('checked');
-    document
-      .getElementById(element.getAttribute('img-url'))
-       .classList.toggle('hidden'); // not sure if this needs to be here
+/**
+ * "Hides" the clothing item by setting the status of
+ * both the button and the paired image element.
+ */
+function hideClothingItem(buttonElement) {
+  buttonElement.classList.remove("checked");
 
-    document
-      .getElementById(element.getAttribute('img-url'))
-       .classList.add('dontDrawMe'); 
-       // so that the downloader knows not to draw this element
-    
-    document
-      .getElementById(element.getAttribute('img-url')).style.transition = '0.4s';
-    document  
-      .getElementById(element.getAttribute('img-url')).style.opacity = 0;
+  const matchingImageElementId = buttonElement.dataset.imgUrl;
+  const matchingImageElement = document.getElementById(matchingImageElementId);
 
+  // Hide from view
+  matchingImageElement.classList.add("hidden");
+  // Hide from accessibility tree, too.
+  matchingImageElement.setAttribute("aria-hidden", true);
 }
 
-function showImageElement(element) {
-    element.classList.add('checked');
-    document
-      .getElementById(element.getAttribute('img-url'))
-      .classList.toggle('hidden');
+/**
+ * "Shows" the clothing item by setting the status of
+ * both the button and the paired image element.
+ */
+function showClothingItem(buttonElement) {
+  buttonElement.classList.add("checked");
 
+  const matchingImageElementId = buttonElement.dataset.imgUrl;
+  const matchingImageElement = document.getElementById(matchingImageElementId);
 
-    document
-      .getElementById(element.getAttribute('img-url'))
-       .classList.remove('dontDrawMe'); 
-       // so that the downloader knows to draw this element
-
-    document.getElementById(
-        element.getAttribute('img-url')).style.transition = '0.25s';
-    document.getElementById(
-        element.getAttribute('img-url')).style.opacity = 1;
- 
+  matchingImageElement.classList.remove("hidden");
+  // Show it in the accessibility tree, too.
+  matchingImageElement.setAttribute("aria-hidden", null);
 }
 
-function reset() {
-  const allImageElements = Array.from(
-    document.getElementsByClassName('option')
-  );
-  allImageElements.forEach(imageElement =>
-    hideImageElement(imageElement)
-  );
-}
-
-function restart() {
-  reset();
-  const mouths = Array.from(document.getElementsByClassName('mouth'));
-  showImageElement(mouths[0]);
-
-  const shoes = Array.from(document.getElementsByClassName('shoes'));
-  showImageElement(shoes[0]);
-
-}
-
-
-
-
+/**
+ * Toggles the clothing item on/off and handles clothing conflicts
+ * by hiding the others.
+ */
 function toggleItem(evt) {
-  const element = evt.srcElement;
-  soloClasses.forEach(soloClassName => {
-    if (element.classList.contains(soloClassName)) {
+  const element = evt.target || evt.srcElement;
+  hideConflictingItems(element);
+  toggleFade(element);
+}
 
+/** Shows the item, but also clears any conflicting items beforehand. */
+function showItemAndRemoveConflicts(element) {
+  hideConflictingItems(element);
+  showClothingItem(element);
+}
 
-      Array.from(document.getElementsByClassName(soloClassName)).forEach(
-        soloClassItem => {
-          if (soloClassItem.classList.contains('checked')) {
-               if (soloClassItem != element){
-               hideImageElement(soloClassItem)
-             }
-          }
-        }
-      );
+/** Hides all items that conflict with the current one. */
+function hideConflictingItems(element) {
+  // Hide all conflicting elements.
+  let clothingCategories = element.dataset.clothingCategory.split(",");
+  clothingCategories = clothingCategories.filter(
+    (category) => category in soloCategoryClasses
+  );
+
+  clothingCategories.forEach((category) => {
+    const matches = document.querySelectorAll(
+      `[data-clothing-category*="${category}"]`
+    );
+    matches.forEach((soloClassItem) => {
+      if (!isHidden(soloClassItem) && soloClassItem !== element) {
+        hideClothingItem(soloClassItem);
+      }
+    });
+  });
+}
+
+/** Reset the options by hiding everything.
+ * Then, we give the character some shoes and a mouth to start with.
+ */
+function reset(setDefault = true) {
+  const allOptions = [...document.getElementsByClassName("option")];
+  allOptions.forEach((optionButton) => hideClothingItem(optionButton));
+
+  if (!setDefault) return;
+  showClothingItem(document.querySelector(`[data-clothing-category*="mouth"]`));
+  showClothingItem(document.querySelector(`[data-clothing-category*="shoes"]`));
+}
+
+function switchToTab(evt) {
+  document
+    .querySelectorAll(`[data-tab-name]`)
+    .forEach((item) => item.classList.remove("selected"));
+
+  const target = evt.target || evt.srcElement;
+  const targetPage = document.querySelector(
+    `.page[data-tab-name="${target.dataset.tabName}"]`
+  );
+
+  target.classList.add("selected");
+  targetPage.classList.add("selected");
+}
+
+function setupGameUi() {
+  allPages.forEach((page) => {
+    const newTabButton = document.createElement("BUTTON");
+    newTabButton.innerHTML = page.dataset.tabName;
+    newTabButton.dataset.tabName = page.dataset.tabName;
+    newTabButton.addEventListener("click", switchToTab);
+    newTabButton.classList.add("rat-tab");
+    tabContainer.appendChild(newTabButton);
+
+    if (page.classList.contains("selected")) {
+      newTabButton.classList.add("selected");
     }
   });
-  
-  toggleFade(element)
-
 }
 
-document.querySelectorAll('.option').forEach(item => {
-  item.addEventListener('click', toggleItem);
-  const imgUrl = item.getAttribute('img-url');
-  const newImage = document.createElement('IMG');
+/** Sets up the game by loading all of the image files needed. */
+function setupGameFiles() {
+  document.querySelectorAll(".option").forEach((item) => {
+    item.addEventListener("click", toggleItem);
+    // Make keyboard accessible
+    item.setAttribute("tabIndex", 0);
+    item.setAttribute("role", "button");
+    item.addEventListener("keydown", (evt) => {
+      evt.key === "Enter" && toggleItem(evt);
+    });
 
-  newImage.src = 'assets/' + imgUrl;
-  newImage.id = imgUrl;
-  newImage.style.opacity = 0;
-  newImage.classList.add('hidden');
-  newImage.classList.add('dontDrawMe');
-  newImage.classList.add('rat-image');
+    const imgUrl = item.dataset.imgUrl;
+    const overrideZIndex = item.dataset.overrideZindex;
+    const newImage = document.createElement("IMG");
 
-  images.appendChild(newImage);
-});
+    newImage.src = "assets/" + imgUrl;
+    newImage.ariaLabel = item.textContent;
+    newImage.id = imgUrl;
+    newImage.classList.add("hidden");
+    newImage.classList.add("rat-image");
 
-//saves image to local files
+    if (overrideZIndex) {
+      newImage.style.zIndex = overrideZIndex;
+    } else {
+      const clothingCategories = item.dataset.clothingCategory.split(",");
+      const clothingCategoryZIndices = clothingCategories.map(
+        (category) => allClothingClassesDict[category]
+      );
+      const maxZ = Math.max(...clothingCategoryZIndices);
+      newImage.style.zIndex = maxZ;
+    }
+
+    imagesDisplayContainer.appendChild(newImage);
+  });
+}
+
+/** Downloads the current clothing configuration as an image. */
 function saveImage() {
-  var canvas = document.createElement('CANVAS');
+  var canvas = document.createElement("CANVAS");
   var canWid = 300;
   var canHei = 364;
 
   canvas.width = canWid;
   canvas.height = canHei;
-  canvas.style.width = canWid + 'px';
-  canvas.style.height = canHei + 'px';
+  canvas.style.width = canWid + "px";
+  canvas.style.height = canHei + "px";
 
-  var ctx = canvas.getContext('2d');
+  var ctx = canvas.getContext("2d");
 
-  Array.from(document.getElementsByClassName('rat-image')).forEach(
-    img => {
-      if (!img.classList.contains('dontDrawMe')) { 
-        ctx.drawImage(img, 0, 0, 300, 364);
-      }
+  Array.from(document.getElementsByClassName("rat-image")).forEach((img) => {
+    if (!img.classList.contains("hidden")) {
+      ctx.drawImage(img, 0, 0, 300, 364);
     }
-  );
+  });
 
-  var linkToClick = document.createElement('A'); //hacky solution to save file
-  linkToClick.setAttribute('download', 'Rat-persona.png');
+  var linkToClick = document.createElement("A"); //hacky solution to save file
+  linkToClick.setAttribute("download", "Sharpie.png");
   linkToClick.setAttribute(
-    'href',
-    canvas
-      .toDataURL('image/png')
-      .replace('image/png', 'image/octet-stream')
+    "href",
+    canvas.toDataURL("image/png").replace("image/png", "image/octet-stream")
   );
-  var event = new MouseEvent('click');
+  var event = new MouseEvent("click");
   linkToClick.dispatchEvent(event);
 }
 
-restart();
+window.onload = () => {
+  // Start the game!
+  setupGameUi();
+  setupGameFiles();
+  reset();
+};

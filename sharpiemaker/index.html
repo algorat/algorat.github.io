@@ -2,211 +2,395 @@
 <html>
   <head>
     <title>SharpieMaker™️</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css?family=Aldrich|Chakra+Petch|Frank+Ruhl+Libre|Open+Sans|Press+Start+2P&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,400,0,0;0,9..144,500,20,0;0,9..144,700,20,0;1,9..144,527,100,1&display=swap"
       rel="stylesheet"
     />
     <link rel="shortcut icon" type="image/ico" href="favicon.ico" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" />
   </head>
-
   <body>
-    <div id="container">
+    <div class="container">
       <h1>SHARPIEMAKER</h1>
-      <h2>ALGORat Creator</h2>
-      <div id="rat-selection">
-        <div class="col big-ratitude-container">
-          <div id="big-ratitude">
-            <img class="rat-image" src="assets/sharpie.png" />
-            <div id="frame"></div>
-          </div>
-          <button class="other-button" onclick="restart()">restart!</button>
-          <button class="other-button" onclick="randomize()">
-            randomize!
-          </button>
-          <button class="download-button" onclick="saveImage()">
-            download!
-          </button>
+      <h3>Made by ALGORat</h3>
+      <div class="rat-selection">
+        <div class="col big-ratitude">
+          <img class="rat-image" src="assets/sharpie.png" />
         </div>
-        <div class="col rat-options-container">
-          <div id="rat-options">
-
-            <h2>socks and stocking </h2>
-
-            <span class="option mouth" img-url="10-smile.PNG"> :) </span>
-            <span class="option mouth" img-url="10-hmm.PNG">:/</span>
-            <span class="option mouth" img-url="10-fang.PNG">:></span>
-          
-            <hr />
-
-<!-- 
-
-    ▄████████  ▄██████▄   ▄████████    ▄█   ▄█▄    ▄████████ 
-    ███    ███ ███    ███ ███    ███   ███ ▄███▀   ███    ███ 
-    ███    █▀  ███    ███ ███    █▀    ███▐██▀     ███    █▀  
-    ███        ███    ███ ███         ▄█████▀      ███        
-  ▀███████████ ███    ███ ███        ▀▀█████▄    ▀███████████ 
-           ███ ███    ███ ███    █▄    ███▐██▄            ███ 
-     ▄█    ███ ███    ███ ███    ███   ███ ▀███▄    ▄█    ███ 
-   ▄████████▀   ▀██████▀  ████████▀    ███   ▀█▀  ▄████████▀  
-                                        ▀                       -->
-  <h2>socks and stocking </h2>
-
-  <span class="option socks" img-url="03-tallPurple.PNG">tall purple</span>
-  <span class="option socks" img-url="03-fishnets-highrise.PNG">fishnets high waisted</span>
-  <span class="option socks" img-url="03-fishnets-lowrise.PNG">fish nets low rise</span>
-
-  <hr />
-<!-- 
-    ▄████████    ▄█    █▄     ▄██████▄     ▄████████    ▄████████ 
-    ███    ███   ███    ███   ███    ███   ███    ███   ███    ███ 
-    ███    █▀    ███    ███   ███    ███   ███    █▀    ███    █▀  
-    ███         ▄███▄▄▄▄███▄▄ ███    ███  ▄███▄▄▄       ███        
-   ▀███████████ ▀▀███▀▀▀▀███▀  ███    ███ ▀▀███▀▀▀     ▀███████████ 
-            ███   ███    ███   ███    ███   ███    █▄           ███ 
-      ▄█    ███   ███    ███   ███    ███   ███    ███    ▄█    ███ 
-    ▄████████▀    ███    █▀     ▀██████▀    ██████████  ▄████████▀  
-                                                                            -->
-
-
-        <h2>shoes</h2>
-        <span class="option shoes" img-url="02-feet.png">barefoot contessa</span>
-        <span class="option shoes" img-url="02-sharpiesSignatureBoots.PNG">Sharpie's Signature Boots</span>
-
-        <span class="option shoes" img-url="02-chunkyAnkle.PNG">chunky ankle</span>
-        <span class="option shoes" img-url="02-gogoBoots.PNG">gogo boots</span>
-        
-
-
-        <hr/>
-
-
-<!--             
-    ▄███████▄    ▄████████ ███▄▄▄▄       ███        ▄████████ 
-    ███    ███   ███    ███ ███▀▀▀██▄ ▀█████████▄   ███    ███ 
-    ███    ███   ███    ███ ███   ███    ▀███▀▀██   ███    █▀  
-    ███    ███   ███    ███ ███   ███     ███   ▀   ███        
-  ▀█████████▀  ▀███████████ ███   ███     ███     ▀███████████ 
-    ███          ███    ███ ███   ███     ███              ███ 
-    ███          ███    ███ ███   ███     ███        ▄█    ███ 
-   ▄████▀        ███    █▀   ▀█   █▀     ▄████▀    ▄████████▀  
-                                                                        -->
-            <h2>Skirts and Pants</h2>
-            <h3>High waister</h3>
-
-            <span class="option pants" img-url="01-bikeShorts-highrise.PNG">Bike Shorts</span>
-            <span class="option pants" img-url="01-longSkirt-highrise.PNG">Long Skirt</span>
-            
-
-            <h3>Low Rise</h3>
-
-            <span class="option pants" img-url="01-sharpiesSignatureSkirt.PNG">Sharpie's Signature Skirt</span>
-            <span class="option pants" img-url="01-bikeShorts-lowrise.PNG">Bike Shorts</span>
-            <hr />
-<!-- 
-   ▄████████    ▄█    █▄     ▄█     ▄████████     ███        ▄████████ 
-  ███    ███   ███    ███   ███    ███    ███ ▀█████████▄   ███    ███ 
-  ███    █▀    ███    ███   ███▌   ███    ███    ▀███▀▀██   ███    █▀  
-  ███         ▄███▄▄▄▄███▄▄ ███▌  ▄███▄▄▄▄██▀     ███   ▀   ███        
-▀███████████ ▀▀███▀▀▀▀███▀  ███▌ ▀▀███▀▀▀▀▀       ███     ▀███████████ 
-         ███   ███    ███   ███  ▀███████████     ███              ███ 
-   ▄█    ███   ███    ███   ███    ███    ███     ███        ▄█    ███ 
- ▄████████▀    ███    █▀    █▀     ███    ███    ▄████▀    ▄████████▀  
-                                   ███    ███                          
-                                                      -->
-            <h2>shirts</h2>
-            <span class="option shirt" img-url="00-corset.PNG">Sharpie's Signature Corset</span>
-
-            <span class="option shirt" img-url="00-turtleneck.PNG">turtleneck</span>
-            <span class="option shirt" img-url="00-tubeTop.PNG">tube top</span>
-            <span class="option shirt" img-url="00-tankBlouse.PNG">Tank Blouse</span>
-            <span class="option shirt" img-url="00-tankBlouse2.PNG">Tank Blouse red</span>
-            <span class="option shirt" img-url="00-tankBlouse2short.PNG">Tank Blouse red short</span>
-            <span class="option shirt" img-url="00-capeCorset.PNG">cape corset</span>
-
-            
-            <hr />
-<!-- 
-    ▄▄▄▄███▄▄▄▄      ▄████████    ▄█   ▄█▄    ▄████████ ███    █▄     ▄███████▄ 
-  ▄██▀▀▀███▀▀▀██▄   ███    ███   ███ ▄███▀   ███    ███ ███    ███   ███    ███ 
-  ███   ███   ███   ███    ███   ███▐██▀     ███    █▀  ███    ███   ███    ███ 
-  ███   ███   ███   ███    ███  ▄█████▀     ▄███▄▄▄     ███    ███   ███    ███ 
-  ███   ███   ███ ▀███████████ ▀▀█████▄    ▀▀███▀▀▀     ███    ███ ▀█████████▀  
-  ███   ███   ███   ███    ███   ███▐██▄     ███    █▄  ███    ███   ███        
-  ███   ███   ███   ███    ███   ███ ▀███▄   ███    ███ ███    ███   ███        
-   ▀█   ███   █▀    ███    █▀    ███   ▀█▀   ██████████ ████████▀   ▄████▀      
-                                        ▀                                               -->
-
-            <h2>shadows and creams</h2>
-            <h3> Eyes </h3>
-            <span class="option makeup" img-url="08-sharpiesSignatureLook.PNG">Sharpie's Signature Look</span>
-            <span class="option makeup" img-url="08-mascara.PNG">mascara</span>
-            <span class="option makeup" img-url="08-epilogueEyes.PNG">epilogue eyes</span>
-            <span class="option makeup" img-url="08-eyeliner.PNG">eyeliner</span>
-            <span class="option makeup" img-url="08-cateye.PNG">cat eye</span>
-            <h3>Other</h3>
-            <span class="option" img-url="08-blush.PNG">blush</span>
-            <span class="option " img-url="08-freckles.PNG">freckles</span>
-
-            <hr />
-
-
-
-<!--  ████████▄     ▄████████    ▄████████    ▄████████    ▄████████    ▄████████    ▄████████ 
-      ███   ▀███   ███    ███   ███    ███   ███    ███   ███    ███   ███    ███   ███    ███ 
-      ███    ███   ███    ███   ███    █▀    ███    █▀    ███    █▀    ███    █▀    ███    █▀  
-      ███    ███  ▄███▄▄▄▄██▀  ▄███▄▄▄       ███          ███         ▄███▄▄▄       ███        
-      ███    ███ ▀▀███▀▀▀▀▀   ▀▀███▀▀▀     ▀███████████ ▀███████████ ▀▀███▀▀▀     ▀███████████ 
-      ███    ███ ▀███████████   ███    █▄           ███          ███   ███    █▄           ███ 
-      ███   ▄███   ███    ███   ███    ███    ▄█    ███    ▄█    ███   ███    ███    ▄█    ███ 
-      ████████▀    ███    ███   ██████████  ▄████████▀   ▄████████▀    ██████████  ▄████████▀  
-                   ███    ███ -->
-                   
-            <h2>slips and dresses and overalls</h2>
-
-            <span class="option pants" img-url="04-overallsShorts.PNG">overalls shorts</span>
-            <span class="option pants" img-url="04-overallsDressShort.PNG">overalls dress short</span>
-            <span class="option pants" img-url="04-overallsDressLong.PNG">overalls dress long</span>
-            <span class="option shirt pants" img-url="04-slip.PNG">slip</span>
-
-            <hr/>
-            <h2>Sweaters and overwear</h2>            
-            <!-- <span class="option sweaters" img-url="05 - flannel.PNG">flannel</span>
-            <span class="option sweaters" img-url="05 - big hoodie.PNG">hoodie</span> -->
-
-            <hr />
-            <h2>suspenders and belts</h2>
-            <!-- <span class="option suspenders" img-url="06 - suspender.PNG">suspender</span>
-            <span class="option suspenders" img-url="06 - fancy chain belt.PNG">fancy chain belt</span> -->
-
-            <hr />
-            <h2>sleeves</h2>
-            <!-- <span class="option sleeves" img-url="07 - fishnet sleeves.PNG">fishnet sleeves</span>
-            <span class="option sleeves" img-url="07 - lace fancy sleeves.PNG">lace fancy sleeves</span>
-            <span class="option sleeves" img-url="07 - striped sleeves.PNG">striped sleeves</span> -->
-            <hr />
-            <h2>some jewelery</h2>
-            <h3> Earrings</h3>
-            <span class="option jewels" img-url="09-01-rightEar2ndLobeDoubleRingBottom.PNG">right ear rings</span>
-            <span class="option jewels" img-url="09-01-rightEarTopLobeStud.PNG">right ear stud</span>
-            <span class="option jewels" img-url="09-01-leftEarThirdLobeDangle.PNG">left ear dangle</span>
-            <span class="option jewels" img-url="09-01-leftEar3rdLobeDoubleRingTop.PNG">left ear double ring</span>
-            <h3>Necklaces</h3>
-            <span class="option jewels" img-url="09-laceVictorianChoker.PNG">Sharpie's Signature choker</span>
-            <span class="option jewels" img-url="09-gemChoker.PNG">choker with gem</span>
-            <span class="option jewels" img-url="09-laceChoker.PNG">lace</span>
-            <span class="option jewels" img-url="09-pinkSpikeyCollar.PNG">pink spike collar</span>
-            <span class="option jewels" img-url="09-spikeyCollar.PNG">spike collar</span>
-            <span class="option jewels" img-url="09-collar.PNG">collar</span>
-            <span class="option jewels" img-url="09-starNecklace.PNG">star Necklace</span>
-
-
+        <div class="col small-ratitude">
+          <div class="other-buttons">
+            <button class="other-button" onclick="reset()">Restart!</button>
+            <button class="other-button" onclick="randomize()">
+              Randomize!
+            </button>
+            <button class="download-button other-button" onclick="saveImage()">
+              Download!
+            </button>
+          </div>
+          <div class="rat-options">
+            <div class="rat-tab-container"></div>
+            <!---------------------- 𝕾𝖍𝖎𝖗𝖙𝖘 ---------------------->
+            <div class="page selected" data-tab-name="Tops">
+              <h2>Tops</h2>
+              <h3>Shirts</h3>
+              <span
+                class="option"
+                data-clothing-category="shirt"
+                data-img-url="00-corset.PNG"
+              >
+                Sharpie's Signature Corset
+              </span>
+              <span
+                class="option"
+                data-clothing-category="shirt"
+                data-img-url="00-turtleneck.PNG"
+              >
+                turtleneck
+              </span>
+              <span
+                class="option"
+                data-clothing-category="shirt"
+                data-img-url="00-tubeTop.PNG"
+              >
+                tube top
+              </span>
+              <span
+                class="option"
+                data-clothing-category="shirt"
+                data-img-url="00-tankBlouse.PNG"
+                data-override-zindex="4"
+              >
+                tank blouse
+              </span>
+              <span
+                class="option"
+                data-clothing-category="shirt"
+                data-img-url="00-tankBlouse2.PNG"
+              >
+                tank blouse, red
+              </span>
+              <span
+                class="option"
+                data-clothing-category="shirt"
+                data-img-url="00-tankBlouse2short.PNG"
+              >
+                tank blouse, red short
+              </span>
+              <span
+                class="option"
+                data-clothing-category="shirt"
+                data-img-url="00-capeCorset.PNG"
+              >
+                cape corset
+              </span>
+              <h3>Sweaters</h3>
+              <!-- <span class="option sweaters" data-img-url="05 - flannel.PNG">flannel</span>
+              <span class="option sweaters" data-img-url="05 - big hoodie.PNG">hoodie</span> -->
+            </div>
+            <!---------------------- 𝕾𝖐𝖎𝖗𝖙𝖘 𝖆𝖓𝖉 𝖕𝖆𝖓𝖙𝖘 ---------------------->
+            <div class="page" data-tab-name="Skirts & Pants">
+              <h2>Skirts & Pants</h2>
+              <h3>High waister</h3>
+              <span
+                class="option"
+                data-clothing-category="pants"
+                data-img-url="01-bikeShorts-highrise.PNG"
+              >
+                bike shorts high-rise
+              </span>
+              <span
+                class="option"
+                data-clothing-category="pants"
+                data-img-url="01-bikeShorts-lowrise.PNG"
+              >
+                bike shorts low-rise
+              </span>
+              <span
+                class="option"
+                data-clothing-category="pants"
+                data-img-url="01-longSkirt-highrise.PNG"
+              >
+                long skirt
+              </span>
+              <h3>Low Rise</h3>
+              <span
+                class="option"
+                data-clothing-category="pants"
+                data-img-url="01-sharpiesSignatureSkirt.PNG"
+              >
+                Sharpie's Signature Skirt
+              </span>
+            </div>
+            <!---------------------- 𝕯𝖗𝖊𝖘𝖘𝖊𝖘 ---------------------->
+            <div class="page" data-tab-name="Dresses">
+              <h2>Slips & Dresses & Overalls</h2>
+              <span
+                class="option"
+                data-clothing-category="pants"
+                data-img-url="04-overallsShorts.PNG"
+                data-override-zindex="3"
+              >
+                overalls shorts
+              </span>
+              <span
+                class="option"
+                data-clothing-category="pants"
+                data-img-url="04-overallsDressShort.PNG"
+                data-override-zindex="3"
+              >
+                overalls dress short
+              </span>
+              <span
+                class="option"
+                data-clothing-category="pants"
+                data-img-url="04-overallsDressLong.PNG"
+                data-override-zindex="3"
+              >
+                overalls dress long
+              </span>
+              <span
+                class="option"
+                data-clothing-category="pants"
+                data-img-url="04-slip.PNG"
+                data-override-zindex="3"
+                >slip</span
+              >
+            </div>
+            <!---------------------- 𝕭𝖊𝖑𝖙𝖘 ---------------------->
+            <div class="page" data-tab-name="Suspenders & Belts">
+              <h2>Suspenders & Belts</h2>
+              <!-- <span class="option" data-img-url="06 - suspender.PNG">suspender</span>
+                 <span class="option" data-img-url="06 - fancy chain belt.PNG">fancy chain belt</span> -->
+            </div>
+            <!---------------------- 𝕾𝖑𝖊𝖊𝖛𝖊𝖘 ---------------------->
+            <div class="page" data-tab-name="Sleeves">
+              <h2>Sleeves</h2>
+              <!-- <span class="option" data-img-url="07 - fishnet sleeves.PNG">fishnet sleeves</span>
+                 <span class="option" data-img-url="07 - lace fancy sleeves.PNG">lace fancy sleeves</span>
+                 <span class="option" data-img-url="07 - striped sleeves.PNG">striped sleeves</span> -->
+            </div>
+            <!---------------------- 𝕾𝖔𝖈𝖐𝖘 ---------------------->
+            <div class="page" data-tab-name="Socks & Stocking">
+              <h2>Socks & Stocking</h2>
+              <span
+                class="option"
+                data-clothing-category="socks"
+                data-img-url="03-tallPurple.PNG"
+              >
+                tall purple
+              </span>
+              <span
+                class="option"
+                data-clothing-category="socks"
+                data-img-url="03-fishnets-highrise.PNG"
+              >
+                fishnets high-waisted
+              </span>
+              <span
+                class="option"
+                data-clothing-category="socks"
+                data-img-url="03-fishnets-lowrise.PNG"
+              >
+                fishnets low-rise
+              </span>
+            </div>
+            <!---------------------- 𝕾𝖍𝖔𝖊𝖘 ---------------------->
+            <div class="page" data-tab-name="Shoes">
+              <h2>Shoes</h2>
+              <span
+                class="option"
+                data-clothing-category="shoes"
+                data-img-url="02-feet.png"
+              >
+                barefoot contessa
+              </span>
+              <span
+                class="option"
+                data-clothing-category="shoes"
+                data-img-url="02-sharpiesSignatureBoots.PNG"
+              >
+                Sharpie's Signature Boots
+              </span>
+              <span
+                class="option"
+                data-clothing-category="shoes"
+                data-img-url="02-chunkyAnkle.PNG"
+              >
+                chunky ankle
+              </span>
+              <span
+                class="option"
+                data-clothing-category="shoes"
+                data-img-url="02-gogoBoots.PNG"
+              >
+                gogo boots
+              </span>
+            </div>
+            <!---------------------- 𝕸𝖔𝖚𝖙𝖍𝖘 ---------------------->
+            <div class="page" data-tab-name="Mouthes">
+              <h2>Mouthes</h2>
+              <span
+                class="option"
+                data-clothing-category="mouth"
+                data-img-url="10-smile.PNG"
+              >
+                :)
+              </span>
+              <span
+                class="option"
+                data-clothing-category="mouth"
+                data-img-url="10-hmm.PNG"
+                >:/</span
+              >
+              <span
+                class="option"
+                data-clothing-category="mouth"
+                data-img-url="10-fang.PNG"
+                >:></span
+              >
+            </div>
+            <!---------------------- 𝕸𝖆𝖐𝖊𝖚𝖕 ---------------------->
+            <div class="page" data-tab-name="Shadows & Creams">
+              <h2>Shadows & Creams</h2>
+              <h3>Eyes</h3>
+              <span
+                class="option"
+                data-clothing-category="makeup"
+                data-img-url="08-sharpiesSignatureLook.PNG"
+              >
+                Sharpie's Signature Look
+              </span>
+              <span
+                class="option"
+                data-clothing-category="makeup"
+                data-img-url="08-mascara.PNG"
+              >
+                mascara
+              </span>
+              <span
+                class="option"
+                data-clothing-category="makeup"
+                data-img-url="08-epilogueEyes.PNG"
+              >
+                epilogue eyes
+              </span>
+              <span
+                class="option"
+                data-clothing-category="makeup"
+                data-img-url="08-eyeliner.PNG"
+              >
+                eyeliner
+              </span>
+              <span
+                class="option"
+                data-clothing-category="makeup"
+                data-img-url="08-cateye.PNG"
+              >
+                cat eye
+              </span>
+              <h3>Other</h3>
+              <span
+                class="option"
+                data-clothing-category="makeup"
+                data-img-url="08-blush.PNG"
+                >blush</span
+              >
+              <span
+                class="option"
+                data-clothing-category="makeup"
+                data-img-url="08-freckles.PNG"
+                >freckles</span
+              >
+            </div>
+            <!---------------------- 𝕵𝖊𝖜𝖊𝖑𝖗𝖞 ---------------------->
+            <div class="page" data-tab-name="Jewelry">
+              <h2>Jewelery</h2>
+              <h3>Earrings</h3>
+              <span
+                class="option"
+                data-clothing-category="jewels"
+                data-img-url="09-01-rightEar2ndLobeDoubleRingBottom.PNG"
+              >
+                right ear rings
+              </span>
+              <span
+                class="option"
+                data-clothing-category="jewels"
+                data-img-url="09-01-rightEarTopLobeStud.PNG"
+              >
+                right ear stud
+              </span>
+              <span
+                class="option"
+                data-clothing-category="jewels"
+                data-img-url="09-01-leftEarThirdLobeDangle.PNG"
+              >
+                left ear dangle
+              </span>
+              <span
+                class="option"
+                data-clothing-category="jewels"
+                data-img-url="09-01-leftEar3rdLobeDoubleRingTop.PNG"
+              >
+                left ear double ring
+              </span>
+              <h3>Necklaces</h3>
+              <span
+                class="option"
+                data-clothing-category="jewels"
+                data-img-url="09-laceVictorianChoker.PNG"
+              >
+                Sharpie's Signature choker
+              </span>
+              <span
+                class="option"
+                data-clothing-category="jewels"
+                data-img-url="09-gemChoker.PNG"
+              >
+                choker with gem
+              </span>
+              <span
+                class="option"
+                data-clothing-category="jewels"
+                data-img-url="09-laceChoker.PNG"
+                >lace</span
+              >
+              <span
+                class="option"
+                data-clothing-category="jewels"
+                data-img-url="09-pinkSpikeyCollar.PNG"
+              >
+                pink spike collar
+              </span>
+              <span
+                class="option"
+                data-clothing-category="jewels"
+                data-img-url="09-spikeyCollar.PNG"
+              >
+                spike collar
+              </span>
+              <span
+                class="option"
+                data-clothing-category="jewels"
+                data-img-url="09-collar.PNG"
+                >collar</span
+              >
+              <span
+                class="option"
+                data-clothing-category="jewels"
+                data-img-url="09-starNecklace.PNG"
+              >
+                star necklace
+              </span>
+            </div>
           </div>
         </div>
       </div>
     </div>
-
     <script src="script.js"></script>
   </body>
 </html>
