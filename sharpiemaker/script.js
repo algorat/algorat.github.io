@@ -249,7 +249,7 @@ function saveImage() {
 
   Array.from(document.getElementsByClassName("rat-image")).forEach((img) => {
     if (!img.classList.contains("hidden")) {
-      ctx.drawImage(img, 0, 0, 300, 364);
+      ctx.drawImage(img, 0, 0, 700, 1000);
     }
   });
 
