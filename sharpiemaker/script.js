@@ -237,8 +237,8 @@ function setupGameFiles() {
 /** Downloads the current clothing configuration as an image. */
 function saveImage() {
   var canvas = document.createElement("CANVAS");
-  var canWid = 300;
-  var canHei = 364;
+  var canWid = 700;
+  var canHei = 1000;
 
   canvas.width = canWid;
   canvas.height = canHei;
