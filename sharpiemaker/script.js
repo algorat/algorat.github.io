@@ -21,7 +21,8 @@ const soloCategoryClasses = {
   socks: 0,
   // sleeves: 0,
   shoes: 0,
-  mouth: 0,
+  mouth: 20,
+  eyemakeup: 9
 };
 
 /**
