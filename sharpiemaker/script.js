@@ -26,7 +26,8 @@ const soloCategoryClasses = {
   sweater: 7,
   sweaterBack: -5,
   sleeves: 1,
-  contacts: 8
+  contacts: 8,
+  belts: 3
 };
 
 /**
