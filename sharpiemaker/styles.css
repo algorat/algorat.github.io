@@ -300,3 +300,8 @@ h1 {
   background: #555;
   cursor: pointer;
 }
+
+.costume{
+  background-color: darkorange;
+  color: #000;
+}
