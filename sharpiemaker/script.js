@@ -23,11 +23,13 @@ const soloCategoryClasses = {
   shoes: 0,
   mouth: 20,
   eyemakeup: 9,
-  sweater: 7,
-  sweaterBack: -5,
+  //sweater: 7,
+  //sweaterBack: -5,
   sleeves: 1,
   contacts: 8,
-  belts: 3
+  belts: 3,
+  bags: 11,
+  headgear: 21,
 };
 
 /**
@@ -36,14 +38,8 @@ const soloCategoryClasses = {
  */
 const multiCategoryClasses = {
   jewels: 10,
-  makeup: 10,
+  facemakeup: 10,
 };
-
-/** All of the clothing classes, as an array of keys. */
-const allClothingClassesArr = [
-  ...Object.keys(soloCategoryClasses),
-  ...Object.keys(multiCategoryClasses),
-];
 
 /** All of the clothing classes, as a dict. */
 const allClothingClassesDict = {
@@ -51,11 +47,26 @@ const allClothingClassesDict = {
   ...multiCategoryClasses,
 };
 
+/** All of the clothing classes shown in randomize, as an array of keys. */
+const clothingCategoriesForRandomize = [
+  "shirt",
+  "pants",
+  "shoes",
+  "mouth",
+  "eyemakeup",
+  "sleeves",
+  "contacts",
+  "belts",
+  "bags",
+  "jewels",
+  "facemakeup",
+];
+
 /** Randomizes the clothing shown. */
 function randomize() {
   reset(false);
   // Display one random item from each category type.
-  allClothingClassesArr.forEach((clothingCategory) => {
+  clothingCategoriesForRandomize.forEach((clothingCategory) => {
     displayRandomItem(clothingCategory);
   });
 }
