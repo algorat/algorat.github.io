@@ -39,6 +39,8 @@ const soloCategoryClasses = {
 const multiCategoryClasses = {
   jewels: 10,
   facemakeup: 10,
+  vest: 15,
+  jacket: 15
 };
 
 /** All of the clothing classes, as a dict. */
