@@ -16,20 +16,21 @@ const allPages = document.querySelectorAll(".page");
  * Higher numbers will draw ABOVE lower numbers.
  */
 const soloCategoryClasses = {
-  shirt: 2,
-  pants: 1,
-  socks: 0,
+  shirt: 12,
+  pants: 11,
+  socks: 10,
   // sleeves: 0,
-  shoes: .5,
-  mouth: 20,
-  eyemakeup: 11,
-  //sweater: 7,
-  //sweaterBack: -5,
-  sleeves: 1,
-  contacts: 8,
-  belts: 3,
-  bags: 11,
-  headgear: 21,
+  shoes: 10,
+  mouth: 30,
+  eyemakeup: 21,
+  //sweater: 17,
+  //sweaterBack: 7,
+  sleeves: 11,
+  contacts: 18,
+  belts: 13,
+  bags: 21,
+  headgear: 31,
+  glasses: 30
 };
 
 /**
@@ -37,10 +38,10 @@ const soloCategoryClasses = {
  * Also attach a stacking order to these.
  */
 const multiCategoryClasses = {
-  jewels: 10,
-  facemakeup: 10,
-  vest: 15,
-  jacket: 15
+  jewels: 20,
+  facemakeup: 20,
+  vest: 25,
+  jacket: 25
 };
 
 /** All of the clothing classes, as a dict. */
