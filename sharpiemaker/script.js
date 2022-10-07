@@ -16,21 +16,20 @@ const allPages = document.querySelectorAll(".page");
  * Higher numbers will draw ABOVE lower numbers.
  */
 const soloCategoryClasses = {
-  shirt: 12,
-  pants: 11,
-  socks: 10,
+  shirt: { zIndex: 12 },
+  pants: { zIndex: 11 },
+  socks: { zIndex: 10 },
   // sleeves: 0,
-  shoes: 10,
-  mouth: 30,
-  eyemakeup: 21,
-  //sweater: 17,
-  //sweaterBack: 7,
-  sleeves: 11,
-  contacts: 18,
-  belts: 13,
-  bags: 21,
-  headgear: 31,
-  glasses: 30
+  shoes: { zIndex: 10 },
+  mouth: { zIndex: 30 },
+  eyemakeup: { zIndex: 21 },
+  sweater: { zIndex: 17, background: { fileprefix: "back" } },
+  sleeves: { zIndex: 11 },
+  contacts: { zIndex: 18 },
+  belts: { zIndex: 13 },
+  bags: { zIndex: 21 },
+  headgear: { zIndex: 31 },
+  glasses: { zIndex: 30 },
 };
 
 /**
@@ -38,10 +37,10 @@ const soloCategoryClasses = {
  * Also attach a stacking order to these.
  */
 const multiCategoryClasses = {
-  jewels: 20,
-  facemakeup: 20,
-  vest: 25,
-  jacket: 25
+  jewels: { zIndex: 20 },
+  facemakeup: { zIndex: 20 },
+  vest: { zIndex: 25 },
+  jacket: { zIndex: 25 },
 };
 
 /** All of the clothing classes, as a dict. */
@@ -239,7 +238,7 @@ function setupGameFiles() {
     } else {
       const clothingCategories = item.dataset.clothingCategory.split(",");
       const clothingCategoryZIndices = clothingCategories.map(
-        (category) => allClothingClassesDict[category]
+        (category) => allClothingClassesDict[category].zIndex
       );
       const maxZ = Math.max(...clothingCategoryZIndices);
       newImage.style.zIndex = maxZ;
@@ -262,10 +261,21 @@ function saveImage() {
 
   var ctx = canvas.getContext("2d");
 
-  Array.from(document.getElementsByClassName("rat-image")).forEach((img) => {
-    if (!img.classList.contains("hidden")) {
-      ctx.drawImage(img, 0, 0, 700, 1000);
-    }
+  const allImages = [...document.getElementsByClassName("rat-image")];
+  const drawnImages = allImages.filter(
+    (img) => !img.classList.contains("hidden")
+  );
+
+  function compareImages(img1, img2) {
+    const img1Z = parseInt(img1.style.zIndex) || 0;
+    const img2Z = parseInt(img2.style.zIndex) || 0;
+    console.log(img1Z, img2Z);
+    return img1Z - img2Z;
+  }
+
+  const zIndexOrdered = drawnImages.sort(compareImages);
+  zIndexOrdered.forEach((img) => {
+    ctx.drawImage(img, 0, 0, 700, 1000);
   });
 
   var linkToClick = document.createElement("A"); //hacky solution to save file
