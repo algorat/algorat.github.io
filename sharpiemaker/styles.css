@@ -167,6 +167,7 @@ h1 {
 
 .rat-image {
   opacity: 1;
+  animation: fadeIn ease-in 0.2s;
   transition: opacity 0.2s ease;
 }
 
@@ -301,7 +302,16 @@ h1 {
   cursor: pointer;
 }
 
-.costume{
+.costume {
   background-color: darkorange;
   color: #000;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
