@@ -16,17 +16,16 @@ const allPages = document.querySelectorAll(".page");
  * Higher numbers will draw ABOVE lower numbers.
  */
 const soloCategoryClasses = {
-  shirt: { zIndex: 12 },
-  pants: { zIndex: 11 },
+  shirt: { zIndex: 13, background: { zIndex: 6 } },
+  pants: { zIndex: 12 },
   socks: { zIndex: 10 },
-  // sleeves: 0,
-  shoes: { zIndex: 10 },
+  shoes: { zIndex: 11 },
   mouth: { zIndex: 30 },
   eyemakeup: { zIndex: 21 },
   jacket: { zIndex: 25, background: { zIndex: 5 } },
   sleeves: { zIndex: 11 },
   contacts: { zIndex: 18 },
-  belts: { zIndex: 13 },
+  belts: { zIndex: 14 },
   bags: { zIndex: 21 },
   headgear: { zIndex: 31 },
   glasses: { zIndex: 30 },
@@ -56,15 +55,16 @@ const clothingCategoriesForRandomize = [
   "mouth",
   "eyemakeup",
   "sleeves",
-  "contacts",
-  "belts",
   "bags",
   "jewels",
   "facemakeup",
 ];
 
+const loadedUrls = new Set();
+
 /** Randomizes the clothing shown. */
 function randomize() {
+  console.log("randomize 3");
   reset(false);
   // Display one random item from each category type.
   clothingCategoriesForRandomize.forEach((clothingCategory) => {
@@ -79,14 +79,13 @@ function randomize() {
  *                 Defaults to 1. Does not overrule the "solo" effect
  *                 of some of the classes.
  */
-function displayRandomItem(category, numItems = 1) {
+function displayRandomItem(category) {
   const matches = document.querySelectorAll(
-    `[data-clothing-category*="${category}"]`
+    `[data-clothing-category="${category}"]`
   );
-  for (let i = 0; i < numItems; i++) {
-    const randomIndex = Math.floor(Math.random() * matches.length);
-    showItemAndRemoveConflicts(matches[randomIndex]);
-  }
+
+  const randomIndex = Math.floor(Math.random() * matches.length);
+  showItemAndRemoveConflicts(matches[randomIndex]);
 }
 
 /** Checks if the element is hidden already. */
@@ -110,22 +109,14 @@ function toggleFade(element) {
 function hideClothingItem(buttonElement) {
   buttonElement.classList.remove("checked");
 
-  const matchingImageElementId = buttonElement.dataset.imgUrl;
-  const matchingImageElement = document.getElementById(matchingImageElementId);
+  const matchingImages = getGameImage(buttonElement);
 
-  // Hide from view
-  matchingImageElement.classList.add("hidden");
-  // Hide from accessibility tree, too.
-  matchingImageElement.setAttribute("aria-hidden", true);
-
-  const matchingImagePairedElementId = buttonElement.dataset.imgUrlPair;
-  if (matchingImagePairedElementId) {
-    const matchingImagePairedElement = document.getElementById(
-      matchingImagePairedElementId
-    );
-    matchingImagePairedElement.classList.add("hidden");
-    matchingImagePairedElement.setAttribute("aria-hidden", true);
-  }
+  matchingImages.forEach((image) => {
+    // Hide from view
+    image.classList.add("hidden");
+    // Hide from accessibility tree, too.
+    image.setAttribute("aria-hidden", true);
+  });
 }
 
 /**
@@ -135,21 +126,12 @@ function hideClothingItem(buttonElement) {
 function showClothingItem(buttonElement) {
   buttonElement.classList.add("checked");
 
-  const matchingImageElementId = buttonElement.dataset.imgUrl;
-  const matchingImageElement = document.getElementById(matchingImageElementId);
+  const matchingImages = getGameImage(buttonElement);
 
-  matchingImageElement.classList.remove("hidden");
-  // Show it in the accessibility tree, too.
-  matchingImageElement.removeAttribute("aria-hidden");
-
-  const matchingImagePairedElementId = buttonElement.dataset.imgUrlPair;
-  if (matchingImagePairedElementId) {
-    const matchingImagePairedElement = document.getElementById(
-      matchingImagePairedElementId
-    );
-    matchingImagePairedElement.classList.remove("hidden");
-    matchingImagePairedElement.removeAttribute("aria-hidden");
-  }
+  matchingImages.forEach((image) => {
+    image.classList.remove("hidden");
+    image.removeAttribute("aria-hidden");
+  });
 }
 
 /**
@@ -171,20 +153,19 @@ function showItemAndRemoveConflicts(element) {
 /** Hides all items that conflict with the current one. */
 function hideConflictingItems(element) {
   // Hide all conflicting elements.
-  let clothingCategories = element.dataset.clothingCategory.split(",");
-  clothingCategories = clothingCategories.filter(
-    (category) => category in soloCategoryClasses
-  );
+  let clothingCategory = element.dataset.clothingCategory;
 
-  clothingCategories.forEach((category) => {
-    const matches = document.querySelectorAll(
-      `[data-clothing-category*="${category}"]`
-    );
-    matches.forEach((soloClassItem) => {
-      if (!isHidden(soloClassItem) && soloClassItem !== element) {
-        hideClothingItem(soloClassItem);
-      }
-    });
+  if (!(clothingCategory in soloCategoryClasses)) {
+    return;
+  }
+
+  const matches = document.querySelectorAll(
+    `[data-clothing-category="${clothingCategory}"]`
+  );
+  matches.forEach((soloClassItem) => {
+    if (!isHidden(soloClassItem) && soloClassItem !== element) {
+      hideClothingItem(soloClassItem);
+    }
   });
 }
 
@@ -192,12 +173,11 @@ function hideConflictingItems(element) {
  * Then, we give the character some shoes and a mouth to start with.
  */
 function reset(setDefault = true) {
-  const allOptions = [...document.getElementsByClassName("option")];
+  const allOptions = [...document.querySelectorAll(".option.checked")];
   allOptions.forEach((optionButton) => hideClothingItem(optionButton));
-
   if (!setDefault) return;
-  showClothingItem(document.querySelector(`[data-clothing-category*="mouth"]`));
-  showClothingItem(document.querySelector(`[data-clothing-category*="shoes"]`));
+  showClothingItem(document.querySelector(`[data-clothing-category="mouth"]`));
+  showClothingItem(document.querySelector(`[data-clothing-category="shoes"]`));
 }
 
 function switchToTab(evt) {
@@ -229,18 +209,11 @@ function setupGameUi() {
   });
 }
 
-/** Sets up the game by loading all of the image files needed. */
-function setupGameFiles() {
-  document.querySelectorAll(".option").forEach((item) => {
-    item.addEventListener("click", toggleItem);
-    // Make keyboard accessible
-    item.setAttribute("tabIndex", 0);
-    item.setAttribute("role", "button");
-    item.addEventListener("keydown", (evt) => {
-      evt.key === "Enter" && toggleItem(evt);
-    });
+function getGameImage(item) {
+  const imageElements = [];
+  const imgUrl = item.dataset.imgUrl;
 
-    const imgUrl = item.dataset.imgUrl;
+  if (!loadedUrls.has(imgUrl)) {
     const overrideZIndex = item.dataset.overrideZindex;
     const newImage = document.createElement("IMG");
 
@@ -257,6 +230,9 @@ function setupGameFiles() {
 
     imagesDisplayContainer.appendChild(newImage);
 
+    imageElements.push(newImage);
+    loadedUrls.add(imgUrl);
+
     const imgUrlPair = item.dataset.imgUrlPair;
     if (imgUrlPair) {
       const pairImage = document.createElement("IMG");
@@ -268,11 +244,31 @@ function setupGameFiles() {
       pairImage.style.zIndex =
         allClothingClassesDict[item.dataset.clothingCategory].background.zIndex;
       imagesDisplayContainer.appendChild(pairImage);
+      imageElements.push(pairImage);
     }
+  } else {
+    imageElements.push(document.getElementById(imgUrl));
+    const imgUrlPair = item.dataset.imgUrlPair;
+    imgUrlPair && imageElements.push(document.getElementById(imgUrlPair));
+  }
+
+  return imageElements;
+}
+
+/** Sets up the game by loading all of the image files needed. */
+function setupGameFiles() {
+  document.querySelectorAll(".option").forEach((item) => {
+    item.addEventListener("click", toggleItem);
+    // Make keyboard accessible
+    item.setAttribute("tabIndex", 0);
+    item.setAttribute("role", "button");
+    item.addEventListener("keydown", (evt) => {
+      evt.key === "Enter" && toggleItem(evt);
+    });
   });
 }
 
-/** Downloads the current clothing configuration as an image. */
+/** Opens a new tab with the current clothing configuration as an image. */
 function saveImage() {
   var canvas = document.createElement("CANVAS");
   var canWid = 700;
@@ -293,7 +289,6 @@ function saveImage() {
   function compareImages(img1, img2) {
     const img1Z = parseInt(img1.style.zIndex) || 0;
     const img2Z = parseInt(img2.style.zIndex) || 0;
-    console.log(img1Z, img2Z);
     return img1Z - img2Z;
   }
 
@@ -302,14 +297,9 @@ function saveImage() {
     ctx.drawImage(img, 0, 0, 700, 1000);
   });
 
-  var linkToClick = document.createElement("A"); //hacky solution to save file
-  linkToClick.setAttribute("download", "Sharpie.png");
-  linkToClick.setAttribute(
-    "href",
-    canvas.toDataURL("image/png").replace("image/png", "image/octet-stream")
-  );
-  var event = new MouseEvent("click");
-  linkToClick.dispatchEvent(event);
+  const url = canvas.toDataURL("image/png");
+  const newTab = window.open("", "_blank");
+  newTab.document.body.innerHTML = `<img src=${url} style="width: 700px; max-width: 100vw;">`;
 }
 
 window.onload = () => {
