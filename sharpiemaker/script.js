@@ -23,7 +23,7 @@ const soloCategoryClasses = {
   shoes: { zIndex: 10 },
   mouth: { zIndex: 30 },
   eyemakeup: { zIndex: 21 },
-  sweater: { zIndex: 17, background: { fileprefix: "back" } },
+  jacket: { zIndex: 25, background: { zIndex: 5 } },
   sleeves: { zIndex: 11 },
   contacts: { zIndex: 18 },
   belts: { zIndex: 13 },
@@ -40,7 +40,6 @@ const multiCategoryClasses = {
   jewels: { zIndex: 20 },
   facemakeup: { zIndex: 20 },
   vest: { zIndex: 25 },
-  jacket: { zIndex: 25 },
 };
 
 /** All of the clothing classes, as a dict. */
@@ -118,6 +117,15 @@ function hideClothingItem(buttonElement) {
   matchingImageElement.classList.add("hidden");
   // Hide from accessibility tree, too.
   matchingImageElement.setAttribute("aria-hidden", true);
+
+  const matchingImagePairedElementId = buttonElement.dataset.imgUrlPair;
+  if (matchingImagePairedElementId) {
+    const matchingImagePairedElement = document.getElementById(
+      matchingImagePairedElementId
+    );
+    matchingImagePairedElement.classList.add("hidden");
+    matchingImagePairedElement.setAttribute("aria-hidden", true);
+  }
 }
 
 /**
@@ -132,7 +140,16 @@ function showClothingItem(buttonElement) {
 
   matchingImageElement.classList.remove("hidden");
   // Show it in the accessibility tree, too.
-  matchingImageElement.setAttribute("aria-hidden", null);
+  matchingImageElement.removeAttribute("aria-hidden");
+
+  const matchingImagePairedElementId = buttonElement.dataset.imgUrlPair;
+  if (matchingImagePairedElementId) {
+    const matchingImagePairedElement = document.getElementById(
+      matchingImagePairedElementId
+    );
+    matchingImagePairedElement.classList.remove("hidden");
+    matchingImagePairedElement.removeAttribute("aria-hidden");
+  }
 }
 
 /**
@@ -233,18 +250,25 @@ function setupGameFiles() {
     newImage.classList.add("hidden");
     newImage.classList.add("rat-image");
 
-    if (overrideZIndex) {
-      newImage.style.zIndex = overrideZIndex;
-    } else {
-      const clothingCategories = item.dataset.clothingCategory.split(",");
-      const clothingCategoryZIndices = clothingCategories.map(
-        (category) => allClothingClassesDict[category].zIndex
-      );
-      const maxZ = Math.max(...clothingCategoryZIndices);
-      newImage.style.zIndex = maxZ;
-    }
+    newImage.style.zIndex =
+      overrideZIndex !== undefined && overrideZIndex !== null
+        ? overrideZIndex
+        : allClothingClassesDict[item.dataset.clothingCategory].zIndex;
 
     imagesDisplayContainer.appendChild(newImage);
+
+    const imgUrlPair = item.dataset.imgUrlPair;
+    if (imgUrlPair) {
+      const pairImage = document.createElement("IMG");
+      pairImage.src = "assets/" + imgUrlPair;
+      pairImage.ariaLabel = item.textContent;
+      pairImage.id = imgUrlPair;
+      pairImage.classList.add("hidden");
+      pairImage.classList.add("rat-image");
+      pairImage.style.zIndex =
+        allClothingClassesDict[item.dataset.clothingCategory].background.zIndex;
+      imagesDisplayContainer.appendChild(pairImage);
+    }
   });
 }
 
