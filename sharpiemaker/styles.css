@@ -1,5 +1,5 @@
 :root {
-  --overlay-color: rgba(66, 66, 66, 0.85);
+  --overlay-color: rgba(59, 59, 59, 0.85);
   --big-text-color: white;
   --smaller-text-color: #ddd;
   --smaller-text-color-hover: #ccc;
@@ -7,6 +7,7 @@
   --smaller-text-color-selected: rgb(113, 47, 47);
   --smaller-text-color-selected-bg: rgb(70, 6, 6);
   --tab-height: 60px;
+  --spooky-orange: #ff9138;
 }
 
 body,
@@ -57,6 +58,10 @@ h3 {
   margin: 20px 0 8px 0;
 }
 
+#by-algorat {
+  margin-top: -12px;
+}
+
 hr {
   border-top: 1px solid var(--smaller-text-color);
   margin: 24px 0px;
@@ -86,8 +91,8 @@ hr {
   max-width: 1400px;
   display: flex;
   flex-direction: row;
-  padding-top: 20px;
   align-items: flex-start;
+  margin-top: -60px;
 }
 
 .rat-options {
@@ -106,6 +111,7 @@ hr {
   flex-basis: 700px;
   flex-grow: 0;
   flex-shrink: 1;
+  transform: scale(0.95) translateY(-30px);
 }
 
 .small-ratitude {
@@ -303,8 +309,8 @@ h1 {
 }
 
 .costume {
-  background-color: darkorange;
-  color: #000;
+  outline-color: var(--spooky-orange);
+  color: var(--spooky-orange);
 }
 
 @keyframes fadeIn {
@@ -314,4 +320,90 @@ h1 {
   to {
     opacity: 1;
   }
+}
+
+.halloween-button {
+  font-family: "Fraunces", serif;
+  color: var(--big-text-color);
+  font-size: 20px;
+  font-weight: 200;
+  font-style: italic;
+  font-variation-settings: "SOFT" 100;
+  letter-spacing: 0.8px;
+  margin: 20px 0 8px 0;
+  color: var(--spooky-orange);
+}
+
+.halloween-text {
+  margin-left: 8px;
+}
+
+#halloween-msg {
+  margin-top: -2px;
+  font-size: 18px;
+  color: var(--spooky-orange);
+  font-style: italic;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgb(181, 181, 181);
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 0px;
+  bottom: 0px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: var(--spooky-orange);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px var(--spooky-orange);
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(20px);
+  -ms-transform: translateX(20px);
+  transform: translateX(20px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
 }

@@ -16,12 +16,20 @@
   <body>
     <div class="container">
       <h1>SHARPIEMAKER</h1>
-      <h3>Made by ALGORat</h3>
+      <h3 id="by-algorat">Made by ALGORat</h3>
+      <h3 id="halloween-msg">Happy Halloween!</h3>
       <div class="rat-selection">
         <div class="col big-ratitude">
           <img class="rat-image" src="assets/sharpie.png" style="z-index: 9" />
         </div>
         <div class="col small-ratitude">
+          <div class="halloween-button">
+            <label class="switch">
+              <input type="checkbox" onclick="toggleIsHalloween()" />
+              <span class="slider round"></span>
+            </label>
+            <span class="halloween-text">Halloween</span>
+          </div>
           <div class="other-buttons">
             <button class="other-button" onclick="reset()">Restart!</button>
             <button class="other-button" onclick="randomize()">
@@ -42,8 +50,7 @@
 
             <!---------------------- 𝕸𝖔𝖚𝖙𝖍𝖘 ---------------------->
             <div class="page selected" data-tab-name="Salon">
-              <h2>Salon</h2>
-              <h2>Mouthes</h2>
+              <h2>Mouths</h2>
               <span
                 class="option"
                 data-clothing-category="mouth"

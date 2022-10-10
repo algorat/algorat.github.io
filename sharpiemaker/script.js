@@ -302,6 +302,23 @@ function saveImage() {
   newTab.document.body.innerHTML = `<img src=${url} style="width: 700px; max-width: 100vw;">`;
 }
 
+// Halloween mode, start with all off
+let isHalloween = false;
+document
+  .querySelectorAll(".costume")
+  .forEach((c) => (c.style.display = "none"));
+document.getElementById("halloween-msg").style.visibility = "hidden";
+
+function toggleIsHalloween() {
+  isHalloween = !isHalloween;
+  document
+    .querySelectorAll(".costume")
+    .forEach((c) => (c.style.display = isHalloween ? "" : "none"));
+  document.getElementById("halloween-msg").style.visibility = isHalloween
+    ? ""
+    : "hidden";
+}
+
 window.onload = () => {
   // Start the game!
   setupGameUi();
