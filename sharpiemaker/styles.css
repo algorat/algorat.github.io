@@ -69,7 +69,7 @@ hr {
 
 .container {
   padding: 48px;
-  padding-top: 38px;
+  padding-top: 60px;
   background: var(--overlay-color);
   border: 2px solid #000;
   border-radius: 8px;
@@ -113,7 +113,7 @@ hr {
   flex-basis: 700px;
   flex-grow: 0;
   flex-shrink: 1;
-  margin-top: -170px;
+  margin-top: -160px;
   margin-right: -80px;
 }
 
