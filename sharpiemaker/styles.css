@@ -107,10 +107,11 @@ hr {
 }
 
 .big-ratitude {
-  aspect-ratio: 7/10;
+  width: 700px;
+  height: 1000px;
   flex-basis: 700px;
   flex-grow: 0;
-  flex-shrink: 1;
+  flex-shrink: 0;
   margin-right: -80px;
   margin-top: -60px;
 }
@@ -410,7 +411,9 @@ input:checked + .slider:before {
   .big-ratitude {
     flex: none;
     width: 100%;
+    height: auto;
     margin: 0;
+    padding-bottom: 142%;
   }
 
   .small-ratitude {
