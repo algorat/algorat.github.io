@@ -46,6 +46,7 @@ h2 {
   font-variation-settings: "SOFT" 100;
   letter-spacing: 0.8px;
   margin: 20px 0px;
+  text-transform: capitalize;
 }
 
 h3 {
@@ -56,6 +57,7 @@ h3 {
   font-variation-settings: "SOFT" 100;
   letter-spacing: 0.8px;
   margin: 20px 0 8px 0;
+  text-transform: capitalize;
 }
 
 .title-mobile {

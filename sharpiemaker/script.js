@@ -79,9 +79,11 @@ function randomize() {
  *                 of some of the classes.
  */
 function displayRandomItem(category) {
-  const matches = document.querySelectorAll(
-    `.option[data-clothing-category="${category}"]`
-  );
+  let query = `.option:not(.costume)[data-clothing-category="${category}"]`;
+  if (isHalloween) {
+    query = `.option[data-clothing-category="${category}"]`;
+  }
+  const matches = document.querySelectorAll(query);
 
   const randomIndex = Math.floor(Math.random() * matches.length);
   showItemAndRemoveConflicts(matches[randomIndex]);
