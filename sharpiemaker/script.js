@@ -268,6 +268,8 @@ function setupGameFiles() {
     item.addEventListener("keydown", (evt) => {
       evt.key === "Enter" && toggleItem(evt);
     });
+
+    preloadImage("assets/" + item.dataset.imgUrl);
   });
 }
 
@@ -303,6 +305,12 @@ function saveImage() {
   const url = canvas.toDataURL("image/png");
   const newTab = window.open("", "_blank");
   newTab.document.body.innerHTML = `<img src=${url} style="width: 700px; max-width: 100vw;">`;
+}
+
+// preloads the image into the cache
+function preloadImage(url) {
+  let img = new Image();
+  img.src = url;
 }
 
 // Halloween mode, start with all off
