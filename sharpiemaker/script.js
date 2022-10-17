@@ -225,7 +225,9 @@ function getGameImage(item) {
     const newImage = document.createElement("IMG");
 
     newImage.src = "assets/" + imgUrl;
-    newImage.ariaLabel = item.textContent;
+    newImage.alt = `${
+      item.dataset.clothingCategory
+    } item with the style of ${item.textContent.trim()}`;
     newImage.id = imgUrl;
     newImage.classList.add("hidden");
     newImage.classList.add("rat-image");

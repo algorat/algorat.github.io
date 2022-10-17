@@ -27,7 +27,11 @@
           </div>
           <div class="halloween-button">
             <label class="switch">
-              <input type="checkbox" onclick="toggleIsHalloween()" />
+              <input
+                type="checkbox"
+                onclick="toggleIsHalloween()"
+                aria-label="Turn on halloween mode."
+              />
               <span class="slider round"></span>
             </label>
             <span class="halloween-text">Halloween</span>
@@ -43,7 +47,11 @@
           </div>
 
           <div class="rat-options">
-            <div class="rat-tab-container"></div>
+            <div
+              class="rat-tab-container"
+              aria-role="navigation"
+              aria-label="Tabs for choosing different clothing categories."
+            ></div>
             <!--             
             ███████  █████  ██       ██████  ███    ██ 
             ██      ██   ██ ██      ██    ██ ████   ██ 
@@ -1485,7 +1493,12 @@
           </div>
         </div>
         <div class="col big-ratitude">
-          <img class="rat-image" src="assets/sharpie.png" style="z-index: 9" />
+          <img
+            class="rat-image"
+            src="assets/sharpie.png"
+            style="z-index: 9"
+            alt="A rat named sharpie who has beige fur."
+          />
         </div>
       </div>
     </div>

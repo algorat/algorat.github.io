@@ -115,7 +115,8 @@ hr {
   flex-grow: 0;
   flex-shrink: 0;
   margin-right: -80px;
-  margin-top: -60px;
+  margin-top: -50px;
+  user-select: none;
 }
 
 .small-ratitude {
@@ -421,6 +422,6 @@ input:checked + .slider:before {
   .small-ratitude {
     flex: none;
     width: 100%;
-    margin-top: -40px;
+    margin-top: -30px;
   }
 }
