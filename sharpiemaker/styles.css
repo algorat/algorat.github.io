@@ -378,7 +378,11 @@ input:checked + .slider {
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px var(--spooky-orange);
+  outline: 4px solid var(--spooky-orange);
+}
+
+input:active + .slider {
+  outline: 4px solid var(--spooky-orange);
 }
 
 input:checked + .slider:before {
