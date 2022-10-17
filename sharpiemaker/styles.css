@@ -117,6 +117,7 @@ hr {
   margin-right: -80px;
   margin-top: -50px;
   user-select: none;
+  pointer-events: none;
 }
 
 .small-ratitude {
