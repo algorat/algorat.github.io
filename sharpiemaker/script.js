@@ -26,6 +26,7 @@ const soloCategoryClasses = {
   sleeves: { zIndex: 11 },
   contacts: { zIndex: 18 },
   belts: { zIndex: 14 },
+  suspenders: { zIndex: 14 },
   bags: { zIndex: 21 },
   headgear: { zIndex: 31 },
   glasses: { zIndex: 30 },
@@ -39,6 +40,7 @@ const multiCategoryClasses = {
   jewels: { zIndex: 20 },
   facemakeup: { zIndex: 20 },
   vest: { zIndex: 25 },
+  backattachments: { zIndex: 5 },
 };
 
 /** All of the clothing classes, as a dict. */
