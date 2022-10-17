@@ -64,7 +64,6 @@ const loadedUrls = new Set();
 
 /** Randomizes the clothing shown. */
 function randomize() {
-  console.log("randomize 3");
   reset(false);
   // Display one random item from each category type.
   clothingCategoriesForRandomize.forEach((clothingCategory) => {
@@ -81,7 +80,7 @@ function randomize() {
  */
 function displayRandomItem(category) {
   const matches = document.querySelectorAll(
-    `[data-clothing-category="${category}"]`
+    `.option[data-clothing-category="${category}"]`
   );
 
   const randomIndex = Math.floor(Math.random() * matches.length);
@@ -160,7 +159,7 @@ function hideConflictingItems(element) {
   }
 
   const matches = document.querySelectorAll(
-    `[data-clothing-category="${clothingCategory}"]`
+    `.option[data-clothing-category="${clothingCategory}"]`
   );
   matches.forEach((soloClassItem) => {
     if (!isHidden(soloClassItem) && soloClassItem !== element) {
@@ -176,8 +175,12 @@ function reset(setDefault = true) {
   const allOptions = [...document.querySelectorAll(".option.checked")];
   allOptions.forEach((optionButton) => hideClothingItem(optionButton));
   if (!setDefault) return;
-  showClothingItem(document.querySelector(`[data-clothing-category="mouth"]`));
-  showClothingItem(document.querySelector(`[data-clothing-category="shoes"]`));
+  showClothingItem(
+    document.querySelector(`.option[data-clothing-category="mouth"]`)
+  );
+  showClothingItem(
+    document.querySelector(`.option[data-clothing-category="shoes"]`)
+  );
 }
 
 function switchToTab(evt) {
