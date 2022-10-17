@@ -307,16 +307,18 @@ let isHalloween = false;
 document
   .querySelectorAll(".costume")
   .forEach((c) => (c.style.display = "none"));
-document.getElementById("halloween-msg").style.visibility = "hidden";
+document
+  .querySelectorAll(".halloween-msg")
+  .forEach((ele) => (ele.style.visibility = "hidden"));
 
 function toggleIsHalloween() {
   isHalloween = !isHalloween;
   document
     .querySelectorAll(".costume")
     .forEach((c) => (c.style.display = isHalloween ? "" : "none"));
-  document.getElementById("halloween-msg").style.visibility = isHalloween
-    ? ""
-    : "hidden";
+  document
+    .querySelectorAll(".halloween-msg")
+    .forEach((ele) => (ele.style.visibility = isHalloween ? "" : "hidden"));
 }
 
 window.onload = () => {
