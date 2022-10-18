@@ -1,7 +1,3 @@
-/** TODOS...
- * 1. Make sure one shoe / mouth is always selected.
- */
-
 // Global image container to stack images onto.
 const imagesDisplayContainer = document.querySelector(".big-ratitude");
 // TODO
@@ -19,7 +15,15 @@ const soloCategoryClasses = {
   shirt: { zIndex: 13, background: { zIndex: 6 } },
   pants: { zIndex: 12 },
   socks: { zIndex: 10 },
-  shoes: { zIndex: 11 },
+  shoes: {
+    zIndex: 11,
+    matchCategory: "socks",
+    defaultMatch: "bare",
+    matches: {
+      flat: "-feet.PNG",
+      pumps: "-pumps-feet.PNG",
+    },
+  },
   mouth: { zIndex: 30 },
   eyemakeup: { zIndex: 21 },
   jacket: { zIndex: 25, background: { zIndex: 5 } },
@@ -31,6 +35,9 @@ const soloCategoryClasses = {
   headgear: { zIndex: 31 },
   glasses: { zIndex: 30 },
 };
+
+// TODO
+let matchState = {};
 
 /**
  * Clothing types that can stack, like jewelry and makeup.
@@ -62,6 +69,7 @@ const clothingCategoriesForRandomize = [
   "facemakeup",
 ];
 
+// TODO
 const loadedUrls = new Set();
 
 /** Randomizes the clothing shown. */
@@ -91,6 +99,17 @@ function displayRandomItem(category) {
   showItemAndRemoveConflicts(matches[randomIndex]);
 }
 
+/** TODO */
+function toggleImage(img, visible) {
+  if (!visible) {
+    img.classList.add("hidden");
+    img.setAttribute("aria-hidden", true);
+  } else {
+    img.classList.remove("hidden");
+    img.removeAttribute("aria-hidden");
+  }
+}
+
 /** Checks if the element is hidden already. */
 function isHidden(element) {
   return !element.classList.contains("checked");
@@ -114,12 +133,27 @@ function hideClothingItem(buttonElement) {
 
   const matchingImages = getGameImage(buttonElement);
 
-  matchingImages.forEach((image) => {
-    // Hide from view
-    image.classList.add("hidden");
-    // Hide from accessibility tree, too.
-    image.setAttribute("aria-hidden", true);
-  });
+  matchingImages.forEach((image) => toggleImage(image, false));
+
+  const { matchPrefix, matchPostfix, clothingCategory } = buttonElement.dataset;
+
+  if (matchPrefix !== null && matchPrefix !== undefined) {
+    if (matchState[clothingCategory].prefix === matchPrefix) {
+      matchState[clothingCategory].prefix =
+        matchState[clothingCategory].defaultValue;
+    }
+  }
+
+  if (matchPostfix !== null && matchPostfix !== undefined) {
+    const { matchCategory } = allClothingClassesDict[clothingCategory];
+    if (matchState[matchCategory].postfix === matchPostfix) {
+      matchState[matchCategory].postfix = Object.keys(
+        matchState[matchCategory].filePaths
+      )[0];
+    }
+  }
+
+  updateMatchedState();
 }
 
 /**
@@ -131,9 +165,38 @@ function showClothingItem(buttonElement) {
 
   const matchingImages = getGameImage(buttonElement);
 
-  matchingImages.forEach((image) => {
-    image.classList.remove("hidden");
-    image.removeAttribute("aria-hidden");
+  matchingImages.forEach((image) => toggleImage(image, true));
+
+  const { clothingCategory, matchPostfix, matchPrefix } = buttonElement.dataset;
+
+  if (matchPostfix !== undefined && matchPostfix !== null) {
+    const { matchCategory } = allClothingClassesDict[clothingCategory];
+    matchState[matchCategory].postfix = matchPostfix;
+  }
+
+  if (matchPrefix !== undefined && matchPrefix !== null) {
+    matchState[clothingCategory].prefix = matchPrefix;
+  }
+
+  updateMatchedState();
+}
+
+/** TODO */
+function updateMatchedState() {
+  Object.keys(matchState).forEach((matchKey) => {
+    const matchClass = `match-${matchKey}`;
+    const matches = document.querySelectorAll(`.${matchClass}:not(.hidden)`);
+    matches.forEach((img) => toggleImage(img, false));
+
+    const { prefix, postfix, filePaths } = matchState[matchKey];
+
+    // If postfix is "" then we don't show the match.
+    if (postfix.length > 0) {
+      const imgUrl = `${prefix}${filePaths[postfix]}`;
+      const image = getGameImageWithUrl(imgUrl, matchKey)[0];
+      image.classList.add(matchClass);
+      toggleImage(image, true);
+    }
   });
 }
 
@@ -178,12 +241,12 @@ function hideConflictingItems(element) {
 function reset(setDefault = true) {
   const allOptions = [...document.querySelectorAll(".option.checked")];
   allOptions.forEach((optionButton) => hideClothingItem(optionButton));
+
+  processGameMatchesMetadata();
+
   if (!setDefault) return;
   showClothingItem(
     document.querySelector(`.option[data-clothing-category="mouth"]`)
-  );
-  showClothingItem(
-    document.querySelector(`.option[data-clothing-category="shoes"]`)
   );
 }
 
@@ -216,51 +279,79 @@ function setupGameUi() {
   });
 }
 
+function processGameMatchesMetadata() {
+  matchState = {};
+  const keys = Object.keys(allClothingClassesDict);
+  const clothingWithMatches = keys.filter(
+    (key) => !!allClothingClassesDict[key].matchCategory
+  );
+  clothingWithMatches.forEach((key) => {
+    const val = allClothingClassesDict[key];
+    matchState[val.matchCategory] = {
+      prefix: val.defaultMatch,
+      postfix: Object.keys(val.matches)[0],
+      filePaths: val.matches,
+      defaultValue: val.defaultMatch,
+    };
+  });
+
+  updateMatchedState();
+}
+
 function getGameImage(item) {
+  return getGameImageWithUrl(
+    item.dataset.imgUrl,
+    item.dataset.clothingCategory,
+    item.dataset.overrideZindex,
+    item.textContent.trim(),
+    item.dataset.imgUrlPair
+  );
+}
+
+function getGameImageWithUrl(
+  imgUrl,
+  clothingCategory,
+  overrideZindex = undefined,
+  altText = "",
+  imgUrlPair = undefined
+) {
   const imageElements = [];
-  const imgUrl = item.dataset.imgUrl;
 
   if (!loadedUrls.has(imgUrl)) {
-    const overrideZIndex = item.dataset.overrideZindex;
     const newImage = document.createElement("IMG");
 
     newImage.src = "assets/" + imgUrl;
-    newImage.alt = `${
-      item.dataset.clothingCategory
-    } item with the style of ${item.textContent.trim()}`;
+    newImage.alt = `${clothingCategory} item with the style of ${altText}`;
     newImage.id = imgUrl;
     newImage.classList.add("hidden");
     newImage.classList.add("rat-image");
 
     newImage.style.zIndex =
-      overrideZIndex !== undefined && overrideZIndex !== null
-        ? overrideZIndex
-        : allClothingClassesDict[item.dataset.clothingCategory].zIndex;
+      overrideZindex !== undefined && overrideZindex !== null
+        ? overrideZindex
+        : allClothingClassesDict[clothingCategory].zIndex;
 
     imagesDisplayContainer.appendChild(newImage);
 
     imageElements.push(newImage);
     loadedUrls.add(imgUrl);
 
-    const imgUrlPair = item.dataset.imgUrlPair;
     if (imgUrlPair) {
       const pairImage = document.createElement("IMG");
       pairImage.src = "assets/" + imgUrlPair;
-      pairImage.ariaLabel = item.textContent;
+      newImage.alt = "";
       pairImage.id = imgUrlPair;
       pairImage.classList.add("hidden");
       pairImage.classList.add("rat-image");
       pairImage.style.zIndex =
-        allClothingClassesDict[item.dataset.clothingCategory].background.zIndex;
+        allClothingClassesDict[clothingCategory].background.zIndex;
       imagesDisplayContainer.appendChild(pairImage);
       imageElements.push(pairImage);
     }
   } else {
     imageElements.push(document.getElementById(imgUrl));
-    const imgUrlPair = item.dataset.imgUrlPair;
     imgUrlPair && imageElements.push(document.getElementById(imgUrlPair));
   }
-
   return imageElements;
 }
 
