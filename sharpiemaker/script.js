@@ -31,7 +31,7 @@ const soloCategoryClasses = {
   contacts: { zIndex: 18 },
   belts: { zIndex: 14 },
   suspenders: { zIndex: 14 },
-  bags: { zIndex: 21 },
+  bags: { zIndex: 31 },
   headgear: { zIndex: 31 },
   glasses: { zIndex: 30 },
 };
