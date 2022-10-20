@@ -14,9 +14,9 @@ const allPages = document.querySelectorAll(".page");
 const soloCategoryClasses = {
   shirt: { zIndex: 13, background: { zIndex: 6 } },
   pants: { zIndex: 12 },
-  socks: { zIndex: 10 },
+  socks: { zIndex: 9 },
   shoes: {
-    zIndex: 11,
+    zIndex: 10,
     matchCategory: "socks",
     defaultMatch: "bare",
     matches: {
@@ -24,6 +24,7 @@ const soloCategoryClasses = {
       pumps: "-pumps-feet.PNG",
     },
   },
+  stockings: { zIndex: 8 },
   mouth: { zIndex: 30 },
   eyemakeup: { zIndex: 21 },
   jacket: { zIndex: 25, background: { zIndex: 5 } },
@@ -61,6 +62,7 @@ const clothingCategoriesForRandomize = [
   "shirt",
   "pants",
   "shoes",
+  "socks",
   "mouth",
   "eyemakeup",
   "sleeves",
