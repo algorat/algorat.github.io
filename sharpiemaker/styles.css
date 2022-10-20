@@ -24,6 +24,10 @@ html {
   background-size: 800px 600px;
 }
 
+a {
+  color: var(--spooky-orange);
+}
+
 * {
   box-sizing: border-box;
   position: relative;
