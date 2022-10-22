@@ -18,7 +18,7 @@ const soloCategoryClasses = {
   shoes: {
     zIndex: 10,
     matchCategory: "socks",
-    defaultMatch: "bare",
+    defaultMatch: "socks/bare",
     matches: {
       flat: "-feet.PNG",
       pumps: "-pumps-feet.PNG",
