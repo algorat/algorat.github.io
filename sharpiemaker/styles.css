@@ -105,7 +105,7 @@ hr {
   overflow-y: scroll;
   background-color: #1a1a1a;
   padding: 24px;
-  height: 100%;
+  height: calc(100% - 50px);
   border-radius: 8px;
   flex-shrink: 1;
   padding-top: var(--tab-height);
@@ -125,6 +125,7 @@ hr {
 }
 
 .small-ratitude {
+  height: 100vh;
   flex-basis: 300px;
   flex-grow: 1;
   flex-shrink: 0;
