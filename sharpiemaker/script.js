@@ -20,8 +20,8 @@ const soloCategoryClasses = {
     matchCategory: "socks",
     defaultMatch: "socks/bare",
     matches: {
-      flat: "-feet.PNG",
-      pumps: "-pumps-feet.PNG",
+      flat: "-feet.png",
+      pumps: "-pumps-feet.png",
     },
   },
   stockings: { zIndex: 8 },
@@ -35,7 +35,7 @@ const soloCategoryClasses = {
   bags: { zIndex: 31 },
   headgear: { zIndex: 31 },
   glasses: { zIndex: 30 },
-  nails: {zIndex:10}
+  nails: { zIndex: 10 },
 };
 
 // TODO
@@ -70,7 +70,7 @@ const clothingCategoriesForRandomize = [
   "bags",
   "jewels",
   "facemakeup",
-  "nails"
+  "nails",
 ];
 
 // TODO
