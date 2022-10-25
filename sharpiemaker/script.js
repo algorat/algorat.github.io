@@ -63,7 +63,6 @@ const clothingCategoriesForRandomize = [
   "shirt",
   "pants",
   "shoes",
-  "socks",
   "mouth",
   "eyemakeup",
   "sleeves",
