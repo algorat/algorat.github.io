@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Irish+Grover" /> -->
+    <!-- <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Just+Me+Again+Down+Here" /> -->
+    
+    <title>Title of the document</title>
+    <style>
+      body{
+        background-image: url("./imgs/bg.png");
+        background-repeat: repeat;
+      }
+      div {
+        width: 196px;
+        height: 236px;
+        background-color: #45d169;
+      }
+      .rotated35 {
+        -webkit-transform: rotate(35deg);
+        -moz-transform: rotate(35deg);
+        -o-transform: rotate(35deg);
+        transform: rotate(35deg);
+        background-color: #3e6ac2;
+      }
+      .rotated20 {
+        -webkit-transform: rotate(20deg);
+        -moz-transform: rotate(20deg);
+        -o-transform: rotate(20deg);
+        transform: rotate(20deg);
+        background-color: #3e6ac2;
+      }
+      .rotated340 {
+        -webkit-transform: rotate(340deg);
+        -moz-transform: rotate(340deg);
+        -o-transform: rotate(340deg);
+        transform: rotate(340deg);
+        background-color: #3e6ac2;
+      }
+
+
+      .cardContent{
+        padding-top: 10%;
+      }
+
+      img{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 80%;
+      }
+      h1 {
+        text-align: center;
+        font-family: "Irish Grover", serif;
+      }
+      h2 {
+        text-align: center;
+        font-family: "Just Me Again Down Here", sans-serif;
+      }
+      h3 {
+        text-align: center;
+        font-family: "Just Me Again Down Here", sans-serif;
+      }
+
+      .cardTray{
+        background-color: #D9D9D9;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+        display: grid;
+        padding-left: 30px;
+        /* define the number of grid columns */
+        grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) );
+      }
+
+      .card{
+        background-color: deepPink;
+        /* padding: 20px; */
+        color: #fff;
+        border: 1px solid #fff;  
+        padding-left: 40px;      
+      }
+
+    </style>
+  </head>
+  <body>
+    <h1>Algocards</h1>
+    <h2>Send your favorite Rat a special e-card for their special day!</h2>
+    <div class="cardTray">
+      
+      <div class="card">
+        <a href="https://algorat.club/grad/index.html">
+          <div class="rotated20">
+            <div class="cardContent">
+                <img src="./imgs/grad.png">
+                <h3>Rotated</h3>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="card">
+        <div class="rotated35">
+            <div class="cardContent">
+                <img src="./imgs/grad.png">
+                <h3>roto more</h3>
+            </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="rotated340">
+            <div class="cardContent">
+                <img src="./imgs/grad.png">
+                <h3>roto more</h3>
+            </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <!-- <div class="rotated35"> -->
+            <div class="cardContent">
+                <img src="./imgs/grad.png">
+                <h3>roto more</h3>
+            </div>
+        </div>
+      <!-- </div> -->
+    </div>
+
+
+  </body>
+</html>

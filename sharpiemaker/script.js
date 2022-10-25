@@ -35,6 +35,7 @@ const soloCategoryClasses = {
   bags: { zIndex: 31 },
   headgear: { zIndex: 31 },
   glasses: { zIndex: 30 },
+  nails: {zIndex:10}
 };
 
 // TODO
@@ -69,6 +70,7 @@ const clothingCategoriesForRandomize = [
   "bags",
   "jewels",
   "facemakeup",
+  "nails"
 ];
 
 // TODO
