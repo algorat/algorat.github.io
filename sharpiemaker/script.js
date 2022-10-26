@@ -420,16 +420,17 @@ document
   .forEach((c) => (c.style.display = "none"));
 document
   .querySelectorAll(".halloween-msg")
-  .forEach((ele) => (ele.style.visibility = "hidden"));
+  .forEach((ele) => (ele.style.display = "none"));
 
 function toggleIsHalloween() {
   isHalloween = !isHalloween;
+  document.body.classList.toggle("halloween");
   document
     .querySelectorAll(".costume")
     .forEach((c) => (c.style.display = isHalloween ? "" : "none"));
   document
     .querySelectorAll(".halloween-msg")
-    .forEach((ele) => (ele.style.visibility = isHalloween ? "" : "hidden"));
+    .forEach((ele) => (ele.style.display = isHalloween ? "" : "none"));
 }
 
 window.onload = () => {

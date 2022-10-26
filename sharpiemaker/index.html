@@ -12,18 +12,91 @@
     <link rel="shortcut icon" type="image/ico" href="favicon.ico" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
+
+    <!-- We use Google Analytics just to keep track of pageviews. -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-0SNS2N7HEB"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-0SNS2N7HEB");
+    </script>
   </head>
   <body>
+    <div class="halloween-overlay">
+      <img
+        class="top-1 left-1 rotation-1"
+        src="assets/pumpkins/candy1.png"
+        alt=""
+      />
+      <img class="top-2 left-2" src="assets/pumpkins/pumpkin1.png" alt="" />
+      <img class="top-3 left-3" src="assets/pumpkins/candy2.png" alt="" />
+      <img class="top-4 left-1" src="assets/pumpkins/candy5.png" alt="" />
+      <img
+        class="top-5 left-2 rotation-2"
+        src="assets/pumpkins/candy3.png"
+        alt=""
+      />
+      <img class="bottom-1 left-1" src="assets/pumpkins/candy4.png" alt="" />
+      <img
+        class="bottom-2 left-3 rotation-3"
+        src="assets/pumpkins/pumpkin2.png"
+        alt=""
+      />
+      <img class="bottom-3 left-2" src="assets/pumpkins/pumpkin3.png" alt="" />
+      <img class="bottom-4 left-1" src="assets/pumpkins/candy6.png" alt="" />
+      <img
+        class="top-1 right-1 rotation-1"
+        src="assets/pumpkins/pumpkin1.png"
+        alt=""
+      />
+      <img class="top-2 right-2" src="assets/pumpkins/candy1.png" alt="" />
+      <img class="top-3 right-1" src="assets/pumpkins/pumpkin2.png" alt="" />
+      <img class="top-4 right-3" src="assets/pumpkins/candy2.png" alt="" />
+      <img
+        class="top-5 right-1 rotation-1"
+        src="assets/pumpkins/candy5.png"
+        alt=""
+      />
+      <img
+        class="bottom-1 right-2 rotation-1"
+        src="assets/pumpkins/candy6.png"
+        alt=""
+      />
+      <img
+        class="bottom-2 right-3 rotation-2"
+        src="assets/pumpkins/pumpkin2.png"
+        alt=""
+      />
+      <img class="bottom-3 right-1" src="assets/pumpkins/pumpkin3.png" alt="" />
+      <img
+        class="bottom-4 right-1 rotation-1"
+        src="assets/pumpkins/candy3.png"
+        alt=""
+      />
+    </div>
     <div class="container">
       <div class="title-mobile">
         <h1>SHARPIEMAKER by <a href="https://algorat.club">Algorat</a></h1>
-        <h3 class="halloween-msg">Happy Halloween!</h3>
+        <h4 class="intro">
+          Help Sharpie the Rat choose an outfit
+          <span class="halloween-msg"> ...or a Halloween costume</span>
+        </h4>
       </div>
       <div class="rat-selection">
         <div class="col small-ratitude">
           <div class="title-desktop">
             <h1>SHARPIEMAKER by <a href="https://algorat.club">Algorat</a></h1>
-            <h3 class="halloween-msg">Happy Halloween!</h3>
+            <h4 class="intro">
+              Help Sharpie the Rat choose an outfit
+              <span class="halloween-msg"> ...or a Halloween costume</span>
+            </h4>
           </div>
           <div class="halloween-button">
             <label class="switch">
@@ -503,6 +576,7 @@
                 class="option"
                 data-clothing-category="vest"
                 data-img-url="vest/greenVest.png"
+                data-override-zindex="26"
               >
                 green floofy vest
               </span>
@@ -731,7 +805,7 @@
                 bike shorts
               </span>
               <span
-                class="option"
+                class="option costume"
                 data-clothing-category="pants"
                 data-img-url="pants/itPants.png"
               >
@@ -888,7 +962,7 @@
               <span
                 class="option"
                 data-clothing-category="pants"
-                data-img-url="dresses/leotard-beige.png"
+                data-img-url="pants/leotard-beige.png"
                 data-override-zindex="10"
                 >leotard (beige)</span
               >
@@ -936,7 +1010,7 @@
               >
               <span
                 class="option costume"
-                data-clothing-category="shirt"
+                data-clothing-category="pants"
                 data-img-url="dresses/historicallyInacurateDress.png"
                 data-override-zindex="13"
                 >historically inacurate dress</span
@@ -2033,7 +2107,7 @@
                 flower glasses
               </span>
               <span
-                class="option"
+                class="option costume"
                 data-clothing-category="glasses"
                 data-img-url="glasses/disguise.png"
               >

@@ -7,7 +7,11 @@
   --smaller-text-color-selected: rgb(113, 47, 47);
   --smaller-text-color-selected-bg: rgb(70, 6, 6);
   --tab-height: 60px;
-  --spooky-orange: #ff9138;
+  --spooky-orange: #ffa358;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body,
@@ -15,6 +19,9 @@ html {
   margin: 0px;
   width: 100%;
   min-height: 100%;
+}
+
+body {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -22,6 +29,7 @@ html {
   padding: 8px;
   background-image: url("assets/page_background.png");
   background-size: 800px 600px;
+  transition: background 300ms;
 }
 
 a {
@@ -74,10 +82,12 @@ hr {
 }
 
 .container {
-  padding: 0 48px 12px 48px;
+  padding: 0 48px 0px 48px;
   background: var(--overlay-color);
   border: 2px solid #000;
   border-radius: 8px;
+  overflow: hidden;
+  transition: background 300ms;
 }
 
 .col {
@@ -102,10 +112,9 @@ hr {
 }
 
 .rat-options {
-  overflow-y: scroll;
+  overflow: hidden;
+  height: 100%;
   background-color: #1a1a1a;
-  padding: 24px;
-  height: calc(100% - 50px);
   border-radius: 8px;
   flex-shrink: 1;
   padding-top: var(--tab-height);
@@ -221,10 +230,37 @@ h1 {
 .page {
   display: none;
   min-height: 400px;
+  height: 100%;
+  padding: 24px;
+  overflow-y: auto;
 }
 
 .page.selected {
   display: block;
+}
+
+/* width */
+.page::-webkit-scrollbar {
+  width: 12px;
+  border-top: 1px solid var(--big-text-color);
+}
+
+/* Track */
+.page::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+.page::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 6px;
+  border: 2px solid #444;
+}
+
+/* Handle on hover */
+.page::-webkit-scrollbar-thumb:hover {
+  background: #555;
+  cursor: pointer;
 }
 
 .rat-tab-container {
@@ -331,12 +367,16 @@ h1 {
   margin-left: 8px;
 }
 
-.halloween-msg {
+.intro {
   margin: 0;
   font-size: 16px;
   line-height: 16px;
-  color: var(--spooky-orange);
   font-style: italic;
+  color: var(--big-text-color);
+}
+
+.intro::after {
+  content: "!";
 }
 
 /* The switch - the box around the slider */
@@ -380,15 +420,15 @@ h1 {
 }
 
 input:checked + .slider {
-  background-color: var(--spooky-orange);
+  background-color: var(--smaller-text-color-selected);
 }
 
 input:focus + .slider {
-  outline: 4px solid var(--spooky-orange);
+  outline: 4px solid var(--smaller-text-color-selected);
 }
 
 input:active + .slider {
-  outline: 4px solid var(--spooky-orange);
+  outline: 4px solid var(--smaller-text-color-selected);
 }
 
 input:checked + .slider:before {
@@ -406,11 +446,191 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
-/*smaller size media query*/
+.halloween-overlay {
+  display: none;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.halloween-overlay > * {
+  position: absolute;
+  width: 100px;
+}
+
+.top-1 {
+  top: 8px;
+}
+
+.top-2 {
+  top: 15%;
+}
+
+.top-3 {
+  top: 20%;
+}
+
+.top-4 {
+  top: 33%;
+}
+
+.top-5 {
+  top: 42%;
+}
+
+.bottom-1 {
+  bottom: 0px;
+}
+
+.bottom-2 {
+  bottom: 20%;
+}
+
+.bottom-3 {
+  bottom: 30%;
+}
+
+.bottom-4 {
+  bottom: 40%;
+}
+
+.bottom-5 {
+  bottom: 45%;
+}
+
+.left-1 {
+  left: -3vw;
+}
+
+.left-2 {
+  left: 0vw;
+}
+
+.left-3 {
+  left: 8px;
+}
+
+.right-1 {
+  right: -3vw;
+}
+
+.right-2 {
+  right: 0vw;
+}
+
+.right-3 {
+  right: 3vw;
+}
+
+.rotation-1 {
+  transform: rotateZ(-10deg);
+}
+
+.rotation-2 {
+  transform: rotateZ(30deg);
+}
+
+.rotation-3 {
+  transform: rotateZ(-20deg);
+}
+
+body.halloween {
+  background: rgb(255, 183, 121);
+}
+
+body.halloween .halloween-overlay {
+  display: block;
+}
+
+/* Halloween settings for larger desktop. */
+@media (min-width: 1000px) {
+  body.halloween h1 {
+    color: black;
+  }
+
+  body.halloween .intro {
+    color: black;
+  }
+
+  body.halloween a {
+    color: rgb(113, 47, 47);
+  }
+
+  body.halloween .halloween-button {
+    color: black;
+  }
+
+  body.halloween .container {
+    background: linear-gradient(90deg, #ff9138dd 27%, var(--overlay-color) 63%);
+  }
+}
+
+/* Compact desktop */
+@media (max-width: 1600px) {
+  h1 {
+    margin-bottom: 3vh;
+  }
+
+  .container {
+    max-width: 92vw;
+  }
+
+  .halloween-overlay {
+    z-index: -1;
+  }
+
+  .halloween-overlay > * {
+    width: 120px;
+  }
+
+  .left-1 {
+    left: -3vw;
+  }
+
+  .left-2 {
+    left: 3vw;
+  }
+
+  .left-3 {
+    left: 5vw;
+  }
+
+  .right-1 {
+    right: -3vw;
+  }
+
+  .right-2 {
+    right: 5vw;
+  }
+
+  .right-3 {
+    right: 10vw;
+  }
+}
+
+/* ipad size-ish */
 @media (max-width: 1000px) {
+  h1 {
+    margin-top: 3vh;
+    margin-bottom: 2vh;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
+    align-items: stretch;
+    max-width: 85vw;
+    background-color: #333333bb;
+  }
+
   .rat-selection {
     flex-direction: column-reverse;
-    max-width: 80vw;
+    width: 100%;
   }
 
   .title-desktop {
@@ -433,5 +653,51 @@ input:checked + .slider:before {
     flex: none;
     width: 100%;
     margin-top: -30px;
+  }
+
+  body.halloween .container {
+    background: rgb(43, 43, 43);
+  }
+
+  .left-1 {
+    left: -10vw;
+  }
+
+  .left-2 {
+    left: -5vw;
+  }
+
+  .left-3 {
+    left: 0px;
+  }
+
+  .right-1 {
+    right: -10vw;
+  }
+
+  .right-2 {
+    right: 0vw;
+  }
+
+  .right-3 {
+    right: 12vw;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 20px;
+  }
+
+  h1 {
+    margin-top: 8px;
+  }
+
+  .container {
+    padding: 12px;
+  }
+
+  .page {
+    padding: 12px;
   }
 }
