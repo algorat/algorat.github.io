@@ -546,27 +546,24 @@ body.halloween .halloween-overlay {
   display: block;
 }
 
-/* Halloween settings for larger desktop. */
-@media (min-width: 1000px) {
-  body.halloween h1 {
-    color: black;
-  }
+body.halloween h1 {
+  color: black;
+}
 
-  body.halloween .intro {
-    color: black;
-  }
+body.halloween .intro {
+  color: black;
+}
 
-  body.halloween a {
-    color: rgb(113, 47, 47);
-  }
+body.halloween a {
+  color: rgb(113, 47, 47);
+}
 
-  body.halloween .halloween-button {
-    color: black;
-  }
+body.halloween .halloween-button {
+  color: black;
+}
 
-  body.halloween .container {
-    background: linear-gradient(90deg, #ff9138dd 27%, var(--overlay-color) 63%);
-  }
+body.halloween .container {
+  background: #ff9138dd;
 }
 
 /* Compact desktop */
@@ -625,7 +622,6 @@ body.halloween .halloween-overlay {
     padding-bottom: 20px;
     align-items: stretch;
     max-width: 85vw;
-    background-color: #333333bb;
   }
 
   .rat-selection {
@@ -653,10 +649,6 @@ body.halloween .halloween-overlay {
     flex: none;
     width: 100%;
     margin-top: -30px;
-  }
-
-  body.halloween .container {
-    background: rgb(43, 43, 43);
   }
 
   .left-1 {
@@ -694,7 +686,7 @@ body.halloween .halloween-overlay {
   }
 
   .container {
-    padding: 12px;
+    padding: 16px;
   }
 
   .page {
