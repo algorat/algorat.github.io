@@ -4,7 +4,7 @@ body {
   align-items: center;
   background-image: url(./img/algorats.png);
   color: white;
-  font-family: 'Fraunces', 'Courier New', Courier, monospace;
+  font-family: "Fraunces", "Courier New", Courier, monospace;
   cursor: pointer;
   position: relative;
 }
@@ -34,7 +34,7 @@ a {
 h1 {
   margin-bottom: -5px;
   margin-top: 20px;
-  font-family: 'Bungee';
+  font-family: "Bungee";
   font-weight: normal;
   font-size: 60px;
   padding: 15px;
@@ -42,23 +42,29 @@ h1 {
 }
 
 .proj-title a {
-  font-family: 'Yusei Magic';
-  color: rgb(191, 127, 42);
+  font-family: "Yusei Magic";
+  color: rgb(132, 90, 35);
   font-size: 40px;
+  line-height: 110%;
+  text-align: center;
 }
 
 .proj-title {
   margin-bottom: 5px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 12px;
 }
 
 .project p {
   font-size: 20px;
-  color: rgb(227, 169, 93);
+  color: rgb(196, 141, 68);
   text-align: center;
+  width: 90%;
 }
 
 img {
-  width: 700px;
+  width: 100%;
 }
 
 .project img {
@@ -74,6 +80,8 @@ img {
   background-color: rgb(255, 246, 222);
   color: black;
   border-radius: 30px;
+  width: 700px;
+  max-width: 85vw;
 }
 
 .project p {
@@ -112,7 +120,7 @@ img {
 }
 
 #bday-card-text h1 {
-  font-family: 'Yusei Magic';
+  font-family: "Yusei Magic";
   color: rgb(191, 127, 42);
   font-size: 40px;
   margin-top: 5px;
