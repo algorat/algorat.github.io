@@ -384,13 +384,13 @@ h1 {
 .costume {
   outline-color: var(--spooky-color);
   color: var(--spooky-color);
-  opacity: 0.25;
+  opacity: 0.35;
   animation: fadeIn2 500ms 500ms forwards;
 }
 
 @keyframes fadeIn2 {
   from {
-    opacity: 0.25;
+    opacity: 0.35;
   }
   to {
     opacity: 1;
