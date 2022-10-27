@@ -8,7 +8,7 @@
   --smaller-text-color-selected: rgb(113, 47, 47);
   --smaller-text-color-selected-bg: rgb(70, 6, 6);
   --tab-height: 60px;
-  --spooky-color: #ffa358;
+  --spooky-color: #a8009d;
 }
 
 * {
@@ -163,12 +163,14 @@ hr {
   font-size: 18px;
   outline-offset: -1px;
   outline: 1px dashed var(--smaller-text-color-outline);
+  /* background: #c25700; */
 }
 
 .option:hover {
   color: var(--smaller-text-color-hover);
   outline-offset: -1px;
   outline: 1px solid var(--smaller-text-color-hover);
+  background: #000;
 }
 
 .option:active,
@@ -581,6 +583,9 @@ input:checked + .slider:before {
 
 body.halloween {
   background: rgb(255, 183, 121);
+  background-image: url("./assets/candybg.png");
+  background-repeat: repeat;
+  background-size: 50%;
 }
 
 body.halloween .halloween-overlay {
@@ -588,20 +593,20 @@ body.halloween .halloween-overlay {
 }
 
 body.halloween .rat-options {
-  background: #ffb376;
-  --big-text-color: #000;
-  --smaller-text-color: #000;
-  --smaller-text-color-outline: #00000056;
+  background-image: url("./assets/page_background_halloween2.png");
+  background-repeat: repeat;
+  /* background: rgb(107, 5, 90); */
+  --big-text-color: rgb(255, 174, 0);
+  --smaller-text-color: rgb(226, 180, 238);
+  --smaller-text-color-outline: rgb(178, 140, 223);
   --smaller-text-color-hover: rgb(114, 10, 114);
-  --color-active: rgb(114, 10, 114);
-  --smaller-text-color-selected: rgb(205, 156, 255);
-  --smaller-text-color-selected-bg: rgb(136, 33, 180);
-  --spooky-color: rgb(146, 0, 10);
+  --color-active: rgb(255, 255, 255);
+  --smaller-text-color-selected-bg: rgb(53, 10, 49);
+  --smaller-text-color-selected: rgb(92, 6, 82);
+  --spooky-color: rgb(255, 174, 0);
+  /* rgb(184, 152, 221); */
 }
 
-body.halloween .rat-options::after {
-  background: linear-gradient(to left, #ffb376, transparent);
-}
 
 /* Compact desktop */
 @media (max-width: 1600px) {
