@@ -519,76 +519,72 @@ input:checked + .slider:before {
 
 .top-1 {
   top: 8px;
-  animation: wiggle1 1000ms infinite;
 }
 
 .top-2 {
   top: 15%;
-  animation: wiggle2 1000ms infinite;
 }
 
 .top-3 {
   top: 20%;
-  animation: wiggle3 1000ms infinite;
 }
 
 .top-4 {
   top: 33%;
-  animation: wiggle2 1000ms infinite;
 }
 
 .top-5 {
   top: 42%;
-  animation: wiggle3 1000ms infinite;
 }
 
 .bottom-1 {
   bottom: 0px;
-  animation: wiggle1 1000ms infinite;
 }
 
 .bottom-2 {
   bottom: 20%;
-  animation: wiggle3 1000ms infinite;
 }
 
 .bottom-3 {
   bottom: 30%;
-  animation: wiggle1 1000ms infinite;
 }
 
 .bottom-4 {
   bottom: 40%;
-  animation: wiggle2 1000ms infinite;
 }
 
 .bottom-5 {
   bottom: 45%;
-  animation: wiggle2 1000ms infinite;
 }
 
 .left-1 {
   left: -3vw;
+  animation: wiggle-left 2000ms forwards;
 }
 
 .left-2 {
   left: 0vw;
+  animation: wiggle-left-2 2000ms forwards;
 }
 
 .left-3 {
   left: 8px;
+  animation: wiggle-left-3 2000ms forwards;
 }
 
 .right-1 {
   right: -3vw;
+  animation: wiggle-right 2000ms forwards;
 }
 
 .right-2 {
   right: 0vw;
+  animation: wiggle-right-2 2000ms forwards;
 }
 
 .right-3 {
   right: 3vw;
+  animation: wiggle-right-3 2000ms forwards;
 }
 
 .rotation-1 {
@@ -761,38 +757,128 @@ body.halloween .rat-options {
   }
 }
 
-@keyframes wiggle1 {
+@keyframes wiggle-left {
   0% {
+    transform: translateX(-200px);
+  }
+  60% {
     transform: translateX(0);
   }
-  50% {
-    transform: translateX(3px);
+  70% {
+    transform: translateX(10px);
+  }
+  80% {
+    transform: translateX(0);
+  }
+  90% {
+    transform: translateX(10px);
   }
   100% {
-    transform: translateX(0);
+    transform: translateX(0px);
   }
 }
 
-@keyframes wiggle2 {
+@keyframes wiggle-left-2 {
   0% {
-    transform: translate(0, 0);
+    transform: translateX(-200px);
   }
-  50% {
-    transform: translate(2px, 4px);
+  60% {
+    transform: translateX(10px);
+  }
+  70% {
+    transform: translateX(40px);
+  }
+  80% {
+    transform: translateX(10px);
+  }
+  90% {
+    transform: translateX(40px);
   }
   100% {
-    transform: translate(0, 0);
+    transform: translateX(0px);
   }
 }
 
-@keyframes wiggle3 {
+@keyframes wiggle-left-3 {
   0% {
-    transform: translate(0, 0);
+    transform: translateX(-150px);
   }
-  50% {
-    transform: translate(0px, 6px);
+  60% {
+    transform: translateX(30px);
+  }
+  70% {
+    transform: translateX(50px);
+  }
+  80% {
+    transform: translateX(10px);
+  }
+  90% {
+    transform: translateX(30px);
   }
   100% {
-    transform: translate(0, 0);
+    transform: translateX(0px);
+  }
+}
+
+@keyframes wiggle-right {
+  0% {
+    transform: translateX(200px);
+  }
+  60% {
+    transform: translateX(0);
+  }
+  70% {
+    transform: translateX(-10px);
+  }
+  80% {
+    transform: translateX(0);
+  }
+  90% {
+    transform: translateX(-10px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+@keyframes wiggle-right-2 {
+  0% {
+    transform: translateX(200px);
+  }
+  60% {
+    transform: translateX(-10px);
+  }
+  70% {
+    transform: translateX(-30px);
+  }
+  80% {
+    transform: translateX(-10px);
+  }
+  90% {
+    transform: translateX(-30px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+@keyframes wiggle-right-3 {
+  0% {
+    transform: translateX(150px);
+  }
+  60% {
+    transform: translateX(-30px);
+  }
+  70% {
+    transform: translateX(-50px);
+  }
+  80% {
+    transform: translateX(-10px);
+  }
+  90% {
+    transform: translateX(-30px);
+  }
+  100% {
+    transform: translateX(0px);
   }
 }
