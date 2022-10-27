@@ -2,12 +2,13 @@
   --overlay-color: rgba(59, 59, 59, 0.85);
   --big-text-color: white;
   --smaller-text-color: #ddd;
+  --smaller-text-color-outline: #dddddd88;
   --smaller-text-color-hover: #ccc;
   --color-active: rgb(221, 177, 198);
   --smaller-text-color-selected: rgb(113, 47, 47);
   --smaller-text-color-selected-bg: rgb(70, 6, 6);
   --tab-height: 60px;
-  --spooky-orange: #ffa358;
+  --spooky-color: #ffa358;
 }
 
 * {
@@ -33,7 +34,7 @@ body {
 }
 
 a {
-  color: var(--spooky-orange);
+  color: var(--spooky-color);
 }
 
 * {
@@ -161,13 +162,13 @@ hr {
   font-family: "Fraunces", serif;
   font-size: 18px;
   outline-offset: -1px;
-  outline: 1px dashed rgba(255, 255, 255, 0.2);
+  outline: 1px dashed var(--smaller-text-color-outline);
 }
 
 .option:hover {
   color: var(--smaller-text-color-hover);
   outline-offset: -1px;
-  outline: 1px solid var(--smaller-text-color);
+  outline: 1px solid var(--smaller-text-color-hover);
 }
 
 .option:active,
@@ -271,7 +272,6 @@ h1 {
   width: 100%;
   display: flex;
   overflow-x: scroll;
-  /* border-bottom: 1px solid var(--big-text-color); */
   padding: 12px 20px 0px 12px;
   column-gap: 4px;
 }
@@ -291,9 +291,9 @@ h1 {
 .rat-tab {
   padding: 4px 12px;
   white-space: nowrap;
-  border: 1px solid white;
+  border: 1px solid var(--big-text-color);
   border-bottom: none;
-  color: white;
+  color: var(--big-text-color);
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: 4px 4px 0 0;
   font-family: "Fraunces", serif;
@@ -339,8 +339,8 @@ h1 {
 }
 
 .costume {
-  outline-color: var(--spooky-orange);
-  color: var(--spooky-orange);
+  outline-color: var(--spooky-color);
+  color: var(--spooky-color);
 }
 
 @keyframes fadeIn {
@@ -360,7 +360,7 @@ h1 {
   font-style: italic;
   font-variation-settings: "SOFT" 100;
   letter-spacing: 0.8px;
-  color: var(--spooky-orange);
+  color: var(--spooky-color);
 }
 
 .halloween-text {
@@ -420,15 +420,15 @@ h1 {
 }
 
 input:checked + .slider {
-  background-color: var(--smaller-text-color-selected);
+  background-color: var(--spooky-color);
 }
 
 input:focus + .slider {
-  outline: 4px solid var(--smaller-text-color-selected);
+  outline: 4px solid var(--spooky-color);
 }
 
 input:active + .slider {
-  outline: 4px solid var(--smaller-text-color-selected);
+  outline: 4px solid var(--spooky-color);
 }
 
 input:checked + .slider:before {
@@ -546,24 +546,20 @@ body.halloween .halloween-overlay {
   display: block;
 }
 
-body.halloween h1 {
-  color: black;
+body.halloween .rat-options {
+  background: #ffb376;
+  --big-text-color: #000;
+  --smaller-text-color: #000;
+  --smaller-text-color-outline: #00000056;
+  --smaller-text-color-hover: rgb(114, 10, 114);
+  --color-active: rgb(114, 10, 114);
+  --smaller-text-color-selected: rgb(205, 156, 255);
+  --smaller-text-color-selected-bg: rgb(136, 33, 180);
+  --spooky-color: rgb(146, 0, 10);
 }
 
-body.halloween .intro {
-  color: black;
-}
-
-body.halloween a {
-  color: rgb(113, 47, 47);
-}
-
-body.halloween .halloween-button {
-  color: black;
-}
-
-body.halloween .container {
-  background: #ff9138dd;
+body.halloween .rat-options::after {
+  background: linear-gradient(to left, #ffb376, transparent);
 }
 
 /* Compact desktop */
