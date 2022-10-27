@@ -8,7 +8,7 @@
   --smaller-text-color-selected: rgb(113, 47, 47);
   --smaller-text-color-selected-bg: rgb(70, 6, 6);
   --tab-height: 60px;
-  --spooky-color: #ce73c7;
+  --spooky-color: #dd91d7;
 }
 
 * {
@@ -385,7 +385,7 @@ h1 {
   outline-color: var(--spooky-color);
   color: var(--spooky-color);
   opacity: 0;
-  animation: fadeIn 200ms 300ms forwards;
+  animation: fadeIn 500ms 500ms forwards;
 }
 
 @keyframes fadeIn {
@@ -500,6 +500,7 @@ input:checked + .slider:before {
   height: 100%;
   pointer-events: none;
   z-index: 1;
+  overflow: hidden;
 }
 
 .halloween-overlay > * {
@@ -588,6 +589,10 @@ body.halloween {
   background-image: url("./assets/candybg.png");
   background-repeat: repeat;
   background-size: 50%;
+}
+
+body.halloween .container {
+  background-color: rgba(59, 59, 59, 0.92);
 }
 
 body.halloween .halloween-overlay {
