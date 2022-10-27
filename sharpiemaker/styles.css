@@ -30,7 +30,6 @@ body {
   padding: 8px;
   background-image: url("assets/page_background.png");
   background-size: 800px 600px;
-  transition: background 300ms;
 }
 
 a {
