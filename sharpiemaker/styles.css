@@ -8,7 +8,7 @@
   --smaller-text-color-selected: rgb(113, 47, 47);
   --smaller-text-color-selected-bg: rgb(70, 6, 6);
   --tab-height: 60px;
-  --spooky-color: #a8009d;
+  --spooky-color: #ce73c7;
 }
 
 * {
@@ -384,6 +384,8 @@ h1 {
 .costume {
   outline-color: var(--spooky-color);
   color: var(--spooky-color);
+  opacity: 0;
+  animation: fadeIn 200ms 300ms forwards;
 }
 
 @keyframes fadeIn {
@@ -606,7 +608,6 @@ body.halloween .rat-options {
   --spooky-color: rgb(255, 174, 0);
   /* rgb(184, 152, 221); */
 }
-
 
 /* Compact desktop */
 @media (max-width: 1600px) {
