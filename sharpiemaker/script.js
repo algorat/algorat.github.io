@@ -371,6 +371,9 @@ function setupGameFiles() {
 
     preloadImage("assets/" + item.dataset.imgUrl);
   });
+
+  const bgImageName = "./assets/candybigbg.png";
+  preloadImage(bgImageName);
 }
 
 /** Opens a new tab with the current clothing configuration as an image. */
