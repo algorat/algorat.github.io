@@ -559,32 +559,32 @@ input:checked + .slider:before {
 
 .left-1 {
   left: -3vw;
-  animation: wiggle-left 2000ms forwards;
+  animation: wiggle-left 2000ms ease-in forwards;
 }
 
 .left-2 {
   left: 0vw;
-  animation: wiggle-left-2 2000ms forwards;
+  animation: wiggle-left-2 2000ms ease-in forwards;
 }
 
 .left-3 {
   left: 8px;
-  animation: wiggle-left-3 2000ms forwards;
+  animation: wiggle-left-3 2000ms ease-in forwards;
 }
 
 .right-1 {
   right: -3vw;
-  animation: wiggle-right 2000ms forwards;
+  animation: wiggle-right 2000ms ease-in forwards;
 }
 
 .right-2 {
   right: 0vw;
-  animation: wiggle-right-2 2000ms forwards;
+  animation: wiggle-right-2 2000ms ease-in forwards;
 }
 
 .right-3 {
   right: 3vw;
-  animation: wiggle-right-3 2000ms forwards;
+  animation: wiggle-right-3 2000ms ease-in forwards;
 }
 
 .rotation-1 {
@@ -761,17 +761,17 @@ body.halloween .rat-options {
   0% {
     transform: translateX(-200px);
   }
-  60% {
+  40% {
     transform: translateX(0);
+  }
+  55% {
+    transform: translateX(5px);
   }
   70% {
-    transform: translateX(10px);
-  }
-  80% {
     transform: translateX(0);
   }
-  90% {
-    transform: translateX(10px);
+  85% {
+    transform: translateX(5px);
   }
   100% {
     transform: translateX(0px);
@@ -782,17 +782,17 @@ body.halloween .rat-options {
   0% {
     transform: translateX(-200px);
   }
-  60% {
-    transform: translateX(10px);
+  45% {
+    transform: translateX(5px);
+  }
+  55% {
+    transform: translateX(20px);
   }
   70% {
-    transform: translateX(40px);
+    transform: translateX(5px);
   }
-  80% {
-    transform: translateX(10px);
-  }
-  90% {
-    transform: translateX(40px);
+  85% {
+    transform: translateX(20px);
   }
   100% {
     transform: translateX(0px);
@@ -803,17 +803,17 @@ body.halloween .rat-options {
   0% {
     transform: translateX(-150px);
   }
-  60% {
-    transform: translateX(30px);
+  45% {
+    transform: translateX(3px);
   }
-  70% {
-    transform: translateX(50px);
-  }
-  80% {
+  55% {
     transform: translateX(10px);
   }
-  90% {
-    transform: translateX(30px);
+  70% {
+    transform: translateX(3px);
+  }
+  85% {
+    transform: translateX(10px);
   }
   100% {
     transform: translateX(0px);
@@ -824,17 +824,17 @@ body.halloween .rat-options {
   0% {
     transform: translateX(200px);
   }
-  60% {
+  40% {
     transform: translateX(0);
+  }
+  55% {
+    transform: translateX(-5px);
   }
   70% {
-    transform: translateX(-10px);
-  }
-  80% {
     transform: translateX(0);
   }
-  90% {
-    transform: translateX(-10px);
+  85% {
+    transform: translateX(-5px);
   }
   100% {
     transform: translateX(0px);
@@ -845,17 +845,17 @@ body.halloween .rat-options {
   0% {
     transform: translateX(200px);
   }
-  60% {
-    transform: translateX(-10px);
+  40% {
+    transform: translateX(-5px);
+  }
+  55% {
+    transform: translateX(-20px);
   }
   70% {
-    transform: translateX(-30px);
+    transform: translateX(-5px);
   }
-  80% {
-    transform: translateX(-10px);
-  }
-  90% {
-    transform: translateX(-30px);
+  85% {
+    transform: translateX(-20px);
   }
   100% {
     transform: translateX(0px);
@@ -866,17 +866,17 @@ body.halloween .rat-options {
   0% {
     transform: translateX(150px);
   }
-  60% {
-    transform: translateX(-30px);
+  40% {
+    transform: translateX(-3px);
   }
-  70% {
-    transform: translateX(-50px);
-  }
-  80% {
+  55% {
     transform: translateX(-10px);
   }
-  90% {
-    transform: translateX(-30px);
+  70% {
+    transform: translateX(-3px);
+  }
+  85% {
+    transform: translateX(-10px);
   }
   100% {
     transform: translateX(0px);
