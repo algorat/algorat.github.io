@@ -596,7 +596,7 @@ input:checked + .slider:before {
 
 body.halloween {
   background: rgb(255, 183, 121);
-  background-image: url("./assets/candybg.png");
+  background-image: url("./assets/candybigbg.png");
   background-repeat: repeat;
   background-size: 50%;
 }
