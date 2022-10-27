@@ -510,42 +510,52 @@ input:checked + .slider:before {
 
 .top-1 {
   top: 8px;
+  animation: wiggle1 1000ms infinite;
 }
 
 .top-2 {
   top: 15%;
+  animation: wiggle2 1000ms infinite;
 }
 
 .top-3 {
   top: 20%;
+  animation: wiggle3 1000ms infinite;
 }
 
 .top-4 {
   top: 33%;
+  animation: wiggle2 1000ms infinite;
 }
 
 .top-5 {
   top: 42%;
+  animation: wiggle3 1000ms infinite;
 }
 
 .bottom-1 {
   bottom: 0px;
+  animation: wiggle1 1000ms infinite;
 }
 
 .bottom-2 {
   bottom: 20%;
+  animation: wiggle3 1000ms infinite;
 }
 
 .bottom-3 {
   bottom: 30%;
+  animation: wiggle1 1000ms infinite;
 }
 
 .bottom-4 {
   bottom: 40%;
+  animation: wiggle2 1000ms infinite;
 }
 
 .bottom-5 {
   bottom: 45%;
+  animation: wiggle2 1000ms infinite;
 }
 
 .left-1 {
@@ -739,5 +749,41 @@ body.halloween .rat-options {
 
   .page {
     padding: 12px;
+  }
+}
+
+@keyframes wiggle1 {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(3px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes wiggle2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(2px, 4px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes wiggle3 {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(0px, 6px);
+  }
+  100% {
+    transform: translate(0, 0);
   }
 }
