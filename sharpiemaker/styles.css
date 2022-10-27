@@ -228,6 +228,47 @@ h1 {
   cursor: pointer;
 }
 
+.download-button {
+  position: relative;
+}
+
+.download-button:hover .dropdown,
+.download-button:focus .dropdown,
+.download-button:active .dropdown {
+  display: block;
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 100;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+  width: 100%;
+  background-color: var(--smaller-text-color-selected-bg);
+}
+
+.download-button::after {
+  content: "↓";
+  padding-left: 16px;
+  opacity: 0.7;
+}
+
+.dropdown li {
+  border: 1px dashed var(--big-text-color);
+  padding: 8px 0;
+}
+
+.dropdown li:hover {
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
 .page {
   display: none;
   min-height: 400px;

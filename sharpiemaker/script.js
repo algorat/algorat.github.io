@@ -374,7 +374,7 @@ function setupGameFiles() {
 }
 
 /** Opens a new tab with the current clothing configuration as an image. */
-function saveImage() {
+function saveImage(bgColor = null) {
   var canvas = document.createElement("CANVAS");
   var canWid = 700;
   var canHei = 1000;
@@ -385,6 +385,13 @@ function saveImage() {
   canvas.style.height = canHei + "px";
 
   var ctx = canvas.getContext("2d");
+
+  if (bgColor) {
+    ctx.beginPath();
+    ctx.rect(0, 0, canWid, canHei);
+    ctx.fillStyle = bgColor;
+    ctx.fill();
+  }
 
   const allImages = [...document.getElementsByClassName("rat-image")];
   const drawnImages = allImages.filter(

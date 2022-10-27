@@ -114,8 +114,25 @@
             <button class="other-button" onclick="randomize()">
               Randomize!
             </button>
-            <button class="download-button other-button" onclick="saveImage()">
+            <button class="download-button other-button">
               Download!
+              <ul class="dropdown">
+                <li tabindex="0" onclick="saveImage()">
+                  transparent background
+                </li>
+                <li tabindex="0" onclick="saveImage('#000')">
+                  black background
+                </li>
+                <li tabindex="0" onclick="saveImage('#FFF')">
+                  white background
+                </li>
+                <li tabindex="0" onclick="saveImage('#323232')">
+                  grey background
+                </li>
+                <li tabindex="0" onclick="saveImage('#FF00FF')">
+                  purple background
+                </li>
+              </ul>
             </button>
           </div>
 
