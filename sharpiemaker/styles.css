@@ -429,6 +429,7 @@ h1 {
   line-height: 16px;
   font-style: italic;
   color: var(--big-text-color);
+  height: 30px;
 }
 
 .intro::after {
