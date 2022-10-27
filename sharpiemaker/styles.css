@@ -231,6 +231,8 @@ h1 {
 
 .download-button {
   position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .download-button:hover .dropdown,
@@ -253,8 +255,8 @@ h1 {
   background-color: var(--smaller-text-color-selected-bg);
 }
 
-.download-button::after {
-  content: "↓";
+.download-button img {
+  height: 24px;
   padding-left: 16px;
   opacity: 0.7;
 }
