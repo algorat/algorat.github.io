@@ -68,7 +68,7 @@ img {
 }
 
 .project img {
-  border-radius: 0px 0px 30px 30px;
+  border-radius: 0px 0px 10px 10px;
 }
 
 .project {
@@ -79,7 +79,7 @@ img {
   margin-bottom: 30px;
   background-color: rgb(255, 246, 222);
   color: black;
-  border-radius: 30px;
+  border-radius: 10px;
   width: 700px;
   max-width: 85vw;
 }
@@ -90,7 +90,7 @@ img {
 
 #bday-card-text {
   background-color: rgb(255, 246, 222);
-  border-radius: 30px;
+  border-radius: 10px;
   color: black;
   padding: 30;
   margin-top: 30vh;
