@@ -1,6 +1,6 @@
 window.onload = () => {
 
-  var rats = ['img/rat3.png', 'img/rat4.png', 'img/rat5.png']; 
+  var rats = ['img/rat1.png', 'img/rat2.png', 'img/rat3.png', 'img/rat4.png', 'img/rat5.png']; 
 
   window.addEventListener('click', e => {
     let rat = document.createElement('img');
